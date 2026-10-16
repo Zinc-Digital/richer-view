@@ -1,0 +1,24 @@
+# This repo tracks ONLY the growth_tech theme.
+# Each level below must un-ignore the parent directory before the next
+# level's rules can apply — git will not descend into an ignored directory.
+
+# 1. Ignore everything at the repo root (WordPress core, wp-config.php, etc.)...
+/*
+
+# ...but keep these
+!/.gitignore
+!/README.md
+!/wp-content
+!/docs
+!/tests
+
+# 2. Inside gt_system, keep only themes (drops plugins, languages, uploads, upgrade)
+/wp-content/*
+!/wp-content/themes
+
+# 3. Inside themes, keep only our theme
+/wp-content/themes/*
+!/wp-content/themes/richerview
+
+# Never commit macOS metadata anywhere
+.DS_Store
