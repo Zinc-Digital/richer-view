@@ -144,12 +144,15 @@ function zinc_get_video_file_link($url) {
  * waiting for JavaScript (assets/js/components/background-video.js reuses it).
  *
  * @param string $embed_url Embed URL from zinc_get_background_video_embed_url().
+ * @param string $loading   'eager', or 'lazy' to let the browser wait until it's near the screen
+ *                          (for videos further down the page, so they don't hold up one at the top).
  */
-function zinc_background_video_iframe($embed_url) {
+function zinc_background_video_iframe($embed_url, $loading = 'eager') {
 	if (!$embed_url) return;
 	printf(
-		'<iframe src="%s" title="" tabindex="-1" loading="eager" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"></iframe>',
-		esc_url($embed_url)
+		'<iframe src="%s" title="" tabindex="-1" loading="%s" allow="autoplay; fullscreen; picture-in-picture; encrypted-media"></iframe>',
+		esc_url($embed_url),
+		$loading === 'lazy' ? 'lazy' : 'eager'
 	);
 }
 

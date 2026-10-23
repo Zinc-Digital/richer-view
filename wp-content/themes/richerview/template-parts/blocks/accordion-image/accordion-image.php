@@ -3,7 +3,8 @@
  * Accordion with Image block
  *
  * Heading and a list of points that open to show more detail, with a photo
- * or background video alongside. The open point gets a sparkle doodle and can
+ * or background video alongside. The open point gets a doodle (sparkle, pencil,
+ * trophy or hearts, chosen per block or per point) and can
  * swap in its own photo or video (assets/js/blocks/accordion-image.js).
  *
  * @var array $block      The block settings and attributes.
@@ -14,7 +15,21 @@ $heading      = get_field('heading');
 $image        = get_field('image');
 $position     = get_field('image_position');
 $items        = get_field('items') ?: array();
-$show_sparkle = get_field('show_sparkle') !== false;
+
+/**
+ * Doodles shown next to the open point's title: file and size from the Figma export.
+ * Blocks saved before the doodle choice existed may only have the old on/off switch.
+ */
+$doodles = array(
+	'sparkle'	=> array('accordion-sparkle.svg', 61.8631, 56.4638),
+	'pencil'	=> array('accordion-pencil.svg', 110.019, 81.5253),
+	'trophy'	=> array('accordion-trophy.svg', 49.2276, 80.4599),
+	'hearts'	=> array('accordion-hearts.svg', 64.9996, 56.671),
+);
+$block_doodle = get_field('field_6a4e6a8b3d014');
+if (!$block_doodle) {
+	$block_doodle = get_field('show_sparkle') === false || get_field('show_sparkle') === '0' ? 'none' : 'sparkle';
+}
 
 /**
  * Video settings → embed URL (YouTube/Vimeo) or file URL (upload), or nothing.
@@ -75,14 +90,15 @@ $has_own_media = function ($index) use ($item_image, $item_videos) {
  * Output one layer of the photo area: an image, or a video (no poster image –
  * it shows straight away). `$key` matches the point's data-media ("default"
  * for the main media). An uploaded video in the layer shown on load starts
- * playing immediately (autoplay); YouTube/Vimeo players load when the block
+ * playing immediately (autoplay), and a YouTube/Vimeo player in it is output
+ * with the page (like the Intro block) for the browser to load as the block
  * comes near the screen; the rest wait until their point is opened.
  */
 $render_media = function ($key, $image_id, $position, $video, $active) use ($image_class) {
 	if ($video) : ?>
       <div class="b-accordion-image__image b-accordion-image__layer<?php if ($active) echo ' is-active'; ?>" data-media="<?php echo esc_attr($key); ?>">
         <?php if (!empty($video['embed'])) : ?>
-        <div class="b-accordion-image__video" data-video-embed="<?php echo esc_url($video['embed']); ?>" aria-hidden="true"></div>
+        <div class="b-accordion-image__video" data-video-embed="<?php echo esc_url($video['embed']); ?>" aria-hidden="true"><?php if ($active) zinc_background_video_iframe($video['embed'], 'lazy'); ?></div>
         <?php else : ?>
         <div class="b-accordion-image__video" aria-hidden="true">
           <video src="<?php echo esc_url($video['file']); ?>" muted loop playsinline<?php if ($active) echo ' autoplay'; ?> preload="<?php echo $active ? 'auto' : 'metadata'; ?>" tabindex="-1"></video>
@@ -120,11 +136,13 @@ if (!empty($block['anchor'])) {
         <?php foreach ($items as $index => $item) :
 					$is_open  = $index === $open_index;
 					$item_id  = $id . '-' . $index;
+					$doodle_key = ($item['doodle'] ?? 'default') === 'default' ? $block_doodle : $item['doodle'];
+					$doodle     = $doodles[$doodle_key] ?? null;
 				?>
         <li class="b-accordion-image__item<?php if ($item['text']) echo ' has-text'; ?><?php if ($is_open) echo ' is-open'; ?>"<?php if ($has_own_media($index)) : ?> data-media="<?php echo esc_attr($item_id); ?>"<?php endif; ?>>
           <h3 class="b-accordion-image__title">
             <button type="button" class="b-accordion-image__toggle" id="<?php echo esc_attr($item_id); ?>-toggle" aria-expanded="<?php echo $is_open ? 'true' : 'false'; ?>" aria-controls="<?php echo esc_attr($item_id); ?>-panel">
-              <?php echo esc_html($item['title']); ?><?php if ($show_sparkle) : ?><span class="b-accordion-image__sparkle" aria-hidden="true"><img src="<?php echo esc_url($images . '/accordion-sparkle.svg'); ?>" width="61.8631" height="56.4638" alt="" /></span><?php endif; ?>
+              <?php echo esc_html($item['title']); ?><?php if ($doodle) : ?><span class="b-accordion-image__sparkle b-accordion-image__sparkle--<?php echo esc_attr($doodle_key); ?>" aria-hidden="true"><img src="<?php echo esc_url($images . '/' . $doodle[0]); ?>" width="<?php echo esc_attr($doodle[1]); ?>" height="<?php echo esc_attr($doodle[2]); ?>" alt="" /></span><?php endif; ?>
             </button>
           </h3>
           <div class="b-accordion-image__panel" id="<?php echo esc_attr($item_id); ?>-panel" role="region" aria-labelledby="<?php echo esc_attr($item_id); ?>-toggle">

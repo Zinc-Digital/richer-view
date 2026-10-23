@@ -101,9 +101,10 @@ $accordion-divider: 1px solid rgba(color(white), .25);
     }
   }
 
-  // Sparkle doodle after the open item's title.
+  // Doodle after the open item's title (sparkle, pencil, trophy or hearts – chosen in the block).
   // Zero height so it doesn't change the row height; sizes in em scale with the title.
   &__sparkle {
+    --doodle-rotate: -3.51deg;
     position: relative;
     display: inline-block;
     width: 2.587em;
@@ -121,14 +122,53 @@ $accordion-divider: 1px solid rgba(color(white), .25);
       height: 2.259em;
       max-width: none;
       opacity: 0;
-      transform: rotate(-3.51deg) scale(.6);
+      transform: rotate(var(--doodle-rotate)) scale(.6);
       transition: opacity .3s ease, transform .4s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    &--pencil {
+      --doodle-rotate: 0deg;
+      width: 4.624em;
+      margin-right: -4.624em;
+
+      img {
+        top: -1.61em;
+        left: .223em;
+        width: 4.401em;
+        height: 3.261em;
+      }
+    }
+
+    &--trophy {
+      --doodle-rotate: -7.22deg;
+      width: 2.322em;
+      margin-right: -2.322em;
+
+      img {
+        top: -1.684em;
+        left: .353em;
+        width: 1.969em;
+        height: 3.218em;
+      }
+    }
+
+    &--hearts {
+      --doodle-rotate: 0deg;
+      width: 3.002em;
+      margin-right: -3.002em;
+
+      img {
+        top: -1.72em;
+        left: .402em;
+        width: 2.6em;
+        height: 2.267em;
+      }
     }
   }
 
   &__item.is-open &__sparkle img {
     opacity: 1;
-    transform: rotate(-3.51deg) scale(1);
+    transform: rotate(var(--doodle-rotate)) scale(1);
   }
 
   // Collapsible description (animates height via grid rows)

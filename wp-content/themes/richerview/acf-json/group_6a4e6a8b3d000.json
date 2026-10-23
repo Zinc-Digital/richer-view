@@ -386,6 +386,35 @@
                 {
                     "aria-label": "",
                     "required": 0,
+                    "conditional_logic": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6a4e6a8b3d035",
+                    "label": "Doodle",
+                    "name": "doodle",
+                    "type": "button_group",
+                    "instructions": "Shown next to the title when this point is open.",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "default": "Same as block",
+                        "sparkle": "Sparkle",
+                        "pencil": "Pencil",
+                        "trophy": "Trophy",
+                        "hearts": "Hearts",
+                        "none": "None"
+                    },
+                    "default_value": "default",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "parent_repeater": "field_6a4e6a8b3d001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
                     "allow_in_bindings": 0,
                     "parent_repeater": "field_6a4e6a8b3d001",
                     "key": "field_6a4e6a8b3d030",
@@ -653,21 +682,27 @@
             "required": 0,
             "conditional_logic": 0,
             "allow_in_bindings": 0,
-            "key": "field_6a4e6a8b3d013",
-            "label": "Sparkle doodle",
-            "name": "show_sparkle",
-            "type": "true_false",
-            "instructions": "Shown next to the open point's title.",
+            "key": "field_6a4e6a8b3d014",
+            "label": "Doodle",
+            "name": "doodle",
+            "type": "button_group",
+            "instructions": "Shown next to the open point's title. Each point can choose its own in the Points tab.",
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "message": "",
-            "default_value": 1,
-            "ui": 1,
-            "ui_on_text": "",
-            "ui_off_text": ""
+            "choices": {
+                "sparkle": "Sparkle",
+                "pencil": "Pencil",
+                "trophy": "Trophy",
+                "hearts": "Hearts",
+                "none": "None"
+            },
+            "default_value": "sparkle",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
         }
     ],
     "location": [
@@ -688,5 +723,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1792769279
+    "modified": 1792772897
 }
