@@ -1,0 +1,592 @@
+{
+    "key": "group_6a2c4e8f1b3d5",
+    "title": "Block: Services Showcase",
+    "fields": [
+        {
+            "key": "field_6a2c4e8f1b401",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6a2c4e8f1b402",
+            "label": "Heading",
+            "name": "heading",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Press Enter to start a new line.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "We make videos people actually\nwatch Yours could be next",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_6a2c4e8f1b403",
+            "label": "Underlined words",
+            "name": "highlight",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Words from the heading to underline with the blue scribble. Must match the heading text exactly and sit on one line.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Yours could be next",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6a2c4e8f1b404",
+            "label": "Intro text",
+            "name": "text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "From cinema-style brand stories to live events and quick-turn social content, we’ve got you covered.",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_6a2c4e8f1b405",
+            "label": "Cards",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6a2c4e8f1b406",
+            "label": "Cards",
+            "name": "cards",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Portrait photos work best (e.g. 1080 × 1920px). The bottom of each card fades to black behind the tags.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_6a2c4e8f1b408",
+            "button_label": "Add card",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6a2c4e8f1b408",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "e.g. film",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a2c4e8f1b406"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6a2c4e8f1b406",
+                    "key": "field_6a2c4e8f1b40e",
+                    "label": "Video",
+                    "name": "video_type",
+                    "type": "button_group",
+                    "instructions": "Optional. Plays muted and on a loop, cropped to fill the card. Choose None to use an image instead.",
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "none": "None",
+                        "youtube": "YouTube",
+                        "vimeo": "Vimeo",
+                        "file": "Upload"
+                    },
+                    "default_value": "none",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal"
+                },
+                {
+                    "aria-label": "",
+                    "required": 1,
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6a2c4e8f1b406",
+                    "key": "field_6a2c4e8f1b40f",
+                    "label": "Video link",
+                    "name": "video_url",
+                    "type": "url",
+                    "instructions": "Paste the video's page link, e.g. https://www.youtube.com/watch?v=… or https://vimeo.com/…",
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a2c4e8f1b40e",
+                                "operator": "==",
+                                "value": "youtube"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_6a2c4e8f1b40e",
+                                "operator": "==",
+                                "value": "vimeo"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "aria-label": "",
+                    "required": 1,
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6a2c4e8f1b406",
+                    "key": "field_6a2c4e8f1b410",
+                    "label": "Video file",
+                    "name": "video_file",
+                    "type": "file",
+                    "instructions": "MP4 or WebM. Keep it short and compressed (ideally under 10MB).",
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a2c4e8f1b40e",
+                                "operator": "==",
+                                "value": "file"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "mp4, webm"
+                },
+                {
+                    "key": "field_6a2c4e8f1b417",
+                    "label": "Video playback",
+                    "name": "video_playback",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "“Play on hover” also lets you add an image to show before the video. On phones and tablets, videos always play when visible.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a2c4e8f1b40e",
+                                "operator": "!=",
+                                "value": "none"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "autoplay": "Play when visible",
+                        "hover": "Play on hover"
+                    },
+                    "default_value": "autoplay",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "layout": "horizontal",
+                    "parent_repeater": "field_6a2c4e8f1b406"
+                },
+                {
+                    "key": "field_6a2c4e8f1b407",
+                    "label": "Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "With a video on “Play on hover”, this shows until the mouse is over the card.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a2c4e8f1b40e",
+                                "operator": "==",
+                                "value": "none"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_6a2c4e8f1b417",
+                                "operator": "==",
+                                "value": "hover"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "jpg, jpeg, png, webp",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium",
+                    "parent_repeater": "field_6a2c4e8f1b406"
+                },
+                {
+                    "key": "field_6a2c4e8f1b409",
+                    "label": "Image position",
+                    "name": "image_position",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "Which part of the image to keep in view.",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a2c4e8f1b40e",
+                                "operator": "==",
+                                "value": "none"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_6a2c4e8f1b417",
+                                "operator": "==",
+                                "value": "hover"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "top": "Top",
+                        "center": "Centre",
+                        "bottom": "Bottom"
+                    },
+                    "default_value": "center",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "layout": "horizontal",
+                    "parent_repeater": "field_6a2c4e8f1b406"
+                },
+                {
+                    "key": "field_6a2c4e8f1b40a",
+                    "label": "Tags",
+                    "name": "tags",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "One tag per line.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 5,
+                    "placeholder": "commercials\nmusic videos\ntrailers",
+                    "new_lines": "",
+                    "parent_repeater": "field_6a2c4e8f1b406"
+                },
+                {
+                    "key": "field_6a2c4e8f1b40b",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "Optional. Makes the whole card clickable.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_6a2c4e8f1b406"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6a2c4e8f1b412",
+                    "label": "Hover badge",
+                    "name": "cursor",
+                    "type": "group",
+                    "instructions": "The round badge that follows the mouse over this card on desktop. Leave the text and icon empty to turn it off.",
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "parent_repeater": "field_6a2c4e8f1b406",
+                    "sub_fields": [
+                        {
+                            "aria-label": "",
+                            "required": 0,
+                            "allow_in_bindings": 0,
+                            "key": "field_6a2c4e8f1b413",
+                            "label": "Text",
+                            "name": "label",
+                            "type": "text",
+                            "instructions": "",
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "34",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "action",
+                            "maxlength": 12,
+                            "placeholder": "e.g. watch",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "aria-label": "",
+                            "required": 0,
+                            "allow_in_bindings": 0,
+                            "key": "field_6a2c4e8f1b414",
+                            "label": "Icon",
+                            "name": "icon",
+                            "type": "select",
+                            "instructions": "",
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "none": "None",
+                                "exclamation": "Exclamation (!)",
+                                "magnifier": "Magnifying glass",
+                                "custom": "Upload my own"
+                            },
+                            "default_value": "exclamation",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": ""
+                        },
+                        {
+                            "aria-label": "",
+                            "required": 0,
+                            "allow_in_bindings": 0,
+                            "key": "field_6a2c4e8f1b415",
+                            "label": "Icon position",
+                            "name": "icon_position",
+                            "type": "button_group",
+                            "instructions": "",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c4e8f1b414",
+                                        "operator": "!=",
+                                        "value": "none"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "before": "Before text",
+                                "after": "After text"
+                            },
+                            "default_value": "after",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "layout": "horizontal"
+                        },
+                        {
+                            "aria-label": "",
+                            "required": 1,
+                            "allow_in_bindings": 0,
+                            "key": "field_6a2c4e8f1b416",
+                            "label": "Custom icon",
+                            "name": "icon_custom",
+                            "type": "image",
+                            "instructions": "A small SVG or PNG, shown up to 18px tall. Dark grey (#444) icons match the design.",
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_6a2c4e8f1b414",
+                                        "operator": "==",
+                                        "value": "custom"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "svg, png, webp",
+                            "preview_size": "thumbnail"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_6a2c4e8f1b40c",
+            "label": "Settings",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_6a2c4e8f1b40d",
+            "label": "Scroll animation",
+            "name": "scroll_animation",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "On desktop, the heading fades out and the cards slide sideways as the page scrolls. Tablets and phones always get a swipeable row. Not shown in the editor.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/services-showcase"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792579143
+}

@@ -1,0 +1,204 @@
+{
+    "key": "group_6a7b9d1e6a000",
+    "title": "Block: Stats",
+    "fields": [
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a7b9d1e6a012",
+            "label": "Stats",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a7b9d1e6a001",
+            "label": "Stats",
+            "name": "stats",
+            "type": "repeater",
+            "instructions": "Four fit best on one row. Tablets show two per row and phones one.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 6,
+            "collapsed": "field_6a7b9d1e6a002",
+            "button_label": "Add stat",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "aria-label": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6a7b9d1e6a002",
+                    "label": "Number",
+                    "name": "number",
+                    "type": "text",
+                    "instructions": "e.g. 640+, 12,000+, 24/7",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": 12,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a7b9d1e6a001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6a7b9d1e6a003",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "textarea",
+                    "instructions": "A short line – around 40 characters fits on two lines.",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 2,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_6a7b9d1e6a001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6a7b9d1e6a010",
+                    "label": "Count from",
+                    "name": "count_from",
+                    "type": "number",
+                    "instructions": "Where the number starts counting from when it scrolls into view – use a higher number to count down (e.g. 100 → 0). Only plain numbers animate; things like 24/7 are shown as written.",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 0,
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": "any",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a7b9d1e6a001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6a7b9d1e6a004",
+                    "label": "Hover colour",
+                    "name": "hover_colour",
+                    "type": "button_group",
+                    "instructions": "The colour the stat turns when the mouse is over it.",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "yellow": "Yellow",
+                        "blue": "Blue",
+                        "coral": "Coral",
+                        "none": "None"
+                    },
+                    "default_value": "yellow",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "parent_repeater": "field_6a7b9d1e6a001"
+                }
+            ]
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a7b9d1e6a013",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a7b9d1e6a011",
+            "label": "Count animation",
+            "name": "count_animation",
+            "type": "true_false",
+            "instructions": "Numbers count to their value when the block scrolls into view. Not shown in the editor.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/stats"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792763836
+}

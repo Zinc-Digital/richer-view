@@ -1,0 +1,46 @@
+{
+    "key": "group_6a9db03c8c000",
+    "title": "Page options",
+    "fields": [
+        {
+            "key": "field_6a9db03c8c001",
+            "label": "Hide footer call to action",
+            "name": "hide_footer_cta",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Hides the “starting a new project or want to chat with us? – get in touch” section at the top of the footer (e.g. on the contact page itself).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792766087
+}

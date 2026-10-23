@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/services-showcase",
+	"title": "Services Showcase",
+	"description": "Heading with a hand-drawn underline and a row of service cards that scroll sideways on desktop.",
+	"category": "media",
+	"icon": "slides",
+	"keywords": ["services", "cards", "slider", "carousel", "what we do"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/services-showcase.css",
+	"viewScript": "file:../../../assets/js/blocks/services-showcase.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "services-showcase.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

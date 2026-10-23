@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/testimonials",
+	"title": "Testimonials",
+	"description": "Heading with a speech-bubble doodle and a draggable row of quote and video testimonials.",
+	"category": "media",
+	"icon": "format-quote",
+	"keywords": ["testimonials", "reviews", "quotes", "praise", "clients"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/testimonials.css",
+	"viewScript": "file:../../../assets/js/blocks/testimonials.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "testimonials.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

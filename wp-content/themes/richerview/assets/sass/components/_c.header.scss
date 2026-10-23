@@ -1,131 +1,137 @@
-.header-desktop,
-.header-mobile {
-  background: transparent;
-  padding: 30px 0;
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 26px 26px 0 25px;
+  font-family: $display_font;
 
-  @media (max-width: $sm - 1px) {
-    padding-top: 0;
+  // Sit below the WordPress admin bar when logged in
+  .admin-bar & {
+    top: 32px;
+
+    @media (max-width: 782px) {
+      top: 46px;
+    }
   }
 
-  &.sticky {
-    background-color: color(white);
-    position: fixed;
-    z-index: 999;
-    padding: 30px 0;
+  &__logo {
+    flex-shrink: 0;
 
-    .logo {
+    img {
+      width: 90px;
+      height: auto;
+    }
+  }
+
+  &__actions {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 3px;
+  }
+
+  // Round glass buttons (menu toggle + phone)
+  &__button {
+    display: block;
+    flex-shrink: 0;
+    width: 41px;
+    height: 41px;
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(25px);
+
+    img {
+      width: 41px;
+      height: 41px;
+    }
+  }
+
+  &__toggle-close {
+    display: none;
+  }
+
+  // Expanded menu pills
+  &__nav {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+  }
+
+  &__menu {
+    display: flex;
+    gap: 10px;
+    margin: 0;
+
+    li {
+      margin: 0;
+      list-style: none;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 41px;
+      padding: 10px 20px 9px;
+      border-radius: 28px;
+      background-color: rgba(color(grey), .25);
+      -webkit-backdrop-filter: blur(25px);
+      backdrop-filter: blur(25px);
+      color: color(white);
+      font-family: $display_font;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: $font-400;
+      text-transform: lowercase;
+      white-space: nowrap;
+      transition: background-color .2s ease;
+
+      &:hover,
+      &:focus-visible {
+        background-color: rgba(color(grey), .5);
+        color: color(white);
+      }
+    }
+  }
+
+  &.is-open {
+    .site-header__nav {
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      transition: opacity .25s ease, transform .25s ease;
+    }
+
+    .site-header__toggle-open {
       display: none;
     }
 
-    .logo.dark {
+    .site-header__toggle-close {
       display: block;
     }
-
-    li {
-      a {
-        color: color(black);
-      }
-    }
   }
 
-  li {
-    font-family: $primary_font;
-    list-style: none;
-    margin: 0 10px;
-
-    i,
-    span {
-      color: color(black);
+  @media (max-width: $sm - 1px) {
+    // Not enough width for a row of pills, so drop them below the buttons
+    &__nav {
+      position: absolute;
+      top: 51px;
+      right: 0;
+      transform: translateY(-10px);
     }
 
-    i {
-      margin-right: 10px;
-    }
-
-    span {
-      position: relative;
-      left: -20px;
-    }
-  }
-}
-
-@media (max-width: $lg - 1px) {
-  .header-desktop {
-    display: none;
-  }
-
-  .header-mobile {
-    background-color: color(white);
-    nav {
-        background-color: color(white);
-        .container {
-            padding-right: 10px;
-        }
-    }
-    img.logo {
-        max-width: 180px;
-        padding: 10px 0;
-    }
-    @media (max-width: 599px) {
-        img.logo {
-            max-width: 100px;
-            padding: 0;
-        }
-    }
-    ul {
-        margin-bottom: 0;
-        margin-top: 15px;
-    }
-    .sub-menu {
-        display: none;
-        &.active {
-            display: block;
-        }
-    }
-  }
-}
-
-@media (min-width: $lg) {
-  .header-mobile {
-    display: none;
-  }
-
-  .header-desktop {
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom: 0;
-      align-items: center;
-
-      li {
-        margin-bottom: 0;
-        &.btn{
-          border-radius: 30px;
-          a {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            border-radius: 30px;
-            padding: 5px 14px;
-            font-weight: 500;
-            font-size: 16px;
-            line-height: 1.215;
-            letter-spacing: 0;
-            text-decoration: none;
-            transition: background-color .3s ease;
-            white-space: nowrap;
-          }
-          &.button--primary {
-
-          }
-          &.button--secondary {
-
-          }
-        }
-      }
-    }
-    img.logo {
-      max-width: 204px;
+    &__menu {
+      flex-direction: column;
+      align-items: flex-end;
     }
   }
 }

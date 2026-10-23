@@ -1,0 +1,488 @@
+// Contact block
+// Compiled on its own (assets/css/blocks/contact.css) so block.json can load it
+// on the front end and inside the block editor.
+//
+// The form is a Gravity Form (chosen in the block settings), shown with Gravity
+// Forms' basic theme and styled here to match the design.
+
+@import "../core/variables";
+@import "../components/c.contact-details";
+
+$contact-divider: rgba(color(white), .25);
+
+.b-contact {
+  // 139px below matches the gap to the next section's divider in the design
+  padding: 100px 25px 139px;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+  container: contact / inline-size;
+
+  // "Top of page" spacing – clears the floating site header
+  &--page-top {
+    padding-top: 147px;
+  }
+
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // Same centred 1190px grid as the full-width photos:
+  // text 34px in from the left edge, form card flush with the right edge
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1190px;
+    margin: 0 auto;
+    padding-left: 34px;
+  }
+
+  &__content {
+    display: flex;
+    flex: 0 1 507px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 58px;
+    min-width: 0;
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__heading {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 70px;
+    line-height: 90px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    transition: none;
+  }
+
+  &__text {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 25px;
+    line-height: 35px;
+    font-weight: 300;
+  }
+
+  // Map image with the round badge on its right edge
+  &__map {
+    position: relative;
+    width: 100%;
+    max-width: 464px;
+  }
+
+  &__map-link {
+    display: block;
+  }
+
+  &__map-image {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 464 / 300;
+    object-fit: cover;
+  }
+
+  &__badge {
+    position: absolute;
+    top: 43.67%;
+    left: calc(100% - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    margin: 0;
+    padding: 0 10px;
+    border-radius: 50%;
+    background-color: color(white);
+    color: color(grey);
+    font-family: $display_font;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: $font-700;
+    text-align: center;
+    filter: drop-shadow(0 0 12.5px rgba(#000, .15));
+    pointer-events: none;
+  }
+
+  // Form card
+  &__form {
+    flex: 0 1 523px;
+    min-width: 0;
+    margin-top: 110px;
+    padding: 60px 50px;
+    border: 1px solid $contact-divider;
+  }
+
+  &__placeholder {
+    margin: 0;
+    color: rgba(color(white), .5);
+    font-size: 15px;
+    line-height: 21px;
+  }
+
+  // ---- Gravity Forms ----
+  // Nested under the wrapper so these win over Gravity Forms' own basic theme styles
+  .gform_wrapper.gravity-theme {
+    & {
+      margin: 0;
+      padding: 0;
+      color: color(white);
+      font-family: $display_font;
+    }
+
+    .gform_fields {
+      display: flex !important;
+      flex-direction: column;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .gfield {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      min-width: 0;
+    }
+
+    // Labels ("your name" etc.)
+    .gfield_label,
+    .gfield > legend {
+      display: block;
+      margin: 0 0 15px;
+      padding: 0;
+      color: rgba(color(white), .5);
+      font-family: $display_font;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: $font-700;
+      text-transform: lowercase;
+    }
+
+    .gform-field-label__text {
+      font: inherit;
+      color: inherit;
+    }
+
+    // No "(Required)" marker in the design (validation messages still show)
+    .gfield_label .gfield_required,
+    .gfield_required {
+      display: none;
+    }
+
+    // Text fields – just a line underneath
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      display: block;
+      width: 100%;
+      margin: 0;
+      padding: 0 0 10px;
+      border: 0;
+      border-bottom: 1px solid color(white);
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      color: color(white);
+      font-family: $display_font;
+      font-size: 25px;
+      line-height: 35px;
+      font-weight: 300;
+      outline: none;
+
+      // Same size as the typed text (the theme's global form styles shrink placeholders)
+      &::placeholder {
+        color: rgba(color(white), .25);
+        font: inherit;
+        opacity: 1;
+      }
+
+      &:focus {
+        border-bottom-color: color(yellow);
+      }
+    }
+
+    // Beats Gravity Forms' ".gfield textarea.medium" height and the theme's global textarea max-height
+    .gfield textarea.textarea {
+      height: 150px;
+      min-height: 0;
+      max-height: none;
+      resize: vertical;
+    }
+
+    // Topic chips ("what's it about?") – checkboxes styled as pills
+    .rv-chips .gfield_checkbox {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .rv-chips .gchoice {
+      position: relative;
+      margin: 0;
+    }
+
+    .rv-chips input[type="checkbox"] {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: 0;
+      opacity: 0;
+    }
+
+    .rv-chips label {
+      display: flex;
+      max-width: none;
+      align-items: center;
+      height: 40px;
+      margin: 0;
+      padding: 8px 20px 9px;
+      border: 1px solid color(white);
+      border-radius: 50px;
+      background: transparent;
+      color: color(white);
+      font-family: $display_font;
+      font-size: 15px;
+      line-height: 21px;
+      font-weight: $font-400;
+      text-transform: lowercase;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background-color .2s ease, color .2s ease;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+
+    .rv-chips label:hover {
+      background-color: rgba(color(white), .1);
+    }
+
+    .rv-chips input:checked + label {
+      background-color: color(white);
+      color: color(charcoal);
+    }
+
+    .rv-chips input:focus-visible + label {
+      outline: 2px solid color(blue);
+      outline-offset: 2px;
+    }
+
+    // Privacy note
+    .rv-note,
+    .rv-note p {
+      margin: 0;
+      color: color(white);
+      font-family: $display_font;
+      font-size: 15px;
+      line-height: 21px;
+      font-weight: 300;
+
+      a {
+        color: color(white);
+        text-decoration: underline;
+        text-underline-position: from-font;
+
+        &:hover {
+          color: color(yellow);
+        }
+      }
+    }
+
+    // "send it" button with the arrow and hand-drawn underline
+    .gform_footer {
+      margin: 30px 0 0;
+      padding: 0;
+    }
+
+    .gform_button,
+    .gform_footer input[type="submit"] {
+      display: inline-block;
+      width: auto;
+      margin: 0;
+      padding: 0 48px 9px 0;
+      border: 0;
+      border-radius: 0;
+      background:
+        url('../../images/figma/send-arrow.svg') no-repeat right 0 top 18px / 28px 20px,
+        url('../../images/figma/send-underline.svg') no-repeat left bottom / 180px 6px;
+      box-shadow: none;
+      color: color(yellow);
+      font-family: $display_font;
+      font-size: 40px;
+      line-height: 56px;
+      font-weight: $font-400;
+      text-transform: lowercase;
+      cursor: pointer;
+      transition: background-position .2s ease;
+
+      &:hover,
+      &:focus-visible {
+        background-position: right -4px top 18px, left bottom;
+      }
+
+      &:focus-visible {
+        outline: 2px solid color(blue);
+        outline-offset: 4px;
+      }
+    }
+
+    // Errors and confirmation
+    .gfield_error input,
+    .gfield_error textarea {
+      border-bottom-color: color(coral);
+    }
+
+    .validation_message,
+    .gfield_validation_message {
+      margin: 8px 0 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: color(coral);
+      font-family: $display_font;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .gform_validation_errors {
+      margin: 0 0 30px;
+      padding: 15px 20px;
+      border: 1px solid color(coral);
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+
+      h2,
+      .gform_submission_error {
+        margin: 0;
+        color: color(coral);
+        font-family: $display_font;
+        font-size: 15px;
+        line-height: 21px;
+        font-weight: $font-500;
+      }
+
+      .gform-icon {
+        display: none;
+      }
+    }
+
+    .gform_confirmation_message {
+      color: color(white);
+      font-family: $display_font;
+      font-size: 25px;
+      line-height: 35px;
+      font-weight: 300;
+    }
+
+    .gform_ajax_spinner {
+      margin-left: 10px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding-bottom: 100px;
+
+    &--page-top {
+      padding-top: 130px;
+    }
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding-bottom: 60px;
+
+    &--page-top {
+      padding-top: 110px;
+    }
+  }
+
+  // Layout follows the block's own width, so it also works in the narrower editor column
+  @container contact (max-width: 960px) {
+    &__inner {
+      flex-direction: column;
+      gap: 50px;
+      padding-left: 0;
+    }
+
+    &__content,
+    &__form {
+      flex-basis: auto;
+      width: 100%;
+    }
+
+    &__content {
+      max-width: 560px;
+    }
+
+    &__form {
+      max-width: 620px;
+      margin-top: 0;
+    }
+
+    &__heading {
+      font-size: 50px;
+      line-height: 64px;
+    }
+
+    &__map {
+      // Leave room for the badge that overhangs the right edge
+      max-width: calc(min(464px, 100%) - 20px);
+    }
+  }
+
+  @container contact (max-width: 560px) {
+    &__heading {
+      font-size: 36px;
+      line-height: 46px;
+    }
+
+    &__text {
+      font-size: 21px;
+      line-height: 29px;
+    }
+
+    &__content {
+      gap: 40px;
+    }
+
+    &__form {
+      padding: 40px 25px;
+    }
+
+    .gform_wrapper.gravity-theme input[type="text"],
+    .gform_wrapper.gravity-theme input[type="email"],
+    .gform_wrapper.gravity-theme input[type="tel"],
+    .gform_wrapper.gravity-theme textarea {
+      font-size: 21px;
+      line-height: 29px;
+    }
+
+    .gform_wrapper.gravity-theme .gform_button,
+    .gform_wrapper.gravity-theme .gform_footer input[type="submit"] {
+      font-size: 34px;
+      line-height: 48px;
+      background-position: right 0 top 14px, left bottom;
+    }
+  }
+}

@@ -6,9 +6,13 @@ function zinc_theme_support() {
 }
 add_action('after_setup_theme', 'zinc_theme_support');
 
+// Adobe Fonts kit (New Hero) – used on the front end and in the block editor
+define('ZINC_FONTS_URL', 'https://use.typekit.net/oce0aca.css');
+
 //Register stylesheets
 function zinc_register_styles() {
 	$theme_version = wp_get_theme()->get('Version');
+	wp_enqueue_style('adobe-fonts', ZINC_FONTS_URL, array(), null);
 	wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), $theme_version, false);
 	wp_enqueue_style( 'slick-theme-css', get_template_directory_uri() . '/assets/css/slick-theme.css', array(), $theme_version );
 	wp_enqueue_style('slick-css', get_template_directory_uri() . '/assets/css/slick.css', array(), $theme_version, false);
@@ -16,6 +20,31 @@ function zinc_register_styles() {
 	wp_enqueue_style('style-css', get_template_directory_uri() . '/assets/css/style.css', array(), $theme_version, false);
 }
 add_action('wp_enqueue_scripts', 'zinc_register_styles');
+
+// Load the fonts inside the block editor too, so block previews match the site
+function zinc_editor_fonts() {
+	if (is_admin()) {
+		wp_enqueue_style('adobe-fonts', ZINC_FONTS_URL, array(), null);
+	}
+}
+add_action('enqueue_block_assets', 'zinc_editor_fonts');
+
+// Block editor screen tweaks (e.g. ACF block fields in the right-hand panel)
+function zinc_editor_admin_styles() {
+	$path = '/assets/css/editor-admin.css';
+	wp_enqueue_style('zinc-editor-admin', get_template_directory_uri() . $path, array(), filemtime(get_template_directory() . $path));
+}
+add_action('enqueue_block_editor_assets', 'zinc_editor_admin_styles');
+
+// Connect to the font server early
+function zinc_font_preconnect($urls, $relation_type) {
+	if ($relation_type === 'preconnect') {
+		$urls[] = array('href' => 'https://use.typekit.net', 'crossorigin');
+		$urls[] = array('href' => 'https://p.typekit.net', 'crossorigin');
+	}
+	return $urls;
+}
+add_filter('wp_resource_hints', 'zinc_font_preconnect', 10, 2);
 
 
 //Register scripts
@@ -35,7 +64,8 @@ function zinc_menus() {
 		'header_secondary'		=> __('Header Secondary',	'zinc'),
 		'header_mobile'			=> __('Header - Mobile',	'zinc'),
 		'footer_nav_1'			=> __('Footer Nav 1',	'zinc'),
-		'footer_nav_2'			=> __('Footer Nav 2',	'zinc')
+		'footer_nav_2'			=> __('Footer Nav 2',	'zinc'),
+		'footer_legal'			=> __('Footer Legal',	'zinc')
 	);
 
 	register_nav_menus($locations);
@@ -119,4 +149,7 @@ function news_register_taxonomy_for_object_type() {
 
 include_once __DIR__ . '/inc/post-types.php';
 include_once __DIR__ . '/inc/register-blocks.php';
+include_once __DIR__ . '/inc/video-helpers.php';
+include_once __DIR__ . '/inc/default-media.php';
+include_once __DIR__ . '/inc/block-defaults.php';
 include_once __DIR__ . '/inc/taxonomies.php';

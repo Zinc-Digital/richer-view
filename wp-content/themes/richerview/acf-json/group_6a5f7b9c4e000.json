@@ -1,0 +1,455 @@
+{
+    "key": "group_6a5f7b9c4e000",
+    "title": "Block: Intro with Image",
+    "fields": [
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e001",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e002",
+            "label": "Heading",
+            "name": "heading",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "the crew behind the camera",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e003",
+            "label": "Intro text",
+            "name": "text",
+            "type": "textarea",
+            "instructions": "Shown to the right of the heading. Leave a blank line to start a new paragraph.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 4,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e020",
+            "label": "Media",
+            "name": "media_type",
+            "type": "button_group",
+            "instructions": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "image": "Image",
+                "video": "Video"
+            },
+            "default_value": "image",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a5f7b9c4e020",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e004",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "Wide images work best (e.g. 2380 × 1110px).",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg, jpeg, png, webp",
+            "preview_size": "medium"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a5f7b9c4e020",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e005",
+            "label": "Image position",
+            "name": "image_position",
+            "type": "button_group",
+            "instructions": "Which part of the image to keep in view.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "top": "Top",
+                "center": "Centre",
+                "bottom": "Bottom"
+            },
+            "default_value": "center",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e021",
+            "label": "Video",
+            "name": "video_type",
+            "type": "button_group",
+            "instructions": "Plays muted and on a loop, cropped to fill the frame. Upload or Video file link start fastest.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a5f7b9c4e020",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "youtube": "YouTube",
+                "vimeo": "Vimeo",
+                "file": "Upload",
+                "link": "Video file link"
+            },
+            "default_value": "file",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 1,
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e022",
+            "label": "Video link",
+            "name": "video_url",
+            "type": "url",
+            "instructions": "Paste the video's page link, e.g. https://www.youtube.com/watch?v=… or https://vimeo.com/…",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a5f7b9c4e020",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6a5f7b9c4e021",
+                        "operator": "==",
+                        "value": "youtube"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6a5f7b9c4e020",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6a5f7b9c4e021",
+                        "operator": "==",
+                        "value": "vimeo"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "aria-label": "",
+            "required": 1,
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e023",
+            "label": "Video file",
+            "name": "video_file",
+            "type": "file",
+            "instructions": "MP4 or WebM. Keep it short and compressed (ideally under 10MB).",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a5f7b9c4e020",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6a5f7b9c4e021",
+                        "operator": "==",
+                        "value": "file"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "mp4, webm"
+        },
+        {
+            "key": "field_6a5f7b9c4e024",
+            "label": "Video file link",
+            "name": "video_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "A direct link to an MP4 or WebM file, ending in .mp4 or .webm – e.g. the video file link Vimeo gives on Pro, Business and Premium plans, or a file on your own hosting. Starts straight away, like an upload.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a5f7b9c4e020",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6a5f7b9c4e021",
+                        "operator": "==",
+                        "value": "link"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": "https://…/video.mp4"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e006",
+            "label": "Badge",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e008",
+            "label": "Show badge",
+            "name": "show_badge",
+            "type": "true_false",
+            "instructions": "The round badge on the bottom right of the image.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a5f7b9c4e008",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e009",
+            "label": "Badge text",
+            "name": "badge",
+            "type": "textarea",
+            "instructions": "Keep it short – two lines of two or three words fit best. Press Enter for a new line.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "making videos\nsince 2007",
+            "maxlength": 40,
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e010",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e011",
+            "label": "Spacing above",
+            "name": "spacing",
+            "type": "button_group",
+            "instructions": "“Top of page” leaves room for the site header. Use “Standard” if the block is further down a page.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "page-top": "Top of page",
+                "standard": "Standard"
+            },
+            "default_value": "page-top",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a5f7b9c4e012",
+            "label": "Heading level",
+            "name": "heading_level",
+            "type": "button_group",
+            "instructions": "Use H1 when this is the first block on the page, otherwise H2.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "h1": "H1",
+                "h2": "H2"
+            },
+            "default_value": "h1",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/intro-image"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792769279
+}

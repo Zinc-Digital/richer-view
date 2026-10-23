@@ -1,0 +1,300 @@
+// Team Slider block
+// Compiled on its own (assets/css/blocks/team-slider.css) so block.json can
+// load it on the front end and inside the block editor.
+//
+// Dragging and the "drag" cursor badge come from assets/js/components/drag-slider.js
+// (started by assets/js/blocks/team-slider.js). Without it the row is swipeable.
+
+@import "../core/variables";
+@import "../components/c.cursor-badge";
+
+$team-gutter-left: clamp(25px, 11.11vw, 160px);
+$team-gutter-right: clamp(25px, 3.2vw, 46px);
+
+.b-team {
+  padding: 80px 0 100px;
+  overflow: hidden;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // Heading + "drag to…" hint
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 0 $team-gutter-right 0 $team-gutter-left;
+  }
+
+  &__heading {
+    max-width: 877px;
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 50px;
+    line-height: 70px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    transition: none;
+  }
+
+  &__hint {
+    flex-shrink: 0;
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    white-space: nowrap;
+  }
+
+  // Card row
+  &__slider {
+    margin-top: 41px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid color(blue);
+      outline-offset: 4px;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    margin: 0;
+    padding: 0 $team-gutter-right 0 $team-gutter-left;
+    list-style: none;
+  }
+
+  &__item {
+    flex-shrink: 0;
+    width: 360px;
+    height: 480px;
+    margin: 0;
+    list-style: none;
+  }
+
+  // Team member
+  &__member {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    margin: 0;
+  }
+
+  &__photo {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+    background-color: color(grey);
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center top;
+
+    &--center {
+      object-position: center center;
+    }
+
+    &--bottom {
+      object-position: center bottom;
+    }
+  }
+
+  &__caption {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    max-width: 200px;
+  }
+
+  &__name {
+    color: color(white);
+    font-family: $display_font;
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: $font-700;
+  }
+
+  &__role {
+    color: color(white);
+    font-family: $display_font;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: $font-400;
+    letter-spacing: .02em;
+  }
+
+  // "Want to join the crew?" card
+  &__join {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 50px;
+    height: 100%;
+    padding: 30px 30px 50px;
+  }
+
+  &__join-heading {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 40px;
+    line-height: 56px;
+    font-weight: $font-400;
+  }
+
+  &__join-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: flex-start;
+    color: color(white);
+
+    &:hover,
+    &:focus-visible {
+      color: color(white);
+
+      .b-team__join-arrow {
+        transform: scaleY(-1) translateX(4px);
+      }
+    }
+  }
+
+  &__join-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: inherit;
+    font-family: $display_font;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+  }
+
+  &__join-arrow {
+    width: 17px;
+    height: 12px;
+    transform: scaleY(-1);
+    transition: transform .2s ease;
+  }
+
+  &__join-underline {
+    display: block;
+    width: 219px;
+    max-width: 100%;
+    height: 3px;
+  }
+
+  &__placeholder {
+    margin: 41px 0 0;
+    padding: 0 $team-gutter-left;
+  }
+
+  // Set up by drag-slider.js
+  &.is-draggable &__slider {
+    cursor: grab;
+    user-select: none;
+
+    img {
+      -webkit-user-drag: none;
+    }
+  }
+
+  &.is-dragging &__slider {
+    cursor: grabbing;
+  }
+
+  &.has-cursor &__slider,
+  &.has-cursor &__join-link {
+    cursor: none;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 70px 0 80px;
+
+    &__heading {
+      font-size: 40px;
+      line-height: 56px;
+    }
+
+    &__item {
+      width: 300px;
+      height: 400px;
+    }
+
+    &__join-heading {
+      font-size: 34px;
+      line-height: 46px;
+    }
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding: 60px 0;
+
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    &__heading {
+      font-size: 32px;
+      line-height: 44px;
+    }
+
+    &__slider {
+      margin-top: 30px;
+      scroll-snap-type: x mandatory;
+      scroll-padding: 0 25px;
+    }
+
+    &__track {
+      gap: 15px;
+    }
+
+    &__item {
+      width: 72vw;
+      max-width: 280px;
+      height: auto;
+      aspect-ratio: 3 / 4;
+      scroll-snap-align: start;
+    }
+
+    &__join {
+      padding: 20px 20px 30px;
+      gap: 30px;
+    }
+
+    &__join-heading {
+      font-size: 30px;
+      line-height: 40px;
+    }
+  }
+}

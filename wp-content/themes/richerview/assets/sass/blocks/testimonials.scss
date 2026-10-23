@@ -1,0 +1,396 @@
+// Testimonials block
+// Compiled on its own (assets/css/blocks/testimonials.css) so block.json can
+// load it on the front end and inside the block editor.
+//
+// Dragging, the "drag" cursor badge and the video pop-up are added by
+// assets/js/blocks/testimonials.js. Without it the cards are a swipeable row.
+
+@import "../core/variables";
+@import "../components/c.cursor-badge";
+
+$testimonials-gutter-left: clamp(25px, 11.11vw, 160px);
+$testimonials-gutter-right: clamp(25px, 3.33vw, 48px);
+
+.b-testimonials {
+  padding: 100px 0;
+  overflow: hidden;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+
+  // Heading + "drag to…" hint
+
+  // Don't rely on the theme's global reset – the block editor doesn't load it
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 22px $testimonials-gutter-right 0 $testimonials-gutter-left;
+  }
+
+  &__heading {
+    max-width: 877px;
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 50px;
+    line-height: 70px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    transition: none;
+  }
+
+  // Speech-bubble doodle overlapping the end of the heading.
+  // Zero height so it doesn't make the line taller; sizes are in em so it scales with the heading.
+  &__doodle {
+    position: relative;
+    display: inline-block;
+    width: 1.977em;
+    height: 0;
+    margin-left: -.76em;
+    margin-right: -1.2em;
+    font-size: inherit;
+    vertical-align: top;
+    pointer-events: none;
+
+    img {
+      position: absolute;
+      top: -.256em;
+      left: .127em;
+      width: 1.724em;
+      height: 1.284em;
+      max-width: none;
+      transform: rotate(13.56deg);
+    }
+  }
+
+  &__hint {
+    flex-shrink: 0;
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    white-space: nowrap;
+  }
+
+  // Card row
+  &__slider {
+    margin-top: 28px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid color(blue);
+      outline-offset: 4px;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    margin: 0;
+    padding: 0 $testimonials-gutter-left;
+    list-style: none;
+  }
+
+  &__item {
+    flex-shrink: 0;
+    width: 360px;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 480px;
+    margin: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 0;
+    color: color(white);
+    font-family: $display_font;
+    text-align: left;
+
+    // Quote cards
+    &--quote {
+      justify-content: space-between;
+      padding: 30px;
+    }
+
+    &--coral {
+      background-color: color(coral);
+    }
+
+    &--yellow {
+      background-color: color(yellow);
+    }
+
+    &--blue {
+      background-color: color(blue);
+    }
+
+    // Video cards
+    &--video {
+      justify-content: flex-end;
+      padding: 20px;
+      background-color: color(grey);
+      cursor: pointer;
+      isolation: isolate;
+
+      &:hover .b-testimonials__image,
+      &:focus-visible .b-testimonials__image {
+        transform: scale(1.03);
+      }
+
+      &:focus-visible {
+        outline: 2px solid color(white);
+        outline-offset: -6px;
+      }
+    }
+  }
+
+  &__quote {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: $font-400;
+    letter-spacing: .02em;
+  }
+
+  &__author {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    max-width: 200px;
+  }
+
+  &__name {
+    color: color(white);
+    font-family: $display_font;
+    font-size: 18px;
+    line-height: 25px;
+    font-style: normal;
+    font-weight: $font-700;
+  }
+
+  &__role {
+    color: color(white);
+    font-family: $display_font;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: $font-400;
+    letter-spacing: .02em;
+  }
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    transition: transform .6s cubic-bezier(.23, 1, .32, 1);
+
+    &--left {
+      object-position: left center;
+    }
+
+    &--right {
+      object-position: right center;
+    }
+  }
+
+  // Editor only: shown on a video card whose link can't be played
+  &__warning {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    left: 20px;
+    padding: 10px 12px;
+    background-color: color(coral);
+    color: color(white);
+    font-family: $display_font;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: $font-500;
+  }
+
+  &__expand {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: $font-700;
+    white-space: nowrap;
+
+    img {
+      width: 20.0009px;
+      height: 12.5001px;
+    }
+  }
+
+  &__placeholder {
+    margin: 28px 0 0;
+    padding: 0 $testimonials-gutter-left;
+    color: color(white);
+  }
+
+  // Set up by testimonials.js
+  &.is-draggable &__slider {
+    cursor: grab;
+    user-select: none;
+
+    img {
+      -webkit-user-drag: none;
+    }
+  }
+
+  &.is-dragging &__slider {
+    cursor: grabbing;
+  }
+
+  &.has-cursor &__slider,
+  &.has-cursor &__card--video {
+    cursor: none;
+  }
+
+  // Video pop-up
+  &__modal {
+    width: min(1100px, 90vw);
+    max-width: none;
+    max-height: none;
+    // Centre on screen (the theme's reset removes the browser's default margin: auto)
+    margin: auto;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    background: transparent;
+
+    &::backdrop {
+      background-color: rgba(#000, .85);
+    }
+  }
+
+  &__player {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+
+    iframe,
+    video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: -56px;
+    right: 0;
+    width: 41px;
+    height: 41px;
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+
+    img {
+      width: 41px;
+      height: 41px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding: 80px 0;
+
+    &__heading {
+      font-size: 40px;
+      line-height: 56px;
+    }
+
+    &__item {
+      width: 300px;
+    }
+
+    &__card {
+      height: 400px;
+
+      &--quote {
+        padding: 25px;
+      }
+    }
+
+    &__quote {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding: 60px 0;
+
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding-top: 15px;
+    }
+
+    &__heading {
+      font-size: 32px;
+      line-height: 44px;
+    }
+
+    &__track {
+      gap: 15px;
+      padding: 0 25px;
+    }
+
+    &__item {
+      width: 78vw;
+      max-width: 300px;
+    }
+
+    &__card {
+      height: auto;
+      aspect-ratio: 3 / 4;
+    }
+
+    &__slider {
+      scroll-snap-type: x mandatory;
+      scroll-padding: 0 25px;
+    }
+
+    &__item {
+      scroll-snap-align: start;
+    }
+  }
+}

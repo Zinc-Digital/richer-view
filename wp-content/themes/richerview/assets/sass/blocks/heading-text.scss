@@ -1,0 +1,159 @@
+// Heading with Text block
+// Compiled on its own (assets/css/blocks/heading-text.css) so block.json can
+// load it on the front end and inside the block editor.
+
+@import "../core/variables";
+
+.b-heading-text {
+  // 84px top and bottom matches the ~168px gaps between sections in the design
+  padding: 84px 25px;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+  container: heading-text / inline-size;
+
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // Same centred 1190px grid as the full-width photos (e.g. Intro with Image):
+  // heading 34px in from the left edge, text column flush with the right edge
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1190px;
+    margin: 0 auto;
+    padding-left: 34px;
+  }
+
+  &__heading {
+    flex: 0 1 auto;
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 70px;
+    line-height: 98px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    transition: none;
+  }
+
+  &__content {
+    display: flex;
+    flex: 0 1 482px;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  &__lead {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 25px;
+    line-height: 35px;
+    font-weight: 300;
+  }
+
+  // Body copy from the text editor
+  &__body {
+    max-width: 473px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 300;
+
+    p,
+    ul,
+    ol {
+      margin: 0 0 21px;
+      color: inherit;
+      font: inherit;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ul,
+    ol {
+      padding-left: 1.2em;
+    }
+
+    li {
+      margin: 0;
+      color: inherit;
+      font: inherit;
+      list-style-position: outside;
+    }
+
+    ul li {
+      list-style-type: disc;
+    }
+
+    ol li {
+      list-style-type: decimal;
+    }
+
+    a {
+      color: color(white);
+      text-decoration: underline;
+      text-underline-position: from-font;
+
+      &:hover {
+        color: color(yellow);
+      }
+    }
+
+    strong,
+    b {
+      font-weight: $font-500;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  // Layout follows the block's own width, so it also works in the narrower editor column
+  @container heading-text (max-width: 900px) {
+    &__inner {
+      flex-direction: column;
+      gap: 30px;
+      padding-left: 0;
+    }
+
+    &__heading {
+      font-size: 50px;
+      line-height: 64px;
+    }
+
+    &__content {
+      flex-basis: auto;
+      max-width: 560px;
+    }
+  }
+
+  @container heading-text (max-width: 560px) {
+    &__heading {
+      font-size: 36px;
+      line-height: 46px;
+    }
+
+    &__lead {
+      font-size: 21px;
+      line-height: 29px;
+    }
+  }
+}

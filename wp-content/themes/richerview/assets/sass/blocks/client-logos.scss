@@ -1,0 +1,103 @@
+// Client Logos block
+// Compiled on its own (assets/css/blocks/client-logos.css) so block.json can
+// load it on the front end and inside the block editor.
+
+@import "../core/variables";
+
+$client-logos-max-width: 1176px;
+
+.b-client-logos {
+  padding: 130px 25px 78px;
+  background-color: color(charcoal);
+
+  // Don't rely on the theme's global reset – the block editor doesn't load it
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &__inner {
+    max-width: $client-logos-max-width;
+    margin: 0 auto;
+    // Clips the right/bottom dividers on the outer edge of the grid
+    overflow: hidden;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--client-logos-columns, 6), minmax(0, 1fr));
+    width: calc(100% + 1px);
+    margin: 0 0 -1px;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 196 / 177.75;
+    margin: 0;
+    border-right: 1px solid rgba(color(white), .25);
+    border-bottom: 1px solid rgba(color(white), .25);
+    list-style: none;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: opacity .2s ease;
+
+    &:hover,
+    &:focus-visible {
+      opacity: .7;
+    }
+  }
+
+  &__logo {
+    display: block;
+    width: 71.16%;
+    height: 34.74%;
+    max-width: none;
+    object-fit: contain;
+  }
+
+  &__placeholder {
+    margin: 0;
+    color: color(white);
+    text-align: center;
+  }
+
+  @for $i from 3 through 6 {
+    &--cols-#{$i} {
+      --client-logos-columns: #{$i};
+    }
+  }
+
+  @media (max-width: $md - 1px) {
+    padding-top: 90px;
+    padding-bottom: 60px;
+
+    &--cols-5,
+    &--cols-6 {
+      --client-logos-columns: 4;
+    }
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding-top: 60px;
+    padding-bottom: 40px;
+
+    &--cols-3,
+    &--cols-4,
+    &--cols-5,
+    &--cols-6 {
+      --client-logos-columns: 2;
+    }
+  }
+}

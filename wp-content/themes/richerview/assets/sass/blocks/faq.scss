@@ -1,0 +1,250 @@
+// FAQ block
+// Compiled on its own (assets/css/blocks/faq.css) so block.json can load it on
+// the front end and inside the block editor.
+//
+// Opening/closing: assets/js/components/accordion.js (started by
+// assets/js/blocks/faq.js). Without it (e.g. in the editor) the question set to
+// open is shown open.
+
+@import "../core/variables";
+@import "../components/c.cursor-badge";
+
+$faq-divider: 1px solid rgba(color(white), .25);
+
+.b-faq {
+  // 95px either side matches the design (divider → heading, list → footer divider)
+  padding: 95px 25px;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+  container: faq / inline-size;
+
+  // Optional full-width line above the section
+  &--divider {
+    border-top: 1px solid color(white);
+  }
+
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // Same centred 1190px grid as the full-width photos:
+  // heading 32px in from the left edge, questions flush with the right edge
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1190px;
+    margin: 0 auto;
+    padding-left: 32px;
+  }
+
+  &__heading {
+    flex-shrink: 0;
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 50px;
+    line-height: 70px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    white-space: nowrap;
+    transition: none;
+  }
+
+  &__list {
+    flex: 0 1 682px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    margin: 0;
+    border-bottom: $faq-divider;
+    list-style: none;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  &__question {
+    margin: 0;
+    font: inherit;
+  }
+
+  &__toggle {
+    display: block;
+    width: 100%;
+    padding: 30px 50px 30px 10px;
+    border: 0;
+    background: none;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 25px;
+    line-height: 35px;
+    font-weight: 300;
+    text-align: left;
+    text-transform: lowercase;
+    cursor: pointer;
+    transition: color .3s ease, padding-bottom .4s cubic-bezier(.23, 1, .32, 1);
+
+    &:focus-visible {
+      outline: 2px solid color(blue);
+      outline-offset: -2px;
+    }
+  }
+
+  // The open question turns yellow, with 15px between it and its answer
+  &__item.is-open &__toggle {
+    color: color(yellow);
+  }
+
+  &__item.has-answer.is-open &__toggle {
+    padding-bottom: 15px;
+  }
+
+  // Collapsible answer (animates height via grid rows)
+  &__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .4s cubic-bezier(.23, 1, .32, 1);
+  }
+
+  &__item.is-open &__panel {
+    grid-template-rows: 1fr;
+  }
+
+  &__panel-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  &__answer {
+    padding: 0 50px 30px 10px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 300;
+
+    p,
+    ul,
+    ol {
+      margin: 0 0 21px;
+      color: inherit;
+      font: inherit;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ul,
+    ol {
+      padding-left: 1.2em;
+    }
+
+    li {
+      margin: 0;
+      color: inherit;
+      font: inherit;
+      list-style-position: outside;
+    }
+
+    ul li {
+      list-style-type: disc;
+    }
+
+    ol li {
+      list-style-type: decimal;
+    }
+
+    a {
+      color: color(white);
+      text-decoration: underline;
+      text-underline-position: from-font;
+
+      &:hover {
+        color: color(yellow);
+      }
+    }
+
+    strong,
+    b {
+      font-weight: $font-500;
+    }
+  }
+
+  // Hover badge replaces the pointer over the questions (set up by faq.js)
+  &.has-cursor &__toggle {
+    cursor: none;
+  }
+
+  &__placeholder {
+    margin: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__toggle,
+    &__panel {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  // Layout follows the block's own width, so it also works in the narrower editor column
+  @container faq (max-width: 900px) {
+    &__inner {
+      flex-direction: column;
+      gap: 30px;
+      padding-left: 0;
+    }
+
+    &__heading {
+      font-size: 40px;
+      line-height: 56px;
+      white-space: normal;
+    }
+
+    &__list {
+      flex-basis: auto;
+      width: 100%;
+    }
+  }
+
+  @container faq (max-width: 560px) {
+    &__heading {
+      font-size: 32px;
+      line-height: 44px;
+    }
+
+    &__toggle {
+      padding: 22px 30px 22px 0;
+      font-size: 21px;
+      line-height: 29px;
+    }
+
+    &__item.has-answer.is-open &__toggle {
+      padding-bottom: 12px;
+    }
+
+    &__answer {
+      padding: 0 0 22px;
+    }
+  }
+}

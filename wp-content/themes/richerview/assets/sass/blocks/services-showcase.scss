@@ -1,0 +1,333 @@
+// Services Showcase block
+// Compiled on its own (assets/css/blocks/services-showcase.css) so block.json
+// can load it on the front end and inside the block editor.
+//
+// The scroll animation (assets/js/blocks/services-showcase.js) adds
+// .is-animated on desktop; without it the cards are a swipeable row.
+
+@import "../core/variables";
+@import "../components/c.cursor-badge";
+
+$services-gutter: clamp(25px, 11.46vw, 165px);
+$services-card-width: 389px;
+$services-card-ratio: 389 / 554;
+
+.b-services {
+  padding: 100px 0;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+
+  // Heading + intro
+
+  // Don't rely on the theme's global reset – the block editor doesn't load it
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &__intro {
+    position: relative;
+    z-index: 0;
+    max-width: 1123px + 50px;
+    margin: 0 auto;
+    padding: 0 25px;
+    text-align: center;
+    transform-origin: center top;
+  }
+
+  &__heading {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 70px;
+    line-height: 98px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    transition: none;
+  }
+
+  &__highlight {
+    position: relative;
+    display: inline-block;
+    font: inherit;
+  }
+
+  &__scribble {
+    position: absolute;
+    left: -.043em;
+    bottom: -.043em;
+    width: calc(100% + .086em);
+    height: .371em;
+    max-width: none;
+    pointer-events: none;
+  }
+
+  &__text {
+    margin: 36px 0 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 300;
+  }
+
+  // Cards
+  &__slider {
+    position: relative;
+    z-index: 1;
+    margin-top: 68px;
+  }
+
+  &__viewport {
+    overflow-x: auto;
+    padding: 0 $services-gutter;
+    scroll-padding: 0 $services-gutter;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    flex-shrink: 0;
+    width: $services-card-width;
+    margin: 0;
+    list-style: none;
+    scroll-snap-align: start;
+  }
+
+  &__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    aspect-ratio: $services-card-ratio;
+    padding: 25px;
+    overflow: hidden;
+    background-color: color(grey);
+    color: color(white);
+    isolation: isolate;
+
+    // Fade the bottom of the photo to black so the tags stay readable
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(#000, 0) 50%, #000 100%);
+      pointer-events: none;
+    }
+  }
+
+  a.b-services__card:hover,
+  a.b-services__card:focus-visible {
+    color: color(white);
+
+    .b-services__image,
+    .b-services__video {
+      transform: scale(1.03);
+    }
+  }
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center center;
+    transition: transform .6s cubic-bezier(.23, 1, .32, 1);
+
+    &--top {
+      object-position: center top;
+    }
+
+    &--bottom {
+      object-position: center bottom;
+    }
+  }
+
+  // Background video – sits over the image and fades in once it's playing
+  &__video {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    overflow: hidden;
+    container-type: size;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s ease, transform .6s cubic-bezier(.23, 1, .32, 1);
+
+    // Uploaded videos with no image behind them show their first frame straight away
+    &.is-playing,
+    &--file {
+      opacity: 1;
+    }
+
+    // YouTube / Vimeo players are 16:9, so scale them up to cover the card
+    iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: max(100cqw, 177.78cqh);
+      height: max(100cqh, 56.25cqw);
+      border: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 40px;
+    line-height: 56px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    white-space: nowrap;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 10px;
+    min-height: 70px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    margin: 0;
+    padding: 3px 15px 4px;
+    border: 1px solid color(white);
+    border-radius: 50px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: $font-700;
+    text-align: center;
+    text-transform: lowercase;
+    white-space: nowrap;
+    list-style: none;
+  }
+
+  // Cards with a hover badge hide the normal pointer (badge styles: components/_c.cursor-badge.scss)
+  &.has-cursor &__item:has(> &__cursor-template) &__card {
+    cursor: none;
+  }
+
+  &__placeholder {
+    margin: 0;
+    padding: 0 25px;
+    color: color(white);
+    text-align: center;
+  }
+
+  // Desktop scroll animation (set up by services-showcase.js)
+  &.is-animated {
+    .b-services__intro {
+      position: sticky;
+      top: var(--b-services-intro-top, 15vh);
+      will-change: transform, opacity;
+    }
+
+    .b-services__viewport {
+      position: sticky;
+      top: var(--b-services-viewport-top, 0);
+      overflow-x: clip;
+      overflow-y: visible;
+      scroll-snap-type: none;
+    }
+
+    .b-services__track {
+      will-change: transform;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding: 80px 0;
+
+    &__heading {
+      font-size: 44px;
+      line-height: 62px;
+    }
+
+    &__text {
+      margin-top: 25px;
+    }
+
+    &__slider {
+      margin-top: 50px;
+    }
+
+    &__viewport {
+      padding: 0 25px;
+      scroll-padding: 0 25px;
+    }
+
+    &__item {
+      width: 300px;
+    }
+
+    &__title {
+      font-size: 34px;
+      line-height: 48px;
+    }
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding: 60px 0;
+
+    &__heading {
+      font-size: 34px;
+      line-height: 48px;
+    }
+
+    &__slider {
+      margin-top: 40px;
+    }
+
+    &__track {
+      gap: 15px;
+    }
+
+    &__item {
+      width: 78vw;
+      max-width: 300px;
+    }
+
+    &__card {
+      padding: 20px;
+    }
+  }
+}

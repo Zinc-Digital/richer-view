@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/accordion-image",
+	"title": "Accordion with Image",
+	"description": "Heading and a list of points that open to show more detail, with a photo alongside.",
+	"category": "text",
+	"icon": "list-view",
+	"keywords": ["accordion", "list", "points", "features", "what makes us different", "faq"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/accordion-image.css",
+	"viewScript": "file:../../../assets/js/blocks/accordion-image.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "accordion-image.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

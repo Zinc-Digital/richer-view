@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/intro-image",
+	"title": "Intro with Image",
+	"description": "Large heading with intro text alongside, followed by a wide photo or video with an optional round badge.",
+	"category": "text",
+	"icon": "cover-image",
+	"keywords": [
+		"intro",
+		"hero",
+		"header",
+		"banner",
+		"about"
+	],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/intro-image.css",
+	"viewScript": "file:../../../assets/js/blocks/intro-image.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "intro-image.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

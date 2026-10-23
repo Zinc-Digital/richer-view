@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/stats",
+	"title": "Stats",
+	"description": "A row of big numbers with short labels, separated by thin dividers. Numbers count up (or down) when scrolled into view.",
+	"category": "text",
+	"icon": "chart-bar",
+	"keywords": [
+		"stats",
+		"numbers",
+		"figures",
+		"facts",
+		"counter"
+	],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/stats.css",
+	"viewScript": "file:../../../assets/js/blocks/stats.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "stats.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

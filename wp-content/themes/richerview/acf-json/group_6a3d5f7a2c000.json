@@ -1,0 +1,600 @@
+{
+    "key": "group_6a3d5f7a2c000",
+    "title": "Block: Testimonials",
+    "fields": [
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a3d5f7a2c014",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a3d5f7a2c015",
+            "label": "Heading",
+            "name": "heading",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "don’t just take our word for it",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a3d5f7a2c016",
+            "label": "Speech-bubble doodle",
+            "name": "show_doodle",
+            "type": "true_false",
+            "instructions": "Shown at the end of the heading.",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a3d5f7a2c017",
+            "label": "Hint",
+            "name": "hint",
+            "type": "text",
+            "instructions": "Small text on the right of the heading.",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "drag to hear all the praise",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a3d5f7a2c018",
+            "label": "Testimonials",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a3d5f7a2c001",
+            "label": "Testimonials",
+            "name": "testimonials",
+            "type": "repeater",
+            "instructions": "Shown in this order. The row starts centred, so a mix of quotes and videos looks best.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_6a3d5f7a2c005",
+            "button_label": "Add testimonial",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c002",
+                    "label": "Type",
+                    "name": "type",
+                    "type": "button_group",
+                    "instructions": "",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "quote": "Quote",
+                        "video": "Video"
+                    },
+                    "default_value": "quote",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3d5f7a2c002",
+                                "operator": "==",
+                                "value": "quote"
+                            }
+                        ]
+                    ],
+                    "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c004",
+                    "label": "Quote",
+                    "name": "quote",
+                    "type": "textarea",
+                    "instructions": "Quote marks are added automatically. Around 350 characters fits the card.",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 5,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3d5f7a2c002",
+                                "operator": "==",
+                                "value": "quote"
+                            }
+                        ]
+                    ],
+                    "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c005",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "e.g. Jane Smith",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3d5f7a2c002",
+                                "operator": "==",
+                                "value": "quote"
+                            }
+                        ]
+                    ],
+                    "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c006",
+                    "label": "Title and business",
+                    "name": "role",
+                    "type": "text",
+                    "instructions": "",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "e.g. Marketing Director, Acme Ltd",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3d5f7a2c002",
+                                "operator": "==",
+                                "value": "quote"
+                            }
+                        ]
+                    ],
+                    "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c007",
+                    "label": "Colour",
+                    "name": "colour",
+                    "type": "button_group",
+                    "instructions": "",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "coral": "Coral",
+                        "yellow": "Yellow",
+                        "blue": "Blue"
+                    },
+                    "default_value": "coral",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3d5f7a2c002",
+                                "operator": "==",
+                                "value": "video"
+                            }
+                        ]
+                    ],
+                    "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c008",
+                    "label": "Thumbnail",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "Portrait images work best (e.g. 720 × 960px).",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "jpg, jpeg, png, webp",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3d5f7a2c002",
+                                "operator": "==",
+                                "value": "video"
+                            }
+                        ]
+                    ],
+                    "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c009",
+                    "label": "Thumbnail position",
+                    "name": "image_position",
+                    "type": "button_group",
+                    "instructions": "Which part of the image to keep in view if it's landscape.",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "left": "Left",
+                        "center": "Centre",
+                        "right": "Right"
+                    },
+                    "default_value": "center",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3d5f7a2c002",
+                                "operator": "==",
+                                "value": "video"
+                            }
+                        ]
+                    ],
+                    "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c003",
+                    "label": "Video",
+                    "name": "video_type",
+                    "type": "button_group",
+                    "instructions": "Opens in a pop-up with sound when the card is clicked.",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "youtube": "YouTube",
+                        "vimeo": "Vimeo",
+                        "file": "Upload"
+                    },
+                    "default_value": "youtube",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3d5f7a2c002",
+                                "operator": "==",
+                                "value": "video"
+                            },
+                            {
+                                "field": "field_6a3d5f7a2c003",
+                                "operator": "!=",
+                                "value": "file"
+                            }
+                        ]
+                    ],
+                    "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c010",
+                    "label": "Video link",
+                    "name": "video_url",
+                    "type": "url",
+                    "instructions": "Paste the video's page link, e.g. https://www.youtube.com/watch?v=… or https://vimeo.com/…",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3d5f7a2c002",
+                                "operator": "==",
+                                "value": "video"
+                            },
+                            {
+                                "field": "field_6a3d5f7a2c003",
+                                "operator": "==",
+                                "value": "file"
+                            }
+                        ]
+                    ],
+                    "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c011",
+                    "label": "Video file",
+                    "name": "video_file",
+                    "type": "file",
+                    "instructions": "MP4 or WebM.",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "mp4, webm",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3d5f7a2c002",
+                                "operator": "==",
+                                "value": "video"
+                            }
+                        ]
+                    ],
+                    "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c012",
+                    "label": "Video title",
+                    "name": "video_title",
+                    "type": "text",
+                    "instructions": "Read out by screen readers, e.g. “Jane Smith on working with us”.",
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3d5f7a2c002",
+                                "operator": "==",
+                                "value": "video"
+                            }
+                        ]
+                    ],
+                    "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c013",
+                    "label": "Card label",
+                    "name": "expand_label",
+                    "type": "text",
+                    "instructions": "",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "click to expand",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3d5f7a2c002",
+                                "operator": "==",
+                                "value": "video"
+                            }
+                        ]
+                    ],
+                    "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c050",
+                    "label": "Hover badge text",
+                    "name": "play_label",
+                    "type": "text",
+                    "instructions": "Shown in the round badge that follows the mouse over this card.",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Play",
+                    "maxlength": 10,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                }
+            ]
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a3d5f7a2c019",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a3d5f7a2c020",
+            "label": "Drag badge text",
+            "name": "drag_label",
+            "type": "text",
+            "instructions": "Shown in the round badge that replaces the mouse pointer over the cards (video cards show their own “Play” text).",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "drag",
+            "maxlength": 10,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/testimonials"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792581054
+}

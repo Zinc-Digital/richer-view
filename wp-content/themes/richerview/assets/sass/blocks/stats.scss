@@ -1,0 +1,173 @@
+// Stats block
+// Compiled on its own (assets/css/blocks/stats.css) so block.json can load it
+// on the front end and inside the block editor.
+
+@import "../core/variables";
+
+$stats-divider: 1px solid rgba(color(white), .25);
+
+.b-stats {
+  // Matches the ~165px gaps either side of this row in the design
+  padding: 81px 25px 86px;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+  container: stats / inline-size;
+
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // Same centred grid as the full-width photos
+  &__list {
+    display: flex;
+    align-items: center;
+    max-width: 1192px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+    margin: 0;
+    padding: 0 55px;
+    border-right: $stats-divider;
+    color: color(white);
+    text-align: center;
+    list-style: none;
+    transition: color .3s ease;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    // Hover colours (each stat chooses its own)
+    &--yellow:hover {
+      color: color(yellow);
+    }
+
+    &--blue:hover {
+      color: color(blue);
+    }
+
+    &--coral:hover {
+      color: color(coral);
+    }
+  }
+
+  &__number {
+    margin: 0;
+    color: inherit;
+    font-family: $display_font;
+    font-size: 50px;
+    line-height: 70px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    white-space: nowrap;
+  }
+
+  // The counting number – match the number's size (the theme's global span styles would shrink it)
+  &__count {
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+  }
+
+  // Full number for screen readers while the visible one counts
+  &__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  &__label {
+    margin: 0;
+    color: inherit;
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 300;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__item {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  // Layout follows the block's own width, so it also works in the narrower editor column
+  @container stats (max-width: 1000px) {
+    &__item {
+      padding: 0 25px;
+    }
+  }
+
+  // Two per row
+  @container stats (max-width: 860px) {
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: 40px;
+      align-items: start;
+    }
+
+    &__item {
+      border-right: 0;
+
+      &:nth-child(odd):not(:last-child) {
+        border-right: $stats-divider;
+      }
+    }
+  }
+
+  // One per row
+  @container stats (max-width: 440px) {
+    &__list {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 0;
+    }
+
+    &__item,
+    &__item:nth-child(odd):not(:last-child) {
+      padding: 25px 0;
+      border-right: 0;
+      border-bottom: $stats-divider;
+    }
+
+    &__item:first-child {
+      padding-top: 0;
+    }
+
+    &__item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    &__number {
+      font-size: 44px;
+      line-height: 60px;
+    }
+  }
+}

@@ -1,0 +1,385 @@
+{
+    "key": "group_6a8caf2b7b000",
+    "title": "Block: Team Slider",
+    "fields": [
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a8caf2b7b007",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a8caf2b7b008",
+            "label": "Heading",
+            "name": "heading",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Meet the crew",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a8caf2b7b009",
+            "label": "Hint",
+            "name": "hint",
+            "type": "text",
+            "instructions": "Small text on the right of the heading.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "drag to meet everyone",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a8caf2b7b010",
+            "label": "Team",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a8caf2b7b001",
+            "label": "Team members",
+            "name": "members",
+            "type": "repeater",
+            "instructions": "Shown in this order.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_6a8caf2b7b004",
+            "button_label": "Add team member",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "aria-label": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6a8caf2b7b002",
+                    "label": "Photo",
+                    "name": "photo",
+                    "type": "image",
+                    "instructions": "Portrait photos work best (e.g. 720 × 854px).",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "jpg, jpeg, png, webp",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_6a8caf2b7b001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6a8caf2b7b003",
+                    "label": "Photo position",
+                    "name": "image_position",
+                    "type": "button_group",
+                    "instructions": "Which part of the photo to keep in view.",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "top": "Top",
+                        "center": "Centre",
+                        "bottom": "Bottom"
+                    },
+                    "default_value": "top",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "parent_repeater": "field_6a8caf2b7b001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6a8caf2b7b004",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "e.g. Tamara Boyne",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a8caf2b7b001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6a8caf2b7b005",
+                    "label": "Role",
+                    "name": "role",
+                    "type": "text",
+                    "instructions": "",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "e.g. Creative Content Producer",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6a8caf2b7b001"
+                }
+            ]
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a8caf2b7b011",
+            "label": "Join card",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a8caf2b7b006",
+            "label": "Show join card",
+            "name": "show_join",
+            "type": "true_false",
+            "instructions": "The last card in the row.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a8caf2b7b006",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6a8caf2b7b012",
+            "label": "Heading",
+            "name": "join_heading",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "want to join the crew?",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a8caf2b7b006",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6a8caf2b7b013",
+            "label": "Link",
+            "name": "join_link",
+            "type": "link",
+            "instructions": "e.g. your careers page. The link text is shown with an arrow and underline.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a8caf2b7b014",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a8caf2b7b015",
+            "label": "Starting position (desktop)",
+            "name": "start_position",
+            "type": "button_group",
+            "instructions": "“Like the design” starts with the first card running off the left edge of the screen (drag right to see it). “First card in full” lines the first card up with the heading. Phones and tablets always start with the first card in full.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "end": "Like the design",
+                "start": "First card in full"
+            },
+            "default_value": "end",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6a8caf2b7b016",
+            "label": "Drag badge text",
+            "name": "drag_label",
+            "type": "text",
+            "instructions": "Shown in the round badge that replaces the mouse pointer over the row.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "drag",
+            "maxlength": 10,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/team-slider"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1792765219
+}

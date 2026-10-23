@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/faq",
+	"title": "FAQ",
+	"description": "Heading and a list of questions that open to show their answer.",
+	"category": "text",
+	"icon": "editor-help",
+	"keywords": ["faq", "questions", "answers", "accordion", "help"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/faq.css",
+	"viewScript": "file:../../../assets/js/blocks/faq.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "faq.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/contact",
+	"title": "Contact",
+	"description": "“Say hello” intro, contact details, a map and an enquiry form.",
+	"category": "text",
+	"icon": "email-alt",
+	"keywords": ["contact", "form", "get in touch", "enquiry", "map", "address"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/contact.css",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "contact.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false,
+		"multiple": false
+	}
+}

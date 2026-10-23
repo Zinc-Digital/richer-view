@@ -1,0 +1,77 @@
+// Contact details – address, phone, email and socials
+// (template-parts/components/contact-details.php). Used in the footer and the Contact block.
+
+.c-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  text-align: left;
+
+  &--right {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  &__address,
+  &__link span {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: color(white);
+
+    &:hover {
+      color: color(white);
+    }
+
+    &--email span {
+      text-decoration: underline;
+      text-underline-position: from-font;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__socials-label {
+    color: color(white);
+    font-family: $display_font;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: $font-500;
+    text-transform: lowercase;
+  }
+
+  &__socials-list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      margin: 0;
+      list-style: none;
+    }
+
+    img {
+      display: block;
+      width: 36px;
+      height: 33px;
+    }
+  }
+}

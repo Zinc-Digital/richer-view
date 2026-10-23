@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/team-slider",
+	"title": "Team Slider",
+	"description": "Heading and a draggable row of team members, finishing with a “want to join the crew?” card.",
+	"category": "media",
+	"icon": "groups",
+	"keywords": ["team", "crew", "people", "staff", "careers", "slider"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/team-slider.css",
+	"viewScript": "file:../../../assets/js/blocks/team-slider.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "team-slider.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

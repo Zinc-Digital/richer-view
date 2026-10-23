@@ -1,0 +1,28 @@
+// Block editor (admin) tweaks
+// Loaded on the block editor screen only (see zinc_editor_admin_styles() in functions.php).
+
+// ACF block fields in the right-hand panel: the panel is only ~280px wide, so
+// stack every field full width. Fields keep their side-by-side widths in the
+// wider "Expanded Editor".
+.block-editor-block-inspector .acf-block-fields {
+  .acf-fields > .acf-field[data-width] {
+    float: none;
+    clear: both;
+    width: 100% !important;
+    border-left: 0 !important;
+  }
+
+  // Button groups (e.g. Left / Centre / Right) wrap instead of overflowing
+  .acf-button-group {
+    flex-wrap: wrap;
+
+    label {
+      flex: 1 1 auto;
+    }
+  }
+
+  // Image previews fit the panel
+  .acf-image-uploader .image-wrap {
+    max-width: 100%;
+  }
+}

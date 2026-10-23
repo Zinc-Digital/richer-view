@@ -1,0 +1,215 @@
+// Intro with Image block
+// Compiled on its own (assets/css/blocks/intro-image.css) so block.json can
+// load it on the front end and inside the block editor.
+
+@import "../core/variables";
+
+.b-intro-image {
+  // 85px below the photo matches the ~168px gaps between sections in the design
+  padding: 100px 25px 85px;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+  container: intro-image / inline-size;
+
+  // "Top of page" spacing – clears the floating site header
+  &--page-top {
+    padding-top: 148px;
+  }
+
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &__inner {
+    max-width: 1205px;
+    margin: 0 auto;
+  }
+
+  // Heading + intro text, bottom-aligned
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    padding-left: 50px;
+  }
+
+  &__heading {
+    flex: 0 1 554px;
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 70px;
+    line-height: 90px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    transition: none;
+  }
+
+  &__text {
+    flex: 0 1 370px;
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 300;
+
+    p {
+      margin: 0 0 1em;
+      color: inherit;
+      font: inherit;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Photo with the round badge overlapping it
+  &__media {
+    position: relative;
+    max-width: 1190px;
+    margin: 61px auto 0;
+    aspect-ratio: 1190 / 555;
+    background-color: color(grey);
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center center;
+
+    &--top {
+      object-position: center top;
+    }
+
+    &--bottom {
+      object-position: center bottom;
+    }
+  }
+
+  // Background video – shown straight away in place of the image
+  &__video {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    container-type: size;
+    background-color: #000;
+    pointer-events: none;
+
+    // YouTube / Vimeo players are 16:9, so scale them up to cover the frame
+    iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: max(100cqw, 177.78cqh);
+      height: max(100cqh, 56.25cqw);
+      border: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    z-index: 1;
+    top: 54.6%;
+    right: 6.51%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 124px;
+    height: 124px;
+    margin: 0;
+    padding: 34px 10px;
+    border-radius: 50%;
+    background-color: color(white);
+    color: color(grey);
+    font-family: $display_font;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: $font-700;
+    text-align: center;
+    filter: drop-shadow(0 0 12.5px rgba(#000, .15));
+  }
+
+  @media (max-width: 1024px) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    &--page-top {
+      padding-top: 130px;
+    }
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    &--page-top {
+      padding-top: 110px;
+    }
+  }
+
+  // Layout follows the block's own width, so it also works in the narrower editor column
+  @container intro-image (max-width: 900px) {
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 25px;
+      padding-left: 0;
+    }
+
+    &__heading {
+      flex-basis: auto;
+      font-size: 50px;
+      line-height: 64px;
+    }
+
+    &__text {
+      flex-basis: auto;
+      max-width: 520px;
+    }
+
+    &__media {
+      margin-top: 45px;
+    }
+  }
+
+  @container intro-image (max-width: 560px) {
+    &__heading {
+      font-size: 36px;
+      line-height: 46px;
+    }
+
+    &__media {
+      margin-top: 35px;
+      aspect-ratio: 4 / 3;
+    }
+
+    &__badge {
+      top: auto;
+      right: 15px;
+      bottom: -30px;
+      width: 96px;
+      height: 96px;
+      padding: 20px 8px;
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+}
