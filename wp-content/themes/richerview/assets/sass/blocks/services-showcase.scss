@@ -244,6 +244,25 @@ $services-card-ratio: 389 / 554;
   }
 
   // Cards with a hover badge hide the normal pointer (badge styles: components/_c.cursor-badge.scss)
+  // Scroll animation turned off: the row can be dragged with the mouse (drag-slider.js)
+  &.is-draggable &__viewport {
+    cursor: grab;
+    user-select: none;
+
+    img {
+      -webkit-user-drag: none;
+    }
+
+    // Snapping would fight the drag – touch screens still snap
+    @media (hover: hover) and (pointer: fine) {
+      scroll-snap-type: none;
+    }
+  }
+
+  &.is-dragging &__viewport {
+    cursor: grabbing;
+  }
+
   &.has-cursor &__item:has(> &__cursor-template) &__card {
     cursor: none;
   }

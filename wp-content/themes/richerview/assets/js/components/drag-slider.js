@@ -7,12 +7,14 @@
  *   and keyboards use the arrow keys (the row should have tabindex="0").
  * - A drag doesn't also count as a click on a link/button inside the row.
  * - If the section has a cursor badge (.c-cursor, see cursor-badge.js), it shows
- *   its "‹ drag ›" content over the row.
+ *   its "‹ drag ›" content over the row – unless `badge: false` is passed (the
+ *   block shows its own badges).
  *
  * Adds classes to the section: is-draggable, is-dragging, has-cursor.
  *
  * Usage:
  *   const slider = window.zincDragSlider(section, row, { start: 'centre' });
+ *   window.zincDragSlider(section, row, { badge: false });
  *   slider.is_dragging();               // true mid-drag
  *   slider.show_label(event, 'Play');   // badge shows other text (e.g. over a video)
  *   slider.show_drag(event);            // back to "‹ drag ›"
@@ -133,8 +135,8 @@
 		};
 
 		// "‹ drag ›" badge in place of the mouse pointer
-		const cursor = section.querySelector('.c-cursor');
-		const badge = window.zincCursorBadge && window.zincCursorBadge(cursor);
+		const cursor = options && options.badge === false ? null : section.querySelector('.c-cursor');
+		const badge = cursor && window.zincCursorBadge && window.zincCursorBadge(cursor);
 		if (badge) {
 			const badge_el = cursor.querySelector('.c-cursor__badge');
 			const drag_content = Array.from(badge_el.childNodes).map(function (node) {

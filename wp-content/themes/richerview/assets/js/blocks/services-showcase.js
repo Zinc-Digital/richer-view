@@ -8,6 +8,9 @@
  *
  * Below 1025px, or when the visitor prefers reduced motion, nothing is
  * changed and the cards stay a swipeable row.
+ *
+ * With the scroll animation turned off, the row can also be dragged left and
+ * right with the mouse (assets/js/components/drag-slider.js).
  */
 (function () {
 	const desktop = window.matchMedia('(min-width: 1025px)');
@@ -165,6 +168,10 @@
 
 	function setup() {
 		document.querySelectorAll('.b-services[data-scroll-animation]').forEach(init);
+		document.querySelectorAll('.b-services:not([data-scroll-animation])').forEach(function (section) {
+			// The cards keep their own hover badges, so no "drag" badge
+			if (window.zincDragSlider) window.zincDragSlider(section, section.querySelector('.b-services__viewport'), { badge: false });
+		});
 		document.querySelectorAll('.b-services').forEach(function (section) {
 			init_videos(section);
 			init_cursor(section);
