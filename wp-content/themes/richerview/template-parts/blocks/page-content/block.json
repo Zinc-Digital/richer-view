@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/page-content",
+	"title": "Content",
+	"description": "A page heading and a column of text – headings, paragraphs, lists and tables styled for the site. For pages like terms and conditions or the privacy policy.",
+	"category": "text",
+	"icon": "media-text",
+	"keywords": ["content", "text", "terms", "privacy", "legal", "policy"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/page-content.css",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "page-content.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": false,
+		"jsx": true
+	}
+}

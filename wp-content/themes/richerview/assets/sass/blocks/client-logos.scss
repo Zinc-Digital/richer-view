@@ -43,6 +43,16 @@ $client-logos-max-width: 1176px;
     border-right: 1px solid rgba(color(white), .25);
     border-bottom: 1px solid rgba(color(white), .25);
     list-style: none;
+    transition: background-color .3s ease;
+
+    // Hover (as in the prototype): the tile fills with the logo's chosen colour,
+    // so the dark logo stands out
+    @each $colour in (yellow, blue, coral) {
+      &--#{$colour}:hover,
+      &--#{$colour}:focus-within {
+        background-color: color($colour);
+      }
+    }
   }
 
   &__link {
@@ -51,11 +61,10 @@ $client-logos-max-width: 1176px;
     justify-content: center;
     width: 100%;
     height: 100%;
-    transition: opacity .2s ease;
 
-    &:hover,
     &:focus-visible {
-      opacity: .7;
+      outline: 2px solid color(charcoal);
+      outline-offset: -6px;
     }
   }
 

@@ -42,6 +42,7 @@ function register_theme_blocks() {
 		'quote',
 		'vacancy-list',
 		'social-feed',
+		'page-content',
 	);
 
 	foreach ($blocks as $block) {

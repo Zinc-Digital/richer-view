@@ -49,6 +49,7 @@
   }
 
   &__item {
+    position: relative;
     flex-shrink: 0;
     width: 530px;
     margin: 0;
@@ -64,6 +65,41 @@
     height: 100%;
     max-width: none;
     object-fit: cover;
+  }
+
+  // Muted looping video over the image – fades in once playing (image-gallery.js)
+  &__video {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    container-type: size;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s ease;
+
+    // Uploaded videos with no image behind them show their first frame straight away
+    &.is-playing,
+    &--file {
+      opacity: 1;
+    }
+
+    // YouTube / Vimeo players are 16:9, so scale them up to cover the frame
+    iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: max(100cqw, 177.78cqh);
+      height: max(100cqh, 56.25cqw);
+      border: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   &__placeholder {

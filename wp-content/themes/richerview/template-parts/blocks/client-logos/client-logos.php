@@ -29,13 +29,14 @@ if (!empty($block['anchor'])) {
       <?php foreach ($logos as $item) :
 				if (empty($item['logo'])) continue;
 
-				$link  = $item['link'];
+				$link   = $item['link'];
+				$colour = in_array($item['hover_colour'] ?? '', array('blue', 'coral'), true) ? $item['hover_colour'] : 'yellow';
 				$image = wp_get_attachment_image($item['logo'], 'medium', false, array(
 					'class'		=> 'b-client-logos__logo',
 					'loading'	=> 'lazy',
 				));
 			?>
-      <li class="b-client-logos__item">
+      <li class="b-client-logos__item b-client-logos__item--<?php echo esc_attr($colour); ?>">
         <?php if ($link) : ?>
         <a class="b-client-logos__link" href="<?php echo esc_url($link['url']); ?>" <?php if ($link['target']) : ?>target="<?php echo esc_attr($link['target']); ?>" rel="noopener" <?php endif; ?><?php if ($link['title']) : ?>aria-label="<?php echo esc_attr($link['title']); ?>" <?php endif; ?>>
           <?php echo $image; ?>

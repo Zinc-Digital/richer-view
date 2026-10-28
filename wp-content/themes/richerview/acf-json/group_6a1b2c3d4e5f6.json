@@ -86,6 +86,32 @@
                     "return_format": "array",
                     "allow_in_bindings": 0,
                     "parent_repeater": "field_6a1b2c3d4e602"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6a1b2c3d4e607",
+                    "label": "Hover colour",
+                    "name": "hover_colour",
+                    "type": "button_group",
+                    "instructions": "The tile fills with this colour when the logo is hovered.",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "yellow": "Yellow",
+                        "blue": "Blue",
+                        "coral": "Coral"
+                    },
+                    "default_value": "yellow",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "parent_repeater": "field_6a1b2c3d4e602"
                 }
             ]
         },
@@ -152,5 +178,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1792761811
+    "modified": 1793188607
 }

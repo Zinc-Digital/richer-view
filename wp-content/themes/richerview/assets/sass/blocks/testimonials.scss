@@ -223,6 +223,46 @@ $testimonials-gutter-right: clamp(25px, 3.33vw, 48px);
     }
   }
 
+  // Silent preview over the thumbnail – fades in once playing (testimonials.js)
+  &__video {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    display: block;
+    overflow: hidden;
+    container-type: size;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s ease, transform .6s cubic-bezier(.23, 1, .32, 1);
+
+    &.is-playing {
+      opacity: 1;
+    }
+
+    // YouTube / Vimeo players are 16:9, so scale them up to cover the card
+    iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: max(100cqw, 177.78cqh);
+      height: max(100cqh, 56.25cqw);
+      border: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__card--video:hover &__video,
+  &__card--video:focus-visible &__video {
+    transform: scale(1.03);
+  }
+
   // Editor only: shown on a video card whose link can't be played
   &__warning {
     position: absolute;

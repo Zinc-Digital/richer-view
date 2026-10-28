@@ -458,6 +458,40 @@
                         ]
                     ],
                     "allow_in_bindings": 0,
+                    "key": "field_6a3d5f7a2c051",
+                    "label": "Preview",
+                    "name": "video_preview",
+                    "type": "button_group",
+                    "instructions": "Plays the video silently in the card (clicking still opens it with sound). On phones and tablets, “Play on hover” plays when visible.",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "none": "Thumbnail only",
+                        "hover": "Play on hover",
+                        "autoplay": "Play when visible"
+                    },
+                    "default_value": "none",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "parent_repeater": "field_6a3d5f7a2c001"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6a3d5f7a2c002",
+                                "operator": "==",
+                                "value": "video"
+                            }
+                        ]
+                    ],
+                    "allow_in_bindings": 0,
                     "key": "field_6a3d5f7a2c012",
                     "label": "Video title",
                     "name": "video_title",
@@ -596,5 +630,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1792581054
+    "modified": 1793191015
 }

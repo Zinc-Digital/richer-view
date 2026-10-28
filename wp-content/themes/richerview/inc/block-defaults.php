@@ -43,12 +43,13 @@ function zinc_client_logos_default_value($value, $post_id, $field) {
 
 	$logo_key = 'field_6a1b2c3d4e603';
 	$link_key = 'field_6a1b2c3d4e604';
+	$hover_key = 'field_6a1b2c3d4e607';
 	$rows     = array();
 
 	foreach (zinc_client_logos_defaults() as list($file, $name)) {
 		$id = zinc_get_theme_image_attachment('assets/images/client-logos/' . $file, 'Client logo: ' . $name, $name);
 		if ($id) {
-			$rows[] = array($logo_key => $id, $link_key => '');
+			$rows[] = array($logo_key => $id, $link_key => '', $hover_key => 'yellow');
 		}
 	}
 

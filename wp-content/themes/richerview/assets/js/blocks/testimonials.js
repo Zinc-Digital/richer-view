@@ -4,7 +4,9 @@
  * - The row starts centred, as in the design.
  * - With a mouse it can be dragged (with a little momentum when let go);
  *   touch screens swipe natively and keyboards use the arrow keys.
- * - Video cards open their video (with sound) in a pop-up <dialog>.
+ * - Video cards open their video (with sound) in a pop-up <dialog>, and can
+ *   play it silently in the card – on hover or whenever visible
+ *   (assets/js/components/background-video.js).
  */
 (function () {
 	// Draggable row (assets/js/components/drag-slider.js), starting centred as in the design.
@@ -77,10 +79,23 @@
 		});
 	}
 
+	// Silent previews in the video cards; "Play on hover" ones only show while the mouse is over the card
+	function init_previews(section) {
+		if (!window.zincBackgroundVideo) return;
+		section.querySelectorAll('.b-testimonials__video').forEach(function (wrapper) {
+			const card = wrapper.closest('.b-testimonials__card');
+			window.zincBackgroundVideo(wrapper, {
+				observe: card,
+				hover_target: wrapper.dataset.videoPlayback === 'hover' ? card : null,
+			});
+		});
+	}
+
 	function setup() {
 		document.querySelectorAll('.b-testimonials').forEach(function (section) {
 			init_slider(section);
 			init_videos(section);
+			init_previews(section);
 		});
 	}
 

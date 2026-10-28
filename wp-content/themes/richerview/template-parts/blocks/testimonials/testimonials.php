@@ -4,7 +4,8 @@
  *
  * Heading with a speech-bubble doodle and a draggable row of quote cards and
  * video cards. Video cards open the video in a pop-up
- * (assets/js/blocks/testimonials.js).
+ * (assets/js/blocks/testimonials.js), and can play it silently in the card
+ * first – on hover or whenever visible (assets/js/components/background-video.js).
  *
  * @var array $block      The block settings and attributes.
  * @var bool  $is_preview True during backend preview render.
@@ -55,6 +56,11 @@ if (!empty($block['anchor'])) {
 					$label      = $item['expand_label'] ?: __('click to expand', 'zinc');
 					$position   = in_array($item['image_position'], array('left', 'right'), true) ? $item['image_position'] : 'center';
 					$title      = $item['video_title'] ?: __('Video testimonial', 'zinc');
+
+					// Silent preview in the card: the same video as a muted, looping background player
+					$preview       = in_array($item['video_preview'] ?? '', array('hover', 'autoplay'), true) ? $item['video_preview'] : 'none';
+					$preview_embed = $preview !== 'none' && in_array($video_type, array('youtube', 'vimeo'), true) ? zinc_get_background_video_embed_url($item['video_url'], $video_type) : '';
+					$preview_file  = $preview !== 'none' ? $file_url : '';
 				?>
         <button type="button" class="b-testimonials__card b-testimonials__card--video"<?php if ($embed) : ?> data-video-embed="<?php echo esc_url($embed); ?>"<?php elseif ($file_url) : ?> data-video-src="<?php echo esc_url($file_url); ?>"<?php endif; ?> data-cursor-label="<?php echo esc_attr($item['play_label'] ?: __('Play', 'zinc')); ?>" aria-haspopup="dialog" aria-label="<?php echo esc_attr(sprintf(__('Play video: %s', 'zinc'), $title)); ?>">
           <?php if ($item['image']) {
@@ -65,6 +71,13 @@ if (!empty($block['anchor'])) {
 							'alt'		=> '',
 						));
 					} ?>
+          <?php if ($preview_embed) : ?>
+          <span class="b-testimonials__video" data-video-embed="<?php echo esc_url($preview_embed); ?>" data-video-playback="<?php echo esc_attr($preview); ?>" aria-hidden="true"></span>
+          <?php elseif ($preview_file) : ?>
+          <span class="b-testimonials__video" data-video-playback="<?php echo esc_attr($preview); ?>" aria-hidden="true">
+            <video src="<?php echo esc_url($preview_file); ?>" muted loop playsinline preload="metadata" tabindex="-1"></video>
+          </span>
+          <?php endif; ?>
           <?php if ($is_preview && !$embed && !$file_url) : ?>
           <span class="b-testimonials__warning"><?php esc_html_e('This video link isn’t recognised – check the link in the block settings.', 'zinc'); ?></span>
           <?php endif; ?>

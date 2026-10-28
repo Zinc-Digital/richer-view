@@ -1,0 +1,336 @@
+// Content block
+// Compiled on its own (assets/css/blocks/page-content.css) so block.json can
+// load it on the front end and inside the block editor.
+//
+// Styles the editor's own blocks inside it (headings, paragraphs, lists,
+// tables, quotes…) with the site's type: 15px light body text, lowercase
+// headings – lined up with the other page titles, 159px in at 1440.
+
+@import "../core/variables";
+
+.b-content {
+  padding: 100px 25px;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+  container: content / inline-size;
+
+  // "Top of page" spacing – clears the floating site header
+  &--page-top {
+    padding-top: 147px;
+  }
+
+  // Don't rely on the theme's global reset – the block editor doesn't load it
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &__inner {
+    max-width: 1205px;
+    margin: 0 auto;
+    padding-left: 42px;
+  }
+
+  // Page heading
+  &__header {
+    max-width: 870px;
+    margin-bottom: 70px;
+  }
+
+  &__heading {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 70px;
+    line-height: 90px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    transition: none;
+  }
+
+  &__updated {
+    margin: 15px 0 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: $font-700;
+  }
+
+  // ---- The text: a readable column, up to 790px wide
+  &__body {
+    max-width: 790px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 23px;
+    font-weight: 300;
+
+    > :first-child,
+    > .acf-innerblocks-container > :first-child {
+      margin-top: 0;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: color(white);
+      font-family: $display_font;
+      transition: none;
+    }
+
+    h2 {
+      margin: 60px 0 20px;
+      font-size: 40px;
+      line-height: 56px;
+      font-weight: $font-400;
+      text-transform: lowercase;
+    }
+
+    h3 {
+      margin: 40px 0 15px;
+      font-size: 25px;
+      line-height: 35px;
+      font-weight: $font-400;
+    }
+
+    h4,
+    h5,
+    h6 {
+      margin: 30px 0 10px;
+      font-size: 18px;
+      line-height: 25px;
+      font-weight: $font-700;
+    }
+
+    p,
+    li,
+    td,
+    th,
+    figcaption,
+    summary {
+      color: color(white);
+      font-family: $display_font;
+      font-size: 15px;
+      line-height: 23px;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    p {
+      margin: 0 0 18px;
+    }
+
+    // Lists: bullets and numbers in yellow
+    ul,
+    ol {
+      margin: 0 0 18px;
+      padding-left: 1.3em;
+
+      ul,
+      ol {
+        margin: 8px 0 0;
+      }
+    }
+
+    li {
+      margin: 0 0 8px;
+      padding-left: 4px;
+      list-style-position: outside;
+
+      &::marker {
+        color: color(yellow);
+        font-weight: $font-700;
+      }
+    }
+
+    ul > li {
+      list-style-type: disc;
+    }
+
+    ol > li {
+      list-style-type: decimal;
+    }
+
+    a {
+      color: color(white);
+      text-decoration: underline;
+      text-underline-position: from-font;
+      transition: color .2s ease;
+
+      &:hover,
+      &:focus-visible {
+        color: color(yellow);
+      }
+    }
+
+    strong,
+    b {
+      font-weight: $font-700;
+    }
+
+    em,
+    i {
+      font-style: italic;
+    }
+
+    // Quote: a yellow line on the left
+    blockquote,
+    .wp-block-quote {
+      margin: 30px 0;
+      padding: 0 0 0 25px;
+      border: 0;
+      border-left: 2px solid color(yellow);
+
+      p {
+        font-size: 20px;
+        line-height: 29px;
+      }
+
+      cite {
+        display: block;
+        margin-top: 8px;
+        color: color(white);
+        font-size: 12px;
+        font-style: normal;
+        font-weight: $font-700;
+      }
+    }
+
+    // Line between sections
+    hr,
+    .wp-block-separator {
+      height: 0;
+      margin: 50px 0;
+      border: 0;
+      border-top: 1px solid rgba(color(white), .25);
+      background: none;
+      opacity: 1;
+    }
+
+    // Tables
+    .wp-block-table {
+      margin: 30px 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 12px 15px 12px 0;
+      border: 0;
+      border-bottom: 1px solid rgba(color(white), .25);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th,
+    thead td {
+      font-weight: $font-700;
+      border-bottom-color: color(white);
+    }
+
+    // Expandable "details" blocks
+    details {
+      margin: 0 0 15px;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(color(white), .25);
+    }
+
+    summary {
+      font-size: 18px;
+      line-height: 25px;
+      font-weight: $font-400;
+      cursor: pointer;
+    }
+
+    // Buttons: the yellow underlined link style used around the site
+    .wp-block-button__link {
+      padding: 0 0 3px;
+      border-radius: 0;
+      background: none;
+      color: color(yellow);
+      font-size: 15px;
+      line-height: 21px;
+      font-weight: $font-400;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+
+      &:hover {
+        color: color(white);
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    &--page-top {
+      padding-top: 130px;
+    }
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    &--page-top {
+      padding-top: 110px;
+    }
+  }
+
+  @container content (max-width: 900px) {
+    &__inner {
+      padding-left: 0;
+    }
+
+    &__header {
+      margin-bottom: 50px;
+    }
+
+    &__heading {
+      font-size: 50px;
+      line-height: 64px;
+    }
+
+    &__body h2 {
+      margin-top: 45px;
+      font-size: 32px;
+      line-height: 45px;
+    }
+  }
+
+  @container content (max-width: 560px) {
+    &__header {
+      margin-bottom: 35px;
+    }
+
+    &__heading {
+      font-size: 36px;
+      line-height: 46px;
+    }
+
+    &__body {
+      h2 {
+        margin-top: 40px;
+        font-size: 26px;
+        line-height: 36px;
+      }
+
+      h3 {
+        font-size: 21px;
+        line-height: 29px;
+      }
+    }
+  }
+}
