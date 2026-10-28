@@ -54,6 +54,12 @@ function zinc_register_scripts() {
 	wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), $theme_version, false);
 	wp_enqueue_script('slick-js', get_template_directory_uri() . '/assets/js/slick.min.js', array('jquery'), $theme_version, false);
 	wp_enqueue_script( 'slick-slider', get_template_directory_uri() . '/assets/js/slick.js');
+
+	// 404 page: the badge that follows the mouse, and the optional background video (404.php)
+	if (is_404()) {
+		$path = '/assets/js/components/not-found.js';
+		wp_enqueue_script('zinc-not-found', get_template_directory_uri() . $path, array('zinc-background-video'), filemtime(get_template_directory() . $path), true);
+	}
 }
 add_action('wp_enqueue_scripts', 'zinc_register_scripts');
 
@@ -153,3 +159,4 @@ include_once __DIR__ . '/inc/video-helpers.php';
 include_once __DIR__ . '/inc/default-media.php';
 include_once __DIR__ . '/inc/block-defaults.php';
 include_once __DIR__ . '/inc/taxonomies.php';
+include_once __DIR__ . '/inc/vacancies.php';

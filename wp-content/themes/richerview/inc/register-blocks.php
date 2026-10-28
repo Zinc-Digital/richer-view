@@ -34,6 +34,14 @@ function register_theme_blocks() {
 		'team-slider',
 		'faq',
 		'contact',
+		'service-hero',
+		'project-list',
+		'work-hero',
+		'image-gallery',
+		'video-feature',
+		'quote',
+		'vacancy-list',
+		'social-feed',
 	);
 
 	foreach ($blocks as $block) {

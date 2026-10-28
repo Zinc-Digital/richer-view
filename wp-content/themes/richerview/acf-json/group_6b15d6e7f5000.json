@@ -1,0 +1,289 @@
+{
+    "key": "group_6b15d6e7f5000",
+    "title": "Block: Video Feature",
+    "fields": [
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b15d6e7f5001",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b15d6e7f5002",
+            "label": "Heading",
+            "name": "heading",
+            "type": "textarea",
+            "instructions": "Shown over the bottom left of the image. Press Enter for a new line.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "sit back and enjoy the final cut...",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b15d6e7f5003",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "Shown until the video is played (e.g. 2880 × 1800px).",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg, jpeg, png, webp",
+            "preview_size": "medium"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b15d6e7f5004",
+            "label": "Image position",
+            "name": "image_position",
+            "type": "button_group",
+            "instructions": "Which part of the image to keep in view.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "top": "Top",
+                "center": "Centre",
+                "bottom": "Bottom"
+            },
+            "default_value": "center",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b15d6e7f5005",
+            "label": "Video",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b15d6e7f5006",
+            "label": "Video",
+            "name": "video_type",
+            "type": "button_group",
+            "instructions": "Plays with sound in a pop-up when the image is clicked.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "youtube": "YouTube",
+                "vimeo": "Vimeo",
+                "file": "Upload",
+                "link": "Video file link"
+            },
+            "default_value": "vimeo",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b15d6e7f5006",
+                        "operator": "==",
+                        "value": "youtube"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6b15d6e7f5006",
+                        "operator": "==",
+                        "value": "vimeo"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6b15d6e7f5007",
+            "label": "Video link",
+            "name": "video_url",
+            "type": "url",
+            "instructions": "Paste the video’s page link, e.g. https://www.youtube.com/watch?v=… or https://vimeo.com/…",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b15d6e7f5006",
+                        "operator": "==",
+                        "value": "file"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6b15d6e7f5008",
+            "label": "Video file",
+            "name": "video_file",
+            "type": "file",
+            "instructions": "MP4 or WebM.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "mp4, webm"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b15d6e7f5006",
+                        "operator": "==",
+                        "value": "link"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6b15d6e7f5009",
+            "label": "Video file link",
+            "name": "video_link",
+            "type": "url",
+            "instructions": "A direct link to an MP4 or WebM file.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https://…/video.mp4"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b15d6e7f5010",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b15d6e7f5011",
+            "label": "Play badge text",
+            "name": "play_label",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Play",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/video-feature"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1793185218
+}

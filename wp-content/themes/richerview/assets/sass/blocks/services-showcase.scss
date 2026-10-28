@@ -9,6 +9,8 @@
 @import "../components/c.cursor-badge";
 
 $services-gutter: clamp(25px, 11.46vw, 165px);
+// "Small, left-aligned" heading style: heading and first card 157px in at 1440
+$services-compact-gutter: clamp(25px, 10.9vw, 157px);
 $services-card-width: 389px;
 $services-card-ratio: 389 / 554;
 
@@ -253,6 +255,30 @@ $services-card-ratio: 389 / 554;
     text-align: center;
   }
 
+  // "Small, left-aligned" heading (service pages): lined up with the first card
+  &--compact {
+    .b-services__intro {
+      max-width: none;
+      padding: 0 $services-compact-gutter;
+      text-align: left;
+      transform-origin: left top;
+    }
+
+    .b-services__heading {
+      font-size: 50px;
+      line-height: 70px;
+    }
+
+    .b-services__slider {
+      margin-top: 53px;
+    }
+
+    .b-services__viewport {
+      padding: 0 $services-compact-gutter;
+      scroll-padding: 0 $services-compact-gutter;
+    }
+  }
+
   // Desktop scroll animation (set up by services-showcase.js)
   &.is-animated {
     .b-services__intro {
@@ -276,6 +302,17 @@ $services-card-ratio: 389 / 554;
 
   @media (max-width: 1024px) {
     padding: 80px 0;
+
+    &--compact .b-services__heading {
+      font-size: 40px;
+      line-height: 56px;
+    }
+
+    &--compact .b-services__intro,
+    &--compact .b-services__viewport {
+      padding: 0 25px;
+      scroll-padding: 0 25px;
+    }
 
     &__heading {
       font-size: 44px;
@@ -307,6 +344,11 @@ $services-card-ratio: 389 / 554;
 
   @media (max-width: $sm - 1px) {
     padding: 60px 0;
+
+    &--compact .b-services__heading {
+      font-size: 32px;
+      line-height: 44px;
+    }
 
     &__heading {
       font-size: 34px;

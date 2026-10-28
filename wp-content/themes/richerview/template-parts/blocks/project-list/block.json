@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/project-list",
+	"title": "Project List",
+	"description": "Heading and a list of projects with a tag and link, beside an image that changes to the project being hovered.",
+	"category": "text",
+	"icon": "portfolio",
+	"keywords": ["projects", "work", "portfolio", "case studies", "some we made earlier"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/project-list.css",
+	"viewScript": "file:../../../assets/js/blocks/project-list.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "project-list.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

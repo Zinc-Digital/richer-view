@@ -1,0 +1,228 @@
+// Video Feature block
+// Compiled on its own (assets/css/blocks/video-feature.css) so block.json can
+// load it on the front end and inside the block editor.
+//
+// The pop-up player is opened by assets/js/blocks/video-feature.js.
+
+@import "../core/variables";
+
+.b-video-feature {
+  position: relative;
+  // 1434 × 898 in the design, but at least 420px tall on phones.
+  // The set width stops the minimum height from making it wider than the screen.
+  width: 100%;
+  aspect-ratio: 1434 / 898;
+  min-height: 420px;
+  overflow: hidden;
+  background-color: color(black);
+  color: color(white);
+  font-family: $display_font;
+  container: video-feature / inline-size;
+
+  // Don't rely on the theme's global reset – the block editor doesn't load it
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // Darker towards the bottom so the heading stays readable
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(#000, 0) 45%, rgba(#000, .75) 100%);
+    pointer-events: none;
+  }
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center center;
+    transition: transform .8s cubic-bezier(.23, 1, .32, 1);
+
+    &--top {
+      object-position: center top;
+    }
+
+    &--bottom {
+      object-position: center bottom;
+    }
+  }
+
+  // 113px in from the left and 66px up from the bottom at 1440
+  &__heading {
+    position: absolute;
+    z-index: 2;
+    left: clamp(25px, 7.85vw, 113px);
+    bottom: 66px;
+    max-width: min(649px, calc(100% - 50px));
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 70px;
+    line-height: 90px;
+    font-weight: $font-400;
+    pointer-events: none;
+    transition: none;
+  }
+
+  // The whole image opens the video; the round badge sits in the middle
+  &__play {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: none;
+
+      .b-video-feature__badge {
+        outline: 2px solid color(blue);
+        outline-offset: 4px;
+      }
+    }
+  }
+
+  // Centred across, a little above the middle (as in the design)
+  &__badge {
+    position: absolute;
+    top: 44.77%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    margin: 0;
+    padding: 0 10px;
+    border-radius: 50%;
+    background-color: color(white);
+    color: color(grey);
+    font-family: $display_font;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: $font-700;
+    filter: drop-shadow(0 0 12.5px rgba(#000, .15));
+    transform: translate(-50%, -50%);
+    transition: transform .4s cubic-bezier(.34, 1.56, .64, 1);
+
+    // Editor preview without a video yet
+    &--preview {
+      z-index: 3;
+    }
+  }
+
+  &__play:hover &__badge,
+  &__play:focus-visible &__badge {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  &:hover &__image {
+    transform: scale(1.02);
+  }
+
+  &__placeholder {
+    position: absolute;
+    z-index: 2;
+    top: 25px;
+    left: 25px;
+    margin: 0;
+    color: color(white);
+  }
+
+  // Video pop-up
+  &__modal {
+    width: min(1100px, 90vw);
+    max-width: none;
+    max-height: none;
+    // Centre on screen (the theme's reset removes the browser's default margin: auto)
+    margin: auto;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    background: transparent;
+
+    &::backdrop {
+      background-color: rgba(#000, .85);
+    }
+  }
+
+  &__player {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+
+    iframe,
+    video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: -56px;
+    right: 0;
+    width: 41px;
+    height: 41px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+
+    img {
+      width: 41px;
+      height: 41px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__image,
+    &__badge {
+      transition: none;
+    }
+  }
+
+  @media (max-width: $sm - 1px) {
+    &__heading {
+      bottom: 35px;
+    }
+  }
+
+  @container video-feature (max-width: 900px) {
+    &__heading {
+      font-size: 50px;
+      line-height: 64px;
+    }
+  }
+
+  @container video-feature (max-width: 560px) {
+    &__heading {
+      font-size: 32px;
+      line-height: 42px;
+    }
+
+    &__badge {
+      width: 76px;
+      height: 76px;
+      font-size: 13px;
+    }
+  }
+}

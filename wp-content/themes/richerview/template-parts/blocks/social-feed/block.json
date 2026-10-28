@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/social-feed",
+	"title": "Social Feed",
+	"description": "Page heading above an Instagram (or other) feed from a plugin shortcode, shown as a grid of tall tiles.",
+	"category": "text",
+	"icon": "instagram",
+	"keywords": ["instagram", "social", "feed", "blog", "updates", "shortcode"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/social-feed.css",
+	"viewScript": "file:../../../assets/js/blocks/social-feed.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "social-feed.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

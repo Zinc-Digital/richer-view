@@ -22,6 +22,133 @@
             "ui": 1,
             "ui_on_text": "",
             "ui_off_text": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a9db03c8c001",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6a9db03c8c002",
+            "label": "Custom call to action",
+            "name": "custom_cta",
+            "type": "true_false",
+            "instructions": "Use different wording for this page’s call to action (e.g. on the Careers page).",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a9db03c8c001",
+                        "operator": "!=",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_6a9db03c8c002",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6a9db03c8c003",
+            "label": "Heading",
+            "name": "cta_heading",
+            "type": "textarea",
+            "instructions": "Press Enter for a new line.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a9db03c8c001",
+                        "operator": "!=",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_6a9db03c8c002",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6a9db03c8c004",
+            "label": "Underlined words",
+            "name": "cta_highlight",
+            "type": "text",
+            "instructions": "Words from the heading to underline with the hand-drawn line.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6a9db03c8c001",
+                        "operator": "!=",
+                        "value": "1"
+                    },
+                    {
+                        "field": "field_6a9db03c8c002",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6a9db03c8c005",
+            "label": "Link",
+            "name": "cta_link",
+            "type": "link",
+            "instructions": "Shown in yellow with an arrow under the heading.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
         }
     ],
     "location": [
@@ -30,6 +157,27 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "service"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "work"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "vacancy"
             }
         ]
     ],
@@ -42,5 +190,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1792766087
+    "modified": 1793186523
 }

@@ -1,0 +1,111 @@
+{
+    "key": "group_6b37f80917000",
+    "title": "Vacancy details",
+    "fields": [
+        {
+            "aria-label": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b37f80917001",
+            "label": "Type",
+            "name": "type",
+            "type": "radio",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "full time": "Full time",
+                "part time": "Part time",
+                "freelance": "Freelance",
+                "contract": "Contract",
+                "maternity cover": "Maternity cover"
+            },
+            "default_value": "full time",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 1,
+            "save_other_choice": 0,
+            "layout": "vertical"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b37f80917002",
+            "label": "Closing date",
+            "name": "closing_date",
+            "type": "date_picker",
+            "instructions": "The role leaves the Careers page after this day. Leave empty if it’s open until filled.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "j F Y",
+            "return_format": "Ymd",
+            "first_day": 1
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b37f80917003",
+            "label": "Summary",
+            "name": "summary",
+            "type": "textarea",
+            "instructions": "Shown when the role is opened on the Careers page.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 5,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b37f80917004",
+            "label": "Apply link",
+            "name": "apply_link",
+            "type": "link",
+            "instructions": "Leave empty to link to the application form on this role’s page.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "vacancy"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1793186523
+}

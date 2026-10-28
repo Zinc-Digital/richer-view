@@ -1,0 +1,299 @@
+// Social Feed block
+// Compiled on its own (assets/css/blocks/social-feed.css) so block.json can
+// load it on the front end and inside the block editor.
+//
+// Restyles Smash Balloon Instagram Feed's markup (#sb_instagram) to the design:
+// 376.67 × 500 tiles, three across with 30px gaps, and a yellow "load more"
+// link. The "view" badge is added by assets/js/blocks/social-feed.js.
+
+@import "../core/variables";
+@import "../components/c.cursor-badge";
+
+$feed-tile-ratio: 376.67 / 500;
+$feed-gap: 30px;
+
+.b-feed {
+  padding: 100px 25px 64px;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+  container: feed / inline-size;
+
+  // "Top of page" spacing – clears the floating site header
+  &--page-top {
+    padding-top: 147px;
+  }
+
+  // Don't rely on the theme's global reset – the block editor doesn't load it
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // Heading 159px in at 1440 (lined up with the other page titles)
+  &__header {
+    max-width: 1205px;
+    margin: 0 auto 132px;
+    padding-left: 42px;
+  }
+
+  &__heading {
+    max-width: 670px;
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 70px;
+    line-height: 90px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    transition: none;
+  }
+
+  // The feed: 1190px wide, centred
+  &__feed,
+  &__placeholder {
+    max-width: 1190px;
+    margin: 0 auto;
+  }
+
+  // ---- Smash Balloon Instagram Feed
+
+  #sb_instagram,
+  .sbi {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  // Its header and "Follow on Instagram" button aren't in the design
+  .sb_instagram_header,
+  .sbi_header,
+  .sbi_follow_btn {
+    display: none !important;
+  }
+
+  #sbi_images,
+  .sbi_images {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $feed-gap !important;
+    width: 100% !important;
+    padding: 0 !important;
+    float: none !important;
+  }
+
+  .sbi_item {
+    display: block !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    overflow: hidden;
+    background-color: color(black);
+  }
+
+  .sbi_photo_wrap {
+    position: relative;
+    width: 100%;
+  }
+
+  .sbi_photo {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: $feed-tile-ratio;
+    overflow: hidden;
+    background-position: center center !important;
+    background-size: cover !important;
+
+    img {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: none;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(.23, 1, .32, 1);
+    }
+  }
+
+  .sbi_item:hover .sbi_photo img {
+    transform: scale(1.03);
+  }
+
+  // Caption/likes overlays from the plugin aren't in the design
+  .sbi_link,
+  .sbi_info {
+    display: none !important;
+  }
+
+  // The plugin's text for screen readers (kept readable, just not shown)
+  .sbi-screenreader {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+  }
+
+  // "load more ↓" – yellow text with the hand-drawn underline, 51px below the grid
+  #sbi_load,
+  .sbi_load {
+    display: flex !important;
+    justify-content: center;
+    margin: 51px 0 0 !important;
+    padding: 0 !important;
+  }
+
+  .sbi_load_btn {
+    position: relative;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 5px;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 0 3px !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: url("../../images/figma/load-more-underline.svg") no-repeat left bottom / 100% 3px !important;
+    box-shadow: none !important;
+    color: color(yellow) !important;
+    font-family: $display_font !important;
+    font-size: 15px !important;
+    line-height: 21px !important;
+    font-weight: $font-400 !important;
+    text-transform: lowercase;
+    cursor: pointer;
+
+    // Down arrow (the design's arrow, turned)
+    &::after {
+      content: "";
+      display: block;
+      width: 9px;
+      height: 12px;
+      background: url("../../images/figma/project-arrow-hover.svg") no-repeat center / 12px 9px;
+      transform: rotate(90deg) scaleY(-1);
+      transition: transform .2s ease;
+    }
+
+    &:hover::after {
+      transform: translateY(2px) rotate(90deg) scaleY(-1);
+    }
+
+    &:focus-visible {
+      outline: 2px solid color(blue);
+      outline-offset: 4px;
+    }
+
+    .sbi_btn_text,
+    span {
+      color: inherit !important;
+      font: inherit !important;
+    }
+  }
+
+  // ---- Placeholder tiles (editor, before the feed is connected)
+
+  &__note {
+    margin: 0 0 25px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+
+    code {
+      color: color(yellow);
+    }
+  }
+
+  &__tiles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $feed-gap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__tile {
+    margin: 0;
+    aspect-ratio: $feed-tile-ratio;
+    background-color: color(grey);
+    list-style: none;
+  }
+
+  // Set up by social-feed.js
+  &.has-cursor .sbi_photo {
+    cursor: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sbi_photo img {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding-top: 80px;
+    padding-bottom: 60px;
+
+    &--page-top {
+      padding-top: 130px;
+    }
+
+    &__header {
+      margin-bottom: 70px;
+    }
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding-top: 60px;
+    padding-bottom: 50px;
+
+    &--page-top {
+      padding-top: 110px;
+    }
+
+    &__header {
+      margin-bottom: 40px;
+    }
+  }
+
+  @container feed (max-width: 900px) {
+    &__header {
+      padding-left: 0;
+    }
+
+    &__heading {
+      font-size: 50px;
+      line-height: 64px;
+    }
+
+    #sbi_images,
+    .sbi_images,
+    &__tiles {
+      gap: 20px !important;
+    }
+  }
+
+  // Phones: two across
+  @container feed (max-width: 560px) {
+    &__heading {
+      font-size: 36px;
+      line-height: 46px;
+    }
+
+    #sbi_images,
+    .sbi_images,
+    &__tiles {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px !important;
+    }
+
+    #sbi_load,
+    .sbi_load {
+      margin-top: 35px !important;
+    }
+  }
+}

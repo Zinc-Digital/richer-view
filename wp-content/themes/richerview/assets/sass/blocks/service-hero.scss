@@ -1,0 +1,270 @@
+// Service Hero block
+// Compiled on its own (assets/css/blocks/service-hero.css) so block.json can
+// load it on the front end and inside the block editor.
+//
+// The photo/video starts at the size in the design (1190 × 555) and
+// assets/js/blocks/service-hero.js grows it to the full screen width
+// (1440 × 864 in the design) as the page is scrolled. Without the script (and
+// in the editor) it stays at the starting size.
+
+@import "../core/variables";
+
+$service-hero-gutter: 25px;
+
+.b-service-hero {
+  // 85px below the photo matches the gaps between sections in the design
+  padding: 100px $service-hero-gutter 85px;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+  container: service-hero / inline-size;
+
+  // "Top of page" spacing – clears the floating site header
+  &--page-top {
+    padding-top: 147px;
+  }
+
+  // No photo or video – the next block sets the space below
+  &--no-media {
+    padding-bottom: 0 !important;
+  }
+
+  // Don't rely on the theme's global reset – the block editor doesn't load it
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // Heading + tags on the left, intro text bottom-aligned on the right
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1205px;
+    margin: 0 auto;
+    padding: 0 1px 0 42px;
+  }
+
+  // Up to 554px for a longer heading (Careers); the tags wrap at 436px as in the service design
+  &__intro {
+    display: flex;
+    flex: 0 1 554px;
+    flex-direction: column;
+    gap: 31px;
+    min-width: 0;
+  }
+
+  &__heading {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 70px;
+    line-height: 90px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    transition: none;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 436px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__tag {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    margin: 0;
+    padding: 0 15px;
+    border: 1px solid color(white);
+    border-radius: 50px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: $font-700;
+    text-transform: lowercase;
+    white-space: nowrap;
+    list-style: none;
+  }
+
+  &__text {
+    flex: 0 1 370px;
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 300;
+
+    p {
+      margin: 0 0 1em;
+      color: inherit;
+      font: inherit;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Photo / video. Height ÷ width at the start and at full size (read by the script too).
+  &__media {
+    --start-ratio: 0.46639; // 555 ÷ 1190
+    --end-ratio: 0.6;       // 864 ÷ 1440
+    position: relative;
+    max-width: 1190px;
+    margin: 62px auto 0;
+    aspect-ratio: 1 / var(--start-ratio);
+
+    // Growing on scroll: the box takes the full-width size straight away (so the page
+    // doesn't jump about) and the script scales and crops the frame inside it
+    &.is-expanding {
+      max-width: none;
+      margin-right: -$service-hero-gutter;
+      margin-left: -$service-hero-gutter;
+      aspect-ratio: 1 / var(--end-ratio);
+    }
+  }
+
+  &__frame {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background-color: color(grey);
+    transform-origin: 50% 0;
+
+    .is-expanding & {
+      will-change: transform, clip-path;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center center;
+
+    &--top {
+      object-position: center top;
+    }
+
+    &--bottom {
+      object-position: center bottom;
+    }
+  }
+
+  // Background video – shown straight away in place of the image
+  &__video {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    container-type: size;
+    background-color: #000;
+    pointer-events: none;
+
+    // YouTube / Vimeo players are 16:9, so scale them up to cover the frame
+    iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: max(100cqw, 177.78cqh);
+      height: max(100cqh, 56.25cqw);
+      border: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__placeholder {
+    max-width: 1190px;
+    margin: 62px auto 0;
+    color: color(white);
+  }
+
+  @media (max-width: 1024px) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    &--page-top {
+      padding-top: 130px;
+    }
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    &--page-top {
+      padding-top: 110px;
+    }
+  }
+
+  // Layout follows the block's own width, so it also works in the narrower editor column
+  @container service-hero (max-width: 900px) {
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 25px;
+      padding: 0;
+    }
+
+    &__intro {
+      flex-basis: auto;
+      gap: 25px;
+    }
+
+    &__heading {
+      font-size: 50px;
+      line-height: 64px;
+    }
+
+    &__text {
+      flex-basis: auto;
+      max-width: 520px;
+    }
+
+    &__media,
+    &__placeholder {
+      margin-top: 45px;
+    }
+
+    // Closer to the full-size shape, so there's less space waiting below it before it grows
+    &__media {
+      --start-ratio: 0.5625; // 16:9
+    }
+  }
+
+  @container service-hero (max-width: 560px) {
+    &__heading {
+      font-size: 36px;
+      line-height: 46px;
+    }
+
+    &__intro {
+      gap: 20px;
+    }
+
+    &__media {
+      --start-ratio: 0.75;
+      --end-ratio: 0.75;
+      margin-top: 35px;
+    }
+  }
+}

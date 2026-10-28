@@ -1,0 +1,517 @@
+// Project List block
+// Compiled on its own (assets/css/blocks/project-list.css) so block.json can
+// load it on the front end and inside the block editor.
+//
+// Hovering a project highlights it in yellow and nudges its title in; the image
+// on the left changes to that project's (assets/js/blocks/project-list.js).
+// The "Page listing" layout (--listing) adds a page-title heading, category
+// filters and column labels, with the image staying in view beside a long list.
+
+@import "../core/variables";
+
+$project-list-ease: cubic-bezier(.23, 1, .32, 1);
+
+.b-project-list {
+  padding: 92px 25px 100px;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+  container: project-list / inline-size;
+
+  // Optional full-width line above the section
+  &--divider {
+    padding-top: 100px;
+    border-top: 1px solid color(white);
+  }
+
+  // Don't rely on the theme's global reset – the block editor doesn't load it
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // 1200px wide, 115px from the left at 1440 (as in the design)
+  &__inner {
+    max-width: 1210px;
+    margin: 0 auto;
+    padding-right: 10px;
+  }
+
+  &__heading {
+    margin: 0 0 52px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 70px;
+    line-height: 98px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    transition: none;
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+
+  // Image – the hovered project's fades in over the others
+  &__media {
+    position: relative;
+    flex: 0 0 469px;
+    aspect-ratio: 469 / 557.614;
+    overflow: hidden;
+    background-color: color(grey);
+    transform: rotate(-.2deg);
+  }
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity .5s ease;
+
+    &.is-active {
+      opacity: 1;
+    }
+  }
+
+  &__content {
+    flex: 1 1 671px;
+    max-width: 671px;
+    min-width: 0;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  // Rows: 40px tall, 40px either side of a 1px white line
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    margin: 0;
+    padding: 0 0 39px;
+    color: color(white);
+    font-family: $display_font;
+    list-style: none;
+
+    & + & {
+      padding-top: 40px;
+      border-top: 1px solid color(white);
+    }
+
+    &:last-child,
+    &.is-last-visible {
+      padding-bottom: 0;
+    }
+
+    // First of the projects left showing by a category filter
+    &.is-first-visible {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  &__title {
+    flex: 0 0 425px;
+    min-width: 0;
+    margin: 0;
+    padding-right: 20px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 25px;
+    line-height: 35px;
+    font-weight: $font-400;
+    transition: color .3s ease, transform .4s $project-list-ease;
+  }
+
+  &__meta {
+    display: flex;
+    flex: 1 0 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-width: 0;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__tag {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin: 0;
+    padding: 0 20px;
+    border: 1px solid color(white);
+    border-radius: 50px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: $font-400;
+    text-align: center;
+    text-transform: lowercase;
+    white-space: nowrap;
+  }
+
+  // "view project" with arrow and hand-drawn underline. Its click area covers the whole row.
+  &__link {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: $font-400;
+    text-decoration: none;
+    text-transform: lowercase;
+    transition: color .3s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    &:hover {
+      color: color(yellow);
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      &::after {
+        outline: 2px solid color(blue);
+        outline-offset: 4px;
+      }
+    }
+  }
+
+  &__link-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: inherit;
+    font: inherit;
+    white-space: nowrap;
+  }
+
+  &__arrow,
+  &__underline {
+    position: relative;
+    display: block;
+    font: inherit;
+
+    img {
+      display: block;
+      max-width: none;
+      transition: opacity .3s ease;
+    }
+  }
+
+  // The arrow is drawn upside down in the design file
+  &__arrow img {
+    width: 12px;
+    height: 9px;
+    transform: scaleY(-1);
+  }
+
+  &__underline img {
+    width: 106px;
+    height: 4px;
+  }
+
+  // Yellow versions sit on top, shown on hover
+  &__hover-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+
+  // Hovered / focused project
+  &__item:hover &__title,
+  &__item:focus-within &__title {
+    color: color(yellow);
+    transform: translateX(12px);
+  }
+
+  &__item:hover &__link,
+  &__item:focus-within &__link {
+    color: color(yellow);
+  }
+
+  &__item:hover &__hover-icon,
+  &__item:focus-within &__hover-icon {
+    opacity: 1;
+  }
+
+  &__placeholder,
+  &__empty {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+  }
+
+  // ---- "Page listing" layout (the Our work page)
+
+  // Category filter buttons – the chosen one is filled white
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 39px;
+  }
+
+  &__filter {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    margin: 0;
+    padding: 0 20px;
+    border: 1px solid color(white);
+    border-radius: 50px;
+    background: transparent;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color .2s ease, color .2s ease;
+
+    &:hover {
+      background-color: rgba(color(white), .12);
+      color: color(white);
+    }
+
+    &.is-active {
+      background-color: color(white);
+      color: color(charcoal);
+      font-weight: $font-700;
+    }
+
+    &:focus-visible {
+      outline: 2px solid color(blue);
+      outline-offset: 3px;
+    }
+  }
+
+  // "project" / "service(s)" above the list, lined up with the titles and tags
+  &__labels {
+    display: flex;
+    margin-bottom: 32px;
+  }
+
+  &__label {
+    color: color(white);
+    font-family: $display_font;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: $font-700;
+
+    &:first-child {
+      flex: 0 0 425px;
+    }
+  }
+
+  &--listing {
+    // "Top of page" spacing – clears the floating site header
+    padding-top: 147px;
+
+    // Heading 159px in at 1440 (lined up with the other page titles), the list below it
+    .b-project-list__header {
+      margin-bottom: 53px;
+      padding-left: 44px;
+    }
+
+    .b-project-list__heading {
+      max-width: 670px;
+      margin: 0;
+      line-height: 90px;
+    }
+
+    // The image stays in view while the list scrolls past
+    .b-project-list__body {
+      align-items: flex-start;
+    }
+
+    .b-project-list__media {
+      position: sticky;
+      top: 120px;
+      margin-top: 52px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__image,
+    &__title {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    &--listing {
+      padding-top: 130px;
+    }
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    &--listing {
+      padding-top: 110px;
+    }
+  }
+
+  // Narrower: a smaller image beside the list, then the image above it
+  @container project-list (max-width: 1100px) {
+    &__body {
+      gap: 40px;
+    }
+
+    &__media {
+      flex-basis: 36%;
+    }
+
+    &__title,
+    &__label:first-child {
+      flex-basis: 55%;
+    }
+
+    &__title {
+      font-size: 22px;
+      line-height: 31px;
+    }
+  }
+
+  @container project-list (max-width: 860px) {
+    &__heading {
+      margin-bottom: 40px;
+      font-size: 50px;
+      line-height: 70px;
+    }
+
+    &__body {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &__media {
+      flex: 0 0 auto;
+      width: min(100%, 469px);
+    }
+
+    &__content {
+      flex-basis: auto;
+      width: 100%;
+    }
+
+    &--listing .b-project-list__header {
+      margin-bottom: 40px;
+      padding-left: 0;
+    }
+
+    &--listing .b-project-list__heading {
+      line-height: 64px;
+    }
+
+    &--listing .b-project-list__media {
+      position: relative;
+      top: auto;
+      margin-top: 0;
+    }
+  }
+
+  // Phones: title on its own line, tag and link underneath
+  @container project-list (max-width: 560px) {
+    &__heading {
+      margin-bottom: 30px;
+      font-size: 36px;
+      line-height: 50px;
+    }
+
+    &__body {
+      gap: 30px;
+    }
+
+    &__item {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 15px;
+      padding-bottom: 24px;
+
+      & + & {
+        padding-top: 25px;
+      }
+    }
+
+    &__title {
+      flex-basis: auto;
+      padding-right: 0;
+      font-size: 21px;
+      line-height: 29px;
+    }
+
+    &__item:hover &__title,
+    &__item:focus-within &__title {
+      transform: none;
+    }
+
+    &__tag {
+      height: 34px;
+      padding: 0 16px;
+      font-size: 14px;
+    }
+
+    &--listing .b-project-list__heading {
+      line-height: 46px;
+    }
+
+    &__filters {
+      gap: 8px;
+      margin-top: 25px;
+    }
+
+    &__filter {
+      height: 36px;
+      padding: 0 16px;
+      font-size: 14px;
+    }
+
+    // Phones show the title above the tags, so the column labels don't line up – hide them
+    &__labels {
+      display: none;
+    }
+  }
+}

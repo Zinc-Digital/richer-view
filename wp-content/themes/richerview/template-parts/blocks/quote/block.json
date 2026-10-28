@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/quote",
+	"title": "Quote",
+	"description": "A large centred quote with the person’s name and title.",
+	"category": "text",
+	"icon": "format-quote",
+	"keywords": ["quote", "testimonial", "client", "review"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/quote.css",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "quote.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

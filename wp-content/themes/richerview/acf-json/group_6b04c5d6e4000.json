@@ -1,0 +1,137 @@
+{
+    "key": "group_6b04c5d6e4000",
+    "title": "Block: Image Gallery",
+    "fields": [
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b04c5d6e4001",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b04c5d6e4002",
+            "label": "Images",
+            "name": "images",
+            "type": "gallery",
+            "instructions": "Shown in a row that can be dragged sideways. Portrait-ish crops work best (530 × 575px shown).",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg, jpeg, png, webp",
+            "insert": "append",
+            "preview_size": "medium"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b04c5d6e4003",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b04c5d6e4005",
+            "label": "Layout",
+            "name": "layout",
+            "type": "button_group",
+            "instructions": "“Centred” shows large images starting from the middle (project pages). “From the left” shows narrower portrait images lined up with the page heading (Careers).",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "centred": "Centred",
+                "left": "From the left"
+            },
+            "default_value": "centred",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b04c5d6e4004",
+            "label": "Drag badge text",
+            "name": "drag_label",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "drag",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/image-gallery"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1793186597
+}

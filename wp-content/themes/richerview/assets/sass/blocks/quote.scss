@@ -1,0 +1,98 @@
+// Quote block
+// Compiled on its own (assets/css/blocks/quote.css) so block.json can
+// load it on the front end and inside the block editor.
+
+@import "../core/variables";
+
+.b-quote {
+  // 130px above and 140px below, as in the design
+  padding: 130px 25px 140px;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+
+  // Don't rely on the theme's global reset – the block editor doesn't load it
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 27px;
+    max-width: 1089px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__quote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    p {
+      margin: 0;
+      color: color(white);
+      font-family: $display_font;
+      font-size: 25px;
+      line-height: 35px;
+      font-weight: 300;
+    }
+  }
+
+  &__author {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  &__name {
+    color: color(white);
+    font-family: $display_font;
+    font-size: 18px;
+    line-height: 25px;
+    font-style: normal;
+    font-weight: $font-700;
+  }
+
+  &__role {
+    color: color(white);
+    font-family: $display_font;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: $font-400;
+    letter-spacing: .02em;
+  }
+
+  &__placeholder {
+    margin: 0;
+    color: color(white);
+    text-align: center;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 90px 25px 100px;
+
+    &__quote p {
+      font-size: 22px;
+      line-height: 31px;
+    }
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding: 60px 25px 70px;
+
+    &__inner {
+      gap: 20px;
+    }
+
+    &__quote p {
+      font-size: 18px;
+      line-height: 26px;
+    }
+  }
+}

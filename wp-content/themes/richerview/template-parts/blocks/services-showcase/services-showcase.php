@@ -2,8 +2,8 @@
 /**
  * Services Showcase block
  *
- * Centred heading with a hand-drawn underline, followed by a row of service
- * cards. On desktop the cards scroll sideways as the page scrolls
+ * Centred heading with a hand-drawn underline (or a smaller left-aligned one),
+ * followed by a row of service cards. On desktop the cards scroll sideways as the page scrolls
  * (assets/js/blocks/services-showcase.js).
  *
  * @var array $block      The block settings and attributes.
@@ -15,9 +15,10 @@ $highlight = get_field('highlight');
 $text      = get_field('text');
 $cards     = get_field('cards');
 $animate   = get_field('scroll_animation') !== false;
+$compact   = get_field('heading_style') === 'compact';
 
 $wrapper_attributes = array(
-	'class' => 'b-services',
+	'class' => 'b-services' . ($compact ? ' b-services--compact' : ''),
 );
 if ($animate) {
 	$wrapper_attributes['data-scroll-animation'] = 'true';

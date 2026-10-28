@@ -1,0 +1,271 @@
+{
+    "key": "group_6b48091a28000",
+    "title": "Block: Vacancy List",
+    "fields": [
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b48091a28001",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b48091a28002",
+            "label": "Heading",
+            "name": "heading",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "our open roles",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b48091a28003",
+            "label": "When there are no open roles",
+            "name": "empty_text",
+            "type": "textarea",
+            "instructions": "Shown instead of the list.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "We’re not hiring right now – but we’re always happy to see a reel.",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b48091a28004",
+            "label": "",
+            "name": "note",
+            "type": "message",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "The roles come from <strong>Vacancies</strong> in the admin menu, soonest closing date first. Each role leaves the list after its closing date.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b48091a28005",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b48091a28006",
+            "label": "Column label: role",
+            "name": "role_label",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "role",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b48091a28007",
+            "label": "Column label: type",
+            "name": "type_label",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "type",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b48091a28008",
+            "label": "Column label: closes",
+            "name": "closes_label",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "closes",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b48091a28009",
+            "label": "No closing date",
+            "name": "ongoing_label",
+            "type": "text",
+            "instructions": "Shown in the “closes” column for roles that are open until filled.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "ongoing",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b48091a28010",
+            "label": "Apply link text",
+            "name": "apply_label",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "apply for this role",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b48091a28011",
+            "label": "Badge text – closed role",
+            "name": "open_label",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "open",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b48091a28012",
+            "label": "Badge text – open role",
+            "name": "close_label",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "close",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/vacancy-list"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1793186640
+}

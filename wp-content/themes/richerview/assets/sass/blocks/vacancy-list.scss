@@ -1,0 +1,344 @@
+// Vacancy List block
+// Compiled on its own (assets/css/blocks/vacancy-list.css) so block.json can
+// load it on the front end and inside the block editor.
+//
+// Opening/closing and the "open" / "close" cursor badge come from
+// assets/js/blocks/vacancy-list.js.
+
+@import "../core/variables";
+@import "../components/c.cursor-badge";
+
+$vacancies-ease: cubic-bezier(.23, 1, .32, 1);
+
+.b-vacancies {
+  // 40px above the heading (after the Accordion with Image's own space) and the
+  // footer's own space below, as in the design
+  padding: 40px 25px 0;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+  container: vacancies / inline-size;
+
+  // Don't rely on the theme's global reset – the block editor doesn't load it
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // 1199px wide, 116px from the left at 1440 (as in the design)
+  &__inner {
+    max-width: 1210px;
+    margin: 0 auto;
+    padding-right: 10px;
+  }
+
+  &__heading {
+    margin: 0 0 66px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 50px;
+    line-height: 70px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    transition: none;
+  }
+
+  // "role" on the left, "type" and "closes" over their columns
+  &__labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 38px;
+  }
+
+  &__label-group {
+    display: flex;
+    justify-content: space-between;
+    flex: 0 0 20.85%; // 250 of 1199
+    font: inherit;
+  }
+
+  &__label {
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: $font-700;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  // Rows: 38px either side of a 1px white line
+  &__item {
+    margin: 0;
+    border-top: 1px solid color(white);
+    list-style: none;
+  }
+
+  &__role {
+    margin: 0;
+    font: inherit;
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 38px 0;
+    border: 0;
+    background: none;
+    color: color(white);
+    font-family: $display_font;
+    text-align: left;
+    cursor: pointer;
+    transition: padding-bottom .4s $vacancies-ease;
+
+    &:focus-visible {
+      outline: 2px solid color(blue);
+      outline-offset: -2px;
+    }
+  }
+
+  // Open role: 35px between the row and its summary
+  &__item.is-open &__toggle {
+    padding-bottom: 35px;
+  }
+
+  &__title {
+    flex: 0 0 76.48%; // 917 of 1199
+    min-width: 0;
+    padding-right: 20px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 40px;
+    line-height: 56px;
+    font-weight: $font-400;
+  }
+
+  &__meta {
+    display: flex;
+    flex: 1 0 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    min-width: 0;
+    font: inherit;
+  }
+
+  &__type {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 20px;
+    border: 1px solid color(white);
+    border-radius: 50px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    white-space: nowrap;
+  }
+
+  &__closes {
+    margin-left: auto;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: $font-400;
+    text-align: right;
+    text-transform: lowercase;
+    white-space: nowrap;
+  }
+
+  // Summary and apply link (animates height via grid rows)
+  &__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .4s $vacancies-ease;
+  }
+
+  &__item.is-open &__panel {
+    grid-template-rows: 1fr;
+  }
+
+  &__panel-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  &__summary {
+    margin: 0 0 35px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 300;
+  }
+
+  &__apply {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 38px;
+    color: color(yellow);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: $font-400;
+    text-decoration: none;
+    text-transform: lowercase;
+
+    &:hover {
+      color: color(yellow);
+    }
+
+    &:focus-visible {
+      outline: 2px solid color(blue);
+      outline-offset: 4px;
+    }
+
+    img {
+      display: block;
+      max-width: none;
+    }
+  }
+
+  &__apply-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: inherit;
+    font: inherit;
+    white-space: nowrap;
+
+    // The arrow is drawn upside down in the design file
+    img {
+      width: 12px;
+      height: 9px;
+      transform: scaleY(-1);
+      transition: transform .2s ease;
+    }
+  }
+
+  &__apply:hover &__apply-text img {
+    transform: scaleY(-1) translateX(3px);
+  }
+
+  // Hand-drawn underline, stretched to the link text (zero width + min-width so the
+  // image's own width doesn't make the link wider than its text)
+  &__apply-underline {
+    width: 0;
+    min-width: 100%;
+    height: 4px;
+  }
+
+  &__empty {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 300;
+  }
+
+  .screen-reader-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  // Set up by vacancy-list.js
+  &.has-cursor &__toggle {
+    cursor: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__toggle,
+    &__panel {
+      transition: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    padding-top: 40px;
+  }
+
+  // Narrower: smaller titles, wider type/date column
+  @container vacancies (max-width: 1000px) {
+    &__heading {
+      margin-bottom: 45px;
+      font-size: 40px;
+      line-height: 56px;
+    }
+
+    &__title {
+      flex-basis: 62%;
+      font-size: 32px;
+      line-height: 45px;
+    }
+
+    &__label-group {
+      flex-basis: calc(38% - 25px);
+    }
+  }
+
+  // Phones: title on its own line, type and date underneath; no column labels
+  @container vacancies (max-width: 600px) {
+    &__heading {
+      margin-bottom: 30px;
+      font-size: 32px;
+      line-height: 44px;
+    }
+
+    &__labels {
+      display: none;
+    }
+
+    &__toggle {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+      padding: 25px 0;
+    }
+
+    &__item.is-open &__toggle {
+      padding-bottom: 25px;
+    }
+
+    &__title {
+      flex-basis: auto;
+      padding-right: 0;
+      font-size: 26px;
+      line-height: 36px;
+    }
+
+    &__type {
+      height: 34px;
+      padding: 0 16px;
+      font-size: 14px;
+    }
+
+    &__summary {
+      margin-bottom: 25px;
+    }
+
+    &__apply {
+      margin-bottom: 28px;
+    }
+  }
+}

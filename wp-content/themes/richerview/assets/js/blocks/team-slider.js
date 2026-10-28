@@ -36,7 +36,7 @@
 				return target;
 			}
 
-			window.zincDragSlider(section, row, {
+			const slider = window.zincDragSlider(section, row, {
 				start: function () {
 					if (section.dataset.start === 'start' || !desktop.matches) {
 						track.style.paddingRight = '';
@@ -45,6 +45,17 @@
 					return bleed_position();
 				},
 			});
+
+			// Over the careers link: the normal hand pointer instead of the "drag" badge
+			const link = section.querySelector('.b-team__join-link');
+			if (link) {
+				link.addEventListener('mouseenter', function () {
+					if (!slider.is_dragging()) slider.hide_badge();
+				});
+				link.addEventListener('mouseleave', function (e) {
+					if (row.contains(e.relatedTarget)) slider.show_drag(e);
+				});
+			}
 		});
 	}
 

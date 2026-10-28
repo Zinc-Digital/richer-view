@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/vacancy-list",
+	"title": "Vacancy List",
+	"description": "The open roles from Vacancies, each opening to show its summary and an apply link.",
+	"category": "text",
+	"icon": "groups",
+	"keywords": ["vacancies", "jobs", "careers", "roles", "hiring"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/vacancy-list.css",
+	"viewScript": "file:../../../assets/js/blocks/vacancy-list.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "vacancy-list.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

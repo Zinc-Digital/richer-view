@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/image-gallery",
+	"title": "Image Gallery",
+	"description": "A row of large images that can be dragged sideways.",
+	"category": "text",
+	"icon": "format-gallery",
+	"keywords": ["gallery", "images", "photos", "slider", "carousel"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/image-gallery.css",
+	"viewScript": "file:../../../assets/js/blocks/image-gallery.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "image-gallery.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

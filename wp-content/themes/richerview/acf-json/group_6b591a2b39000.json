@@ -1,0 +1,195 @@
+{
+    "key": "group_6b591a2b39000",
+    "title": "Block: Social Feed",
+    "fields": [
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b591a2b39001",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b591a2b39002",
+            "label": "Heading",
+            "name": "heading",
+            "type": "textarea",
+            "instructions": "Press Enter for a new line.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "updates from the production suite",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b591a2b39003",
+            "label": "Feed shortcode",
+            "name": "shortcode",
+            "type": "text",
+            "instructions": "The shortcode from your feed plugin, e.g. [instagram-feed] or [instagram-feed feed=1] (Smash Balloon Instagram Feed). Set the number of posts and the “Load More” button in the plugin.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "[instagram-feed]",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b591a2b39004",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b591a2b39005",
+            "label": "Badge text",
+            "name": "view_label",
+            "type": "text",
+            "instructions": "Shown in the round badge over a post.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "view",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b591a2b39006",
+            "label": "Load more text",
+            "name": "load_more_label",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "load more",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b591a2b39007",
+            "label": "Spacing above",
+            "name": "spacing",
+            "type": "button_group",
+            "instructions": "“Top of page” leaves room for the site header.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "page-top": "Top of page",
+                "standard": "Standard"
+            },
+            "default_value": "page-top",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b591a2b39008",
+            "label": "Heading level",
+            "name": "heading_level",
+            "type": "button_group",
+            "instructions": "Use H1 when this is the first block on the page.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "h1": "H1",
+                "h2": "H2"
+            },
+            "default_value": "h1",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/social-feed"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1793187518
+}

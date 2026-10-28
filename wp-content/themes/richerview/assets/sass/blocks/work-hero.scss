@@ -1,0 +1,224 @@
+// Work Hero block
+// Compiled on its own (assets/css/blocks/work-hero.css) so block.json can
+// load it on the front end and inside the block editor.
+
+@import "../core/variables";
+
+.b-work-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  // 1444 × 834 in the design
+  min-height: clamp(560px, 57.92vw, 960px);
+  padding: 140px 25px 83px;
+  overflow: hidden;
+  background-color: color(black);
+  color: color(white);
+  font-family: $display_font;
+  container: work-hero / inline-size;
+
+  // Don't rely on the theme's global reset – the block editor doesn't load it
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  // Photo / video filling the block, slightly darkened top and bottom so the header and text stay readable
+  &__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(#000, .3) 0, rgba(#000, 0) 22%, rgba(#000, 0) 50%, rgba(#000, .45) 100%);
+      pointer-events: none;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center center;
+
+    &--top {
+      object-position: center top;
+    }
+
+    &--bottom {
+      object-position: center bottom;
+    }
+  }
+
+  &__video {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    container-type: size;
+    background-color: #000;
+    pointer-events: none;
+
+    // YouTube / Vimeo players are 16:9, so scale them up to cover the block
+    iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: max(100cqw, 177.78cqh);
+      height: max(100cqh, 56.25cqw);
+      border: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // Title and details: 159px in at 1440, lined up with the other page titles
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+    width: 100%;
+    max-width: 1205px;
+    margin: 0 auto;
+    padding-left: 42px;
+  }
+
+  &__heading {
+    max-width: 670px;
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 70px;
+    line-height: 90px;
+    font-weight: $font-400;
+    transition: none;
+  }
+
+  &__details {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 25px;
+    margin: 0;
+  }
+
+  &__detail {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+  }
+
+  &__label,
+  &__data,
+  &__value {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 300;
+  }
+
+  &__data {
+    display: flex;
+    align-items: center;
+  }
+
+  &__value--bold {
+    font-weight: $font-700;
+  }
+
+  &__logo {
+    display: block;
+    width: auto;
+    height: 22px;
+    max-width: 160px;
+    object-fit: contain;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    font: inherit;
+  }
+
+  &__tag {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: 0 15px;
+    border: 1px solid color(white);
+    border-radius: 50px;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: $font-700;
+    text-decoration: none;
+    text-transform: lowercase;
+    white-space: nowrap;
+    transition: background-color .2s ease, color .2s ease;
+  }
+
+  a.b-work-hero__tag:hover {
+    background-color: color(white);
+    color: color(charcoal);
+  }
+
+  a.b-work-hero__tag:focus-visible {
+    outline: 2px solid color(blue);
+    outline-offset: 3px;
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding-bottom: 50px;
+  }
+
+  // "the brief" (Heading with Text) straight after the hero: 111px gap, as in the design
+  & + .b-heading-text {
+    padding-top: 111px;
+
+    @media (max-width: 1024px) {
+      padding-top: 90px;
+    }
+
+    @media (max-width: $sm - 1px) {
+      padding-top: 60px;
+    }
+  }
+
+  // Layout follows the block's own width, so it also works in the narrower editor column
+  @container work-hero (max-width: 900px) {
+    &__content {
+      padding-left: 0;
+    }
+
+    &__heading {
+      font-size: 50px;
+      line-height: 64px;
+    }
+  }
+
+  @container work-hero (max-width: 560px) {
+    &__heading {
+      font-size: 36px;
+      line-height: 46px;
+    }
+  }
+}

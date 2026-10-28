@@ -232,8 +232,14 @@ $team-gutter-right: clamp(25px, 3.2vw, 46px);
   }
 
   &.has-cursor &__slider,
-  &.has-cursor &__join-link {
+  &.has-cursor.is-dragging &__join-link {
     cursor: none;
+  }
+
+  // Over the careers link the "drag" badge hides (team-slider.js) and the normal
+  // hand pointer shows, so it's clear the link can be clicked
+  &.has-cursor &__join-link {
+    cursor: pointer;
   }
 
   @media (max-width: 1024px) {

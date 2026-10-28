@@ -1,0 +1,150 @@
+// Image Gallery block
+// Compiled on its own (assets/css/blocks/image-gallery.css) so block.json can
+// load it on the front end and inside the block editor.
+//
+// Dragging and the "drag" cursor badge are added by assets/js/blocks/image-gallery.js.
+// Without it the images are a swipeable row.
+
+@import "../core/variables";
+@import "../components/c.cursor-badge";
+
+.b-gallery {
+  // 99px above and 126px below, as in the design
+  padding: 99px 0 126px;
+  overflow: hidden;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+
+  // Don't rely on the theme's global reset – the block editor doesn't load it
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &__slider {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid color(blue);
+      outline-offset: -4px;
+    }
+  }
+
+  &__track {
+    display: flex;
+    gap: 25px;
+    width: max-content;
+    margin: 0;
+    padding: 0 25px;
+    list-style: none;
+  }
+
+  &__item {
+    flex-shrink: 0;
+    width: 530px;
+    margin: 0;
+    aspect-ratio: 530 / 575;
+    overflow: hidden;
+    background-color: color(grey);
+    list-style: none;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+  }
+
+  &__placeholder {
+    margin: 0;
+    padding: 0 25px;
+    color: color(white);
+  }
+
+  // "From the left": 389 × 554 portrait images, 20px apart, starting in line with
+  // the page heading (160px in at 1440) – 77px below it and 111px above the next block
+  &--left {
+    padding: 77px 0 111px;
+
+    .b-gallery__track {
+      gap: 20px;
+      padding: 0 25px 0 clamp(25px, 11.11vw, 160px);
+    }
+
+    .b-gallery__item {
+      width: 389px;
+      aspect-ratio: 389 / 554;
+    }
+  }
+
+  // Set up by image-gallery.js
+  &.is-draggable &__slider {
+    cursor: grab;
+    user-select: none;
+
+    img {
+      -webkit-user-drag: none;
+    }
+  }
+
+  &.is-dragging &__slider {
+    cursor: grabbing;
+  }
+
+  &.has-cursor &__slider {
+    cursor: none;
+  }
+
+  @media (max-width: 1024px) {
+    padding: 70px 0 90px;
+
+    &__item {
+      width: 400px;
+    }
+
+    &--left {
+      padding: 50px 0 80px;
+
+      .b-gallery__item {
+        width: 300px;
+      }
+    }
+  }
+
+  @media (max-width: $sm - 1px) {
+    padding: 50px 0 60px;
+
+    &__track {
+      gap: 15px;
+    }
+
+    &__item,
+    &--left .b-gallery__item {
+      width: 78vw;
+      scroll-snap-align: center;
+    }
+
+    &--left {
+      padding: 35px 0 60px;
+
+      .b-gallery__track {
+        gap: 15px;
+      }
+    }
+
+    &__slider {
+      scroll-snap-type: x mandatory;
+    }
+  }
+}

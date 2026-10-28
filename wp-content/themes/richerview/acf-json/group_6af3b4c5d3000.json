@@ -1,0 +1,420 @@
+{
+    "key": "group_6af3b4c5d3000",
+    "title": "Block: Work Hero",
+    "fields": [
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3001",
+            "label": "Content",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3002",
+            "label": "Heading",
+            "name": "heading",
+            "type": "textarea",
+            "instructions": "Leave blank to use the project title. Press Enter for a new line.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3003",
+            "label": "Project details",
+            "name": "show_details",
+            "type": "true_false",
+            "instructions": "Client, year and services, from the project’s details in the sidebar and its categories.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3008",
+            "label": "Media",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3020",
+            "label": "Media",
+            "name": "media_type",
+            "type": "button_group",
+            "instructions": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "image": "Image",
+                "video": "Video"
+            },
+            "default_value": "image",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6af3b4c5d3020",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3004",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "Fills the top of the page (e.g. 2880 × 1668px). Leave empty to use the project’s listing image.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg, jpeg, png, webp",
+            "preview_size": "medium"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6af3b4c5d3020",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3005",
+            "label": "Image position",
+            "name": "image_position",
+            "type": "button_group",
+            "instructions": "Which part of the image to keep in view.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "top": "Top",
+                "center": "Centre",
+                "bottom": "Bottom"
+            },
+            "default_value": "center",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3021",
+            "label": "Video",
+            "name": "video_type",
+            "type": "button_group",
+            "instructions": "Plays muted and on a loop, cropped to fill the frame. Upload or Video file link start fastest.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6af3b4c5d3020",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "youtube": "YouTube",
+                "vimeo": "Vimeo",
+                "file": "Upload",
+                "link": "Video file link"
+            },
+            "default_value": "file",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 1,
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3022",
+            "label": "Video link",
+            "name": "video_url",
+            "type": "url",
+            "instructions": "Paste the video's page link, e.g. https://www.youtube.com/watch?v=… or https://vimeo.com/…",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6af3b4c5d3020",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6af3b4c5d3021",
+                        "operator": "==",
+                        "value": "youtube"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6af3b4c5d3020",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6af3b4c5d3021",
+                        "operator": "==",
+                        "value": "vimeo"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "aria-label": "",
+            "required": 1,
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3023",
+            "label": "Video file",
+            "name": "video_file",
+            "type": "file",
+            "instructions": "MP4 or WebM. Keep it short and compressed (ideally under 10MB).",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6af3b4c5d3020",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6af3b4c5d3021",
+                        "operator": "==",
+                        "value": "file"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "mp4, webm"
+        },
+        {
+            "key": "field_6af3b4c5d3024",
+            "label": "Video file link",
+            "name": "video_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "A direct link to an MP4 or WebM file, ending in .mp4 or .webm – e.g. the video file link Vimeo gives on Pro, Business and Premium plans, or a file on your own hosting. Starts straight away, like an upload.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6af3b4c5d3020",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6af3b4c5d3021",
+                        "operator": "==",
+                        "value": "link"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": "https://…/video.mp4"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3009",
+            "label": "Settings",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3010",
+            "label": "Label: client",
+            "name": "client_label",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Client:",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3011",
+            "label": "Label: year",
+            "name": "year_label",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Year:",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6af3b4c5d3012",
+            "label": "Label: services",
+            "name": "services_label",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Services:",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/work-hero"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1793185218
+}

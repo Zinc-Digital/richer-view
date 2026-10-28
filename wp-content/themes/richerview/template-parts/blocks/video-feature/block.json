@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/video-feature",
+	"title": "Video Feature",
+	"description": "A full-width image with a heading and a Play button that opens the video in a pop-up.",
+	"category": "text",
+	"icon": "video-alt2",
+	"keywords": ["video", "film", "play", "final cut", "showreel"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/video-feature.css",
+	"viewScript": "file:../../../assets/js/blocks/video-feature.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "video-feature.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

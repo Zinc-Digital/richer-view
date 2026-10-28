@@ -16,6 +16,7 @@
  *   slider.is_dragging();               // true mid-drag
  *   slider.show_label(event, 'Play');   // badge shows other text (e.g. over a video)
  *   slider.show_drag(event);            // back to "‹ drag ›"
+ *   slider.hide_badge();                // normal mouse pointer (e.g. over a link)
  */
 (function () {
 	const reduced_motion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -26,7 +27,7 @@
 	window.zincDragSlider = function (section, slider, options) {
 		const start = (options && options.start) || 'start';
 		const noop = function () {};
-		const api = { is_dragging: function () { return false; }, show_drag: noop, show_label: noop };
+		const api = { is_dragging: function () { return false; }, show_drag: noop, show_label: noop, hide_badge: noop };
 		if (!section || !slider) return api;
 
 		let dragging = false;
@@ -156,6 +157,8 @@
 				badge_el.classList.remove('c-cursor__badge--drag');
 				badge.show(e, label);
 			};
+
+			api.hide_badge = badge.hide;
 
 			section.classList.add('has-cursor');
 			slider.addEventListener('mouseenter', api.show_drag);

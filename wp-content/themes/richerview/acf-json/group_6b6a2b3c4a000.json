@@ -1,0 +1,382 @@
+{
+    "key": "group_6b6a2b3c4a000",
+    "title": "404 page",
+    "fields": [
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b6a2b3c4a001",
+            "label": "404 page",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b6a2b3c4a002",
+            "label": "Small heading",
+            "name": "nf_label",
+            "type": "text",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "error 404",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b6a2b3c4a003",
+            "label": "Heading",
+            "name": "nf_heading",
+            "type": "textarea",
+            "instructions": "Press Enter for a new line.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "wrong page, right vibe",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b6a2b3c4a004",
+            "label": "Text",
+            "name": "nf_text",
+            "type": "textarea",
+            "instructions": "",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "This page didn't make the final cut. It may have moved, or it was never shot in the first place.",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b6a2b3c4a005",
+            "label": "Link text",
+            "name": "nf_link_label",
+            "type": "text",
+            "instructions": "Links to the home page.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "back to the home page",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b6a2b3c4a006",
+            "label": "Badge text",
+            "name": "nf_badge",
+            "type": "textarea",
+            "instructions": "The round badge – it follows the mouse. Press Enter for a new line.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "that's\nnot the shot.",
+            "maxlength": "",
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b6a2b3c4a020",
+            "label": "Media",
+            "name": "nf_media_type",
+            "type": "button_group",
+            "instructions": "",
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "image": "Image",
+                "video": "Video"
+            },
+            "default_value": "image",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b6a2b3c4a020",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6b6a2b3c4a007",
+            "label": "Image",
+            "name": "nf_image",
+            "type": "image",
+            "instructions": "Fills the screen (e.g. 2880 × 1668px). Leave empty for the photo from the design.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg, jpeg, png, webp",
+            "preview_size": "medium"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b6a2b3c4a020",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "allow_in_bindings": 0,
+            "key": "field_6b6a2b3c4a008",
+            "label": "Image position",
+            "name": "nf_image_position",
+            "type": "button_group",
+            "instructions": "Which part of the image to keep in view.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "top": "Top",
+                "center": "Centre",
+                "bottom": "Bottom"
+            },
+            "default_value": "center",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b6a2b3c4a021",
+            "label": "Video",
+            "name": "nf_video_type",
+            "type": "button_group",
+            "instructions": "Plays muted and on a loop, cropped to fill the frame. Upload or Video file link start fastest.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b6a2b3c4a020",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "youtube": "YouTube",
+                "vimeo": "Vimeo",
+                "file": "Upload",
+                "link": "Video file link"
+            },
+            "default_value": "file",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "aria-label": "",
+            "required": 1,
+            "allow_in_bindings": 0,
+            "key": "field_6b6a2b3c4a022",
+            "label": "Video link",
+            "name": "nf_video_url",
+            "type": "url",
+            "instructions": "Paste the video's page link, e.g. https://www.youtube.com/watch?v=… or https://vimeo.com/…",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b6a2b3c4a020",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6b6a2b3c4a021",
+                        "operator": "==",
+                        "value": "youtube"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6b6a2b3c4a020",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6b6a2b3c4a021",
+                        "operator": "==",
+                        "value": "vimeo"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "aria-label": "",
+            "required": 1,
+            "allow_in_bindings": 0,
+            "key": "field_6b6a2b3c4a023",
+            "label": "Video file",
+            "name": "nf_video_file",
+            "type": "file",
+            "instructions": "MP4 or WebM. Keep it short and compressed (ideally under 10MB).",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b6a2b3c4a020",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6b6a2b3c4a021",
+                        "operator": "==",
+                        "value": "file"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "mp4, webm"
+        },
+        {
+            "key": "field_6b6a2b3c4a024",
+            "label": "Video file link",
+            "name": "nf_video_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "A direct link to an MP4 or WebM file, ending in .mp4 or .webm – e.g. the video file link Vimeo gives on Pro, Business and Premium plans, or a file on your own hosting. Starts straight away, like an upload.",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b6a2b3c4a020",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6b6a2b3c4a021",
+                        "operator": "==",
+                        "value": "link"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": "https://…/video.mp4"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-general-settings"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1793187898
+}

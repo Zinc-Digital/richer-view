@@ -55,6 +55,13 @@
     pointer-events: none;
   }
 
+  // A page's own wording (Page options): the scribble stretches to the chosen words
+  &__cta-highlight--fit &__cta-scribble {
+    bottom: -.043em;
+    width: calc(100% + .086em);
+    height: .229em;
+  }
+
   &__cta-link {
     display: inline-flex;
     flex-direction: column;
@@ -93,6 +100,13 @@
   &__cta-underline {
     width: 284px;
     height: 6px;
+  }
+
+  // …and the link's underline stretches to the link text (zero width + min-width so
+  // the image's own width doesn't make the link wider than its text)
+  &__cta-link--fit &__cta-underline {
+    width: 0;
+    min-width: 100%;
   }
 
   &__divider {

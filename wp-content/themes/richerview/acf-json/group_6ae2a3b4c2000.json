@@ -1,0 +1,93 @@
+{
+    "key": "group_6ae2a3b4c2000",
+    "title": "Project details",
+    "fields": [
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6ae2a3b4c2001",
+            "label": "Client",
+            "name": "client_name",
+            "type": "text",
+            "instructions": "Shown as text if there’s no logo, and used as the logo’s alt text.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6ae2a3b4c2002",
+            "label": "Client logo",
+            "name": "client_logo",
+            "type": "image",
+            "instructions": "A white logo on a transparent background (PNG or SVG), shown 22px tall.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "png, svg, webp",
+            "preview_size": "medium"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6ae2a3b4c2003",
+            "label": "Year",
+            "name": "year",
+            "type": "text",
+            "instructions": "e.g. 2024",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 4,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "work"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "The project’s client and year, shown at the top of the project page.",
+    "show_in_rest": 0,
+    "modified": 1793185057
+}

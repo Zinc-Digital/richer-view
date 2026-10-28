@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/service-hero",
+	"title": "Service Hero",
+	"description": "Large heading with tags and intro text, followed by a wide photo or video that grows to the full screen width as the page is scrolled.",
+	"category": "text",
+	"icon": "video-alt3",
+	"keywords": ["service", "hero", "banner", "header", "video", "tags"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/service-hero.css",
+	"viewScript": "file:../../../assets/js/blocks/service-hero.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "service-hero.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false
+	}
+}

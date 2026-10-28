@@ -1,0 +1,306 @@
+// 404 page (404.php)
+// Full-screen photo or video, the message bottom left, a round badge that follows
+// the mouse (assets/js/components/not-found.js) and the legal links bottom right.
+
+.c-not-found {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  // 1440 × 834 in the design – the whole first screen
+  min-height: max(100vh, 640px);
+  min-height: max(100svh, 640px);
+  padding: 140px clamp(25px, 9.24vw, 133px) 129px;
+  overflow: hidden;
+  background-color: color(black);
+  color: color(white);
+  font-family: $display_font;
+
+  &.has-badge-follow {
+    cursor: none;
+
+    a {
+      cursor: pointer;
+    }
+  }
+
+  // Photo / video, darkening towards the bottom
+  &__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(#000, 0) 0%, rgba(#000, .75) 100%);
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center center;
+
+    &--top {
+      object-position: center top;
+    }
+
+    &--bottom {
+      object-position: center bottom;
+    }
+  }
+
+  &__video {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    container-type: size;
+    background-color: #000;
+    pointer-events: none;
+
+    // YouTube / Vimeo players are 16:9, so scale them up to cover the screen
+    iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: max(100cqw, 177.78cqh);
+      height: max(100cqh, 56.25cqw);
+      border: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // Message: 133px in, the link 129px up from the bottom at 1440
+  &__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 775px;
+  }
+
+  &__label {
+    margin: 0 0 -20px; // sits straight on top of the heading
+    color: color(white);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: $font-700;
+  }
+
+  &__heading {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 70px;
+    line-height: 90px;
+    font-weight: $font-400;
+    transition: none;
+  }
+
+  &__text {
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 25px;
+    line-height: 35px;
+    font-weight: 300;
+  }
+
+  &__link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: color(yellow);
+    font-family: $display_font;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: $font-400;
+    text-decoration: none;
+    text-transform: lowercase;
+
+    &:hover {
+      color: color(yellow);
+    }
+
+    &:focus-visible {
+      outline: 2px solid color(blue);
+      outline-offset: 4px;
+    }
+  }
+
+  &__link-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: inherit;
+    font: inherit;
+    white-space: nowrap;
+
+    // The arrow is drawn upside down in the design file
+    img {
+      display: block;
+      width: 12px;
+      height: 9px;
+      max-width: none;
+      transform: scaleY(-1);
+      transition: transform .2s ease;
+    }
+  }
+
+  &__link:hover &__link-text img {
+    transform: scaleY(-1) translateX(3px);
+  }
+
+  // Hand-drawn underline, stretched to the link text (zero width + min-width so the
+  // image's own width doesn't make the link wider than its text)
+  &__underline {
+    display: block;
+    width: 0;
+    min-width: 100%;
+    height: 4px;
+    max-width: none;
+  }
+
+  // Round badge – 1024px across and 327px down at 1440 × 834
+  &__badge {
+    position: absolute;
+    z-index: 2;
+    top: 39.21%;
+    left: 71.11%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    margin: 0;
+    padding: 0 10px;
+    border-radius: 50%;
+    background-color: color(white);
+    color: color(grey);
+    font-family: $display_font;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: $font-700;
+    text-align: center;
+    filter: drop-shadow(0 0 12.5px rgba(#000, .15));
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  // Legal links, bottom right
+  &__legal {
+    position: absolute;
+    z-index: 1;
+    right: 26px;
+    bottom: 37px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      color: color(white);
+      font-family: $display_font;
+      font-size: 10px;
+      line-height: 14px;
+      font-weight: $font-500;
+      text-transform: lowercase;
+      white-space: nowrap;
+      list-style: none;
+
+      + li::before {
+        content: '';
+        display: block;
+        flex-shrink: 0;
+        width: 2.00127px;
+        height: 18.001px;
+        background: url('../images/figma/legal-separator.svg') no-repeat center / 100% 100%;
+      }
+    }
+
+    a {
+      color: color(white);
+      font: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: color(yellow);
+      }
+    }
+
+    .site-footer__credit {
+      text-decoration: underline;
+      text-underline-position: from-font;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    &__heading {
+      font-size: 50px;
+      line-height: 64px;
+    }
+
+    &__text {
+      font-size: 21px;
+      line-height: 30px;
+    }
+  }
+
+  // Phones: legal links under the message, badge top right
+  @media (max-width: $sm - 1px) {
+    padding-bottom: 40px;
+
+    &__heading {
+      font-size: 36px;
+      line-height: 46px;
+    }
+
+    &__text {
+      font-size: 18px;
+      line-height: 26px;
+    }
+
+    &__badge {
+      top: 120px;
+      right: 25px;
+      left: auto;
+      width: 76px;
+      height: 76px;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &__legal {
+      position: relative;
+      right: auto;
+      bottom: auto;
+      justify-content: flex-start;
+      margin-top: 40px;
+    }
+  }
+}
