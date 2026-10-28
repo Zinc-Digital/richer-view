@@ -3,13 +3,54 @@
  * post (assets/js/components/cursor-badge.js), and the feed plugin's
  * "Load More" button given the block's wording. Works for posts the plugin
  * adds later (Load More), as it listens on the whole feed.
+ *
+ * The Zinc Instagram Feed mu-plugin has no "load more" of its own, so the
+ * block shows its first three rows and adds one that shows three more a click.
  */
 (function () {
-	const POST = '.sbi_photo, .sbi_item a';
+	const POST = '.sbi_photo, .sbi_item a, .zig-card';
+	const ROWS = 3;
+
+	function init_load_more(section, feed) {
+		const track = feed.querySelector('.zig-track');
+		if (!track) return;
+		const cards = Array.from(track.querySelectorAll('.zig-card'));
+
+		const wrap = document.createElement('div');
+		wrap.className = 'b-feed__more';
+		wrap.innerHTML = '<button type="button" class="b-feed__more-btn"></button>';
+		const button = wrap.firstChild;
+		button.textContent = section.dataset.loadMoreLabel;
+		feed.appendChild(wrap);
+
+		let shown = 0;
+
+		function columns() {
+			return getComputedStyle(track).gridTemplateColumns.split(' ').length || 3;
+		}
+
+		function show(count) {
+			shown = Math.min(cards.length, count);
+			cards.forEach(function (card, i) {
+				card.classList.toggle('is-hidden', i >= shown);
+			});
+			wrap.hidden = shown >= cards.length;
+		}
+
+		button.addEventListener('click', function () {
+			const first = cards[shown];
+			show(shown + columns() * ROWS);
+			if (first) first.focus({ preventScroll: true });
+		});
+
+		show(columns() * ROWS);
+	}
 
 	function init(section) {
 		const feed = section.querySelector('.b-feed__feed');
 		if (!feed) return;
+
+		init_load_more(section, feed);
 
 		// The block's "load more" wording, also after the plugin re-renders its button
 		function label_button() {

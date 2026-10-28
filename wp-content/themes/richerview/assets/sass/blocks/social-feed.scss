@@ -2,9 +2,10 @@
 // Compiled on its own (assets/css/blocks/social-feed.css) so block.json can
 // load it on the front end and inside the block editor.
 //
-// Restyles Smash Balloon Instagram Feed's markup (#sb_instagram) to the design:
+// Restyles the Zinc Instagram Feed mu-plugin's carousel ([instagram_feed], .zig)
+// – or Smash Balloon Instagram Feed's markup (#sb_instagram) – to the design:
 // 376.67 × 500 tiles, three across with 30px gaps, and a yellow "load more"
-// link. The "view" badge is added by assets/js/blocks/social-feed.js.
+// link. The "view" badge and "load more" are added by assets/js/blocks/social-feed.js.
 
 @import "../core/variables";
 @import "../components/c.cursor-badge";
@@ -56,6 +57,68 @@ $feed-gap: 30px;
   &__placeholder {
     max-width: 1190px;
     margin: 0 auto;
+  }
+
+  // ---- Zinc Instagram Feed (wp-content/mu-plugins/zinc-instagram-feed.php)
+  // Its carousel becomes a plain grid of photos – no profile row, arrows,
+  // captions or badges in the design
+
+  // Also undoes the theme's .container widths and padding, which the plugin's
+  // wrapper picks up from its class
+  .zig {
+    --zig-gap: #{$feed-gap};
+    --zig-radius: 0;
+  }
+
+  .zig,
+  .zig.container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .zig-head,
+  .zig-arrow,
+  .zig-bar,
+  .zig-over,
+  .zig-badge,
+  .zig-play {
+    display: none !important;
+  }
+
+  .zig-track {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--zig-gap);
+    padding: 0;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .zig-card {
+    aspect-ratio: $feed-tile-ratio;
+    border-radius: 0;
+    background-color: color(black);
+    box-shadow: none;
+
+    // Beyond the first rows until "load more" is clicked
+    &.is-hidden {
+      display: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid color(yellow);
+      outline-offset: 4px;
+    }
+  }
+
+  .zig-media {
+    transition: transform .6s cubic-bezier(.23, 1, .32, 1);
+  }
+
+  .zig-card:hover .zig-media {
+    transform: scale(1.03);
   }
 
   // ---- Smash Balloon Instagram Feed
@@ -139,14 +202,16 @@ $feed-gap: 30px;
 
   // "load more ↓" – yellow text with the hand-drawn underline, 51px below the grid
   #sbi_load,
-  .sbi_load {
+  .sbi_load,
+  &__more {
     display: flex !important;
     justify-content: center;
     margin: 51px 0 0 !important;
     padding: 0 !important;
   }
 
-  .sbi_load_btn {
+  .sbi_load_btn,
+  &__more-btn {
     position: relative;
     display: inline-flex !important;
     align-items: center;
@@ -224,12 +289,18 @@ $feed-gap: 30px;
   }
 
   // Set up by social-feed.js
-  &.has-cursor .sbi_photo {
+  &__more[hidden] {
+    display: none !important;
+  }
+
+  &.has-cursor .sbi_photo,
+  &.has-cursor .zig-card {
     cursor: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .sbi_photo img {
+    .sbi_photo img,
+    .zig-media {
       transition: none;
     }
   }
@@ -275,6 +346,10 @@ $feed-gap: 30px;
     &__tiles {
       gap: 20px !important;
     }
+
+    .zig {
+      --zig-gap: 20px;
+    }
   }
 
   // Phones: two across
@@ -291,8 +366,17 @@ $feed-gap: 30px;
       gap: 10px !important;
     }
 
+    .zig {
+      --zig-gap: 10px;
+    }
+
+    .zig-track {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     #sbi_load,
-    .sbi_load {
+    .sbi_load,
+    &__more {
       margin-top: 35px !important;
     }
   }

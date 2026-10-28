@@ -51,13 +51,13 @@
             "label": "Feed shortcode",
             "name": "shortcode",
             "type": "text",
-            "instructions": "The shortcode from your feed plugin, e.g. [instagram-feed] or [instagram-feed feed=1] (Smash Balloon Instagram Feed). Set the number of posts and the “Load More” button in the plugin.",
+            "instructions": "The shortcode from your feed plugin, e.g. [instagram_feed count=\"24\"] (Zinc Instagram Feed – count is how many posts to load, up to 25; nine show at first, then nine more each time “load more” is clicked).",
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "[instagram-feed]",
+            "default_value": "[instagram_feed count=\"24\"]",
             "maxlength": "",
             "placeholder": "",
             "prepend": "",

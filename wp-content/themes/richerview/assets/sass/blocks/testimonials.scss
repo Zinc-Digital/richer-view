@@ -37,6 +37,9 @@ $testimonials-gutter-right: clamp(25px, 3.33vw, 48px);
   }
 
   &__heading {
+    // Its own layer, so the doodle can sit behind the words but still above the section
+    position: relative;
+    z-index: 0;
     max-width: 877px;
     margin: 0;
     color: color(white);
@@ -48,10 +51,11 @@ $testimonials-gutter-right: clamp(25px, 3.33vw, 48px);
     transition: none;
   }
 
-  // Speech-bubble doodle overlapping the end of the heading.
+  // Speech-bubble doodle overlapping the end of the heading, behind the text.
   // Zero height so it doesn't make the line taller; sizes are in em so it scales with the heading.
   &__doodle {
     position: relative;
+    z-index: -1; // behind the heading text
     display: inline-block;
     width: 1.977em;
     height: 0;

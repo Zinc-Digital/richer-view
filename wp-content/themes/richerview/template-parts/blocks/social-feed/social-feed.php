@@ -2,10 +2,10 @@
 /**
  * Social Feed block
  *
- * Page heading above a feed from a plugin shortcode (built for Smash Balloon
- * Instagram Feed's [instagram-feed]), styled as in the design: a grid of tall
- * tiles three across, a round "view" badge over each post and a yellow
- * "load more" link (assets/js/blocks/social-feed.js).
+ * Page heading above a feed from a plugin shortcode (the Zinc Instagram Feed
+ * mu-plugin's [instagram_feed], or Smash Balloon's [instagram-feed]), styled as
+ * in the design: a grid of tall tiles three across, a round "view" badge over
+ * each post and a yellow "load more" link (assets/js/blocks/social-feed.js).
  *
  * Until the plugin is installed, the editor shows placeholder tiles and the
  * page shows just the heading.
