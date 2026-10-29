@@ -1,0 +1,725 @@
+{
+    "key": "group_6b8c1d2e3f000",
+    "title": "Block: Home Hero",
+    "fields": [
+        {
+            "key": "field_6b8c1d2e3f001",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "instructions": "",
+            "conditional_logic": 0
+        },
+        {
+            "key": "field_6b8c1d2e3f002",
+            "label": "Site name",
+            "name": "heading",
+            "aria-label": "",
+            "type": "text",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "maxlength": "",
+            "placeholder": "richer view.",
+            "prepend": "",
+            "append": "",
+            "instructions": "Read out by screen readers and search engines in place of the \"richer view.\" wordmark.",
+            "conditional_logic": 0,
+            "default_value": ""
+        },
+        {
+            "key": "field_6b8c1d2e3f003",
+            "label": "Intro text",
+            "name": "text",
+            "aria-label": "",
+            "type": "textarea",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": "",
+            "instructions": "",
+            "conditional_logic": 0,
+            "default_value": "Big production energy, zero agency ego. We handle the heavy video lifting so you can just enjoy the results."
+        },
+        {
+            "key": "field_6b8c1d2e3f005",
+            "label": "Scroll hint",
+            "name": "scroll_label",
+            "aria-label": "",
+            "type": "text",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "instructions": "Leave blank to hide the \"scroll\" hint.",
+            "conditional_logic": 0,
+            "default_value": "scroll"
+        },
+        {
+            "key": "field_6b8c1d2e3f010",
+            "label": "Main photo / video",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "instructions": "",
+            "conditional_logic": 0
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b8c1d2e3f011",
+            "label": "Show",
+            "name": "main_media_type",
+            "type": "button_group",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal",
+            "instructions": "A video plays straight away, so it doesn't need a photo.",
+            "conditional_logic": 0,
+            "choices": {
+                "image": "Photo",
+                "video": "Video"
+            },
+            "default_value": "image"
+        },
+        {
+            "key": "field_6b8c1d2e3f012",
+            "label": "Photo",
+            "name": "main_image",
+            "aria-label": "",
+            "type": "image",
+            "required": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "medium",
+            "instructions": "Landscape, at least 2400px wide – it fills the screen. The same photo becomes the centre tile of the grid.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b8c1d2e3f011",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ]
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b8c1d2e3f013",
+            "label": "Photo position",
+            "name": "main_image_position",
+            "type": "button_group",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal",
+            "instructions": "Which part of the photo to keep when it's cropped.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b8c1d2e3f011",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "choices": {
+                "top": "Top",
+                "center": "Centre",
+                "bottom": "Bottom"
+            },
+            "default_value": "center"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b8c1d2e3f014",
+            "label": "Video from",
+            "name": "main_video_type",
+            "type": "button_group",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal",
+            "instructions": "Plays muted on a loop, without controls.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b8c1d2e3f011",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "choices": {
+                "youtube": "YouTube",
+                "vimeo": "Vimeo",
+                "file": "Upload",
+                "link": "Video file link"
+            },
+            "default_value": "vimeo"
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b8c1d2e3f015",
+            "label": "Video link",
+            "name": "main_video_url",
+            "type": "url",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placeholder": "",
+            "instructions": "The video's YouTube or Vimeo address.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b8c1d2e3f011",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6b8c1d2e3f014",
+                        "operator": "==",
+                        "value": "youtube"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6b8c1d2e3f011",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6b8c1d2e3f014",
+                        "operator": "==",
+                        "value": "vimeo"
+                    }
+                ]
+            ],
+            "default_value": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b8c1d2e3f016",
+            "label": "Video file",
+            "name": "main_video_file",
+            "type": "file",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "mp4,webm,mov",
+            "instructions": "MP4, ideally under 10MB.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b8c1d2e3f011",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6b8c1d2e3f014",
+                        "operator": "==",
+                        "value": "file"
+                    }
+                ]
+            ]
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b8c1d2e3f017",
+            "label": "Video file link",
+            "name": "main_video_link",
+            "type": "url",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placeholder": "",
+            "instructions": "A direct link to an MP4 file (e.g. from Vimeo's download links or a CDN).",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b8c1d2e3f011",
+                        "operator": "==",
+                        "value": "video"
+                    },
+                    {
+                        "field": "field_6b8c1d2e3f014",
+                        "operator": "==",
+                        "value": "link"
+                    }
+                ]
+            ],
+            "default_value": ""
+        },
+        {
+            "key": "field_6b8c1d2e3f030",
+            "label": "Grid",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "instructions": "",
+            "conditional_logic": 0
+        },
+        {
+            "key": "field_6b8c1d2e3f031",
+            "label": "Grid tiles",
+            "name": "tiles",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Shown around the main photo when the page zooms out – up to 13, filled row by row, left to right (4 above, 1 either side, 4 below, then 3 more). With fewer they repeat to fill the grid. Leave empty for just the full-screen photo.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 13,
+            "collapsed": "",
+            "button_label": "Add tile",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6b8c1d2e3f032",
+                    "label": "Show",
+                    "name": "media_type",
+                    "type": "button_group",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "instructions": "A video tile can also have a photo, which shows until the video starts.",
+                    "conditional_logic": 0,
+                    "choices": {
+                        "image": "Photo",
+                        "video": "Video"
+                    },
+                    "default_value": "image",
+                    "parent_repeater": "field_6b8c1d2e3f031"
+                },
+                {
+                    "key": "field_6b8c1d2e3f033",
+                    "label": "Photo",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "instructions": "Landscape, about 1600 × 1000px.",
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6b8c1d2e3f032",
+                                "operator": "==",
+                                "value": "image"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_6b8c1d2e3f032",
+                                "operator": "==",
+                                "value": "video"
+                            }
+                        ]
+                    ],
+                    "parent_repeater": "field_6b8c1d2e3f031"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6b8c1d2e3f034",
+                    "label": "Photo position",
+                    "name": "image_position",
+                    "type": "button_group",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "instructions": "Which part of the photo to keep when it's cropped.",
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6b8c1d2e3f032",
+                                "operator": "==",
+                                "value": "image"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_6b8c1d2e3f032",
+                                "operator": "==",
+                                "value": "video"
+                            }
+                        ]
+                    ],
+                    "choices": {
+                        "top": "Top",
+                        "center": "Centre",
+                        "bottom": "Bottom"
+                    },
+                    "default_value": "center",
+                    "parent_repeater": "field_6b8c1d2e3f031"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6b8c1d2e3f035",
+                    "label": "Video from",
+                    "name": "video_type",
+                    "type": "button_group",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "layout": "horizontal",
+                    "instructions": "Plays muted on a loop, without controls.",
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6b8c1d2e3f032",
+                                "operator": "==",
+                                "value": "video"
+                            }
+                        ]
+                    ],
+                    "choices": {
+                        "youtube": "YouTube",
+                        "vimeo": "Vimeo",
+                        "file": "Upload",
+                        "link": "Video file link"
+                    },
+                    "default_value": "vimeo",
+                    "parent_repeater": "field_6b8c1d2e3f031"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6b8c1d2e3f036",
+                    "label": "Video link",
+                    "name": "video_url",
+                    "type": "url",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "",
+                    "instructions": "The video's YouTube or Vimeo address.",
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6b8c1d2e3f032",
+                                "operator": "==",
+                                "value": "video"
+                            },
+                            {
+                                "field": "field_6b8c1d2e3f035",
+                                "operator": "==",
+                                "value": "youtube"
+                            }
+                        ],
+                        [
+                            {
+                                "field": "field_6b8c1d2e3f032",
+                                "operator": "==",
+                                "value": "video"
+                            },
+                            {
+                                "field": "field_6b8c1d2e3f035",
+                                "operator": "==",
+                                "value": "vimeo"
+                            }
+                        ]
+                    ],
+                    "default_value": "",
+                    "parent_repeater": "field_6b8c1d2e3f031"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6b8c1d2e3f037",
+                    "label": "Video file",
+                    "name": "video_file",
+                    "type": "file",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "mp4,webm,mov",
+                    "instructions": "MP4, ideally under 10MB.",
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6b8c1d2e3f032",
+                                "operator": "==",
+                                "value": "video"
+                            },
+                            {
+                                "field": "field_6b8c1d2e3f035",
+                                "operator": "==",
+                                "value": "file"
+                            }
+                        ]
+                    ],
+                    "parent_repeater": "field_6b8c1d2e3f031"
+                },
+                {
+                    "aria-label": "",
+                    "required": 0,
+                    "allow_in_bindings": 0,
+                    "key": "field_6b8c1d2e3f038",
+                    "label": "Video file link",
+                    "name": "video_link",
+                    "type": "url",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "",
+                    "instructions": "A direct link to an MP4 file (e.g. from Vimeo's download links or a CDN).",
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_6b8c1d2e3f032",
+                                "operator": "==",
+                                "value": "video"
+                            },
+                            {
+                                "field": "field_6b8c1d2e3f035",
+                                "operator": "==",
+                                "value": "link"
+                            }
+                        ]
+                    ],
+                    "default_value": "",
+                    "parent_repeater": "field_6b8c1d2e3f031"
+                },
+                {
+                    "key": "field_6b8c1d2e3f039",
+                    "label": "Link",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "link",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 0,
+                    "instructions": "Optional. Clicking the tile goes here instead of opening its video or photo in a pop-up.",
+                    "conditional_logic": 0,
+                    "parent_repeater": "field_6b8c1d2e3f031"
+                }
+            ]
+        },
+        {
+            "key": "field_6b8c1d2e3f040",
+            "label": "Settings",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0,
+            "instructions": "",
+            "conditional_logic": 0
+        },
+        {
+            "key": "field_6b8c1d2e3f041",
+            "label": "Zoom out on scroll",
+            "name": "zoom",
+            "aria-label": "",
+            "type": "true_false",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "allow_in_bindings": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "instructions": "Starts on the full-screen photo and zooms out to the grid as the page is scrolled. Turned off (and for visitors who prefer reduced motion) it's just the full-screen photo. Not shown in the editor.",
+            "conditional_logic": 0,
+            "default_value": 1
+        },
+        {
+            "key": "field_6b8c1d2e3f042",
+            "label": "Badge text",
+            "name": "cursor_label",
+            "aria-label": "",
+            "type": "text",
+            "required": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "instructions": "Shown in the round badge that follows the mouse over the tiles once the page has zoomed out. Clicking a tile opens its video (with sound) or photo in a pop-up.",
+            "conditional_logic": 0,
+            "default_value": "zoom"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/home-hero"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1793272390
+}

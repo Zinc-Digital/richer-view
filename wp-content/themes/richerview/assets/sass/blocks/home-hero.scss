@@ -1,0 +1,383 @@
+// Home Hero block
+// Compiled on its own (assets/css/blocks/home-hero.css) so block.json can
+// load it on the front end and inside the block editor.
+//
+// Without the script (in the editor, with the zoom turned off or no grid
+// tiles, and for reduced motion) it's the full-screen main photo with the
+// wordmark. assets/js/blocks/home-hero.js adds .is-zooming: the tiles are laid
+// out in the staggered grid from the design (476 × 302 tiles, 20px gaps, at
+// 1440 wide) and the script scales the grid from the main tile filling the
+// screen down to its real size as the page is scrolled.
+
+@import "../core/variables";
+@import "../components/c.cursor-badge";
+
+// Tile size and the main tile's centre, in the design's pixels at 1440 wide
+$hero-tile-width: 475.93;
+$hero-tile-height: 302.33;
+$hero-centre-x: 720;
+$hero-centre-y: 446;
+// Height of the zoomed-out grid, including the space before the next block
+$hero-grid-height: 1307;
+
+.b-home-hero {
+  position: relative;
+  background-color: color(charcoal);
+  color: color(white);
+  font-family: $display_font;
+  container: home-hero / inline-size;
+  // Space taken at the top of the screen by the WordPress admin bar (when logged in),
+  // so the hero fits below it
+  --hero-top: 0px;
+
+  .admin-bar & {
+    --hero-top: 32px;
+
+    @media (max-width: 782px) {
+      --hero-top: 46px;
+    }
+  }
+
+  // Don't rely on the theme's global reset – the block editor doesn't load it
+  &,
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &__stage {
+    // One design pixel: 1440 wide on desktop, bigger tiles on tablets and phones –
+    // and never so small that the zoomed-out grid is shorter than the screen
+    --u: max(calc(100cqw / 1440), calc((100vh - var(--hero-top)) / #{$hero-grid-height}));
+    position: relative;
+    height: calc(100vh - var(--hero-top));
+    height: calc(100svh - var(--hero-top));
+    min-height: 560px;
+    overflow: hidden;
+  }
+
+  &__mosaic {
+    position: absolute;
+    inset: 0;
+  }
+
+  // Full-screen main photo; the grid tiles only show while zooming
+  &__tile {
+    position: absolute;
+    display: none;
+    overflow: hidden;
+    background-color: color(grey);
+    isolation: isolate;
+
+    &--main {
+      display: block;
+      inset: 0;
+    }
+
+    &:focus-visible {
+      outline: 3px solid color(yellow);
+      outline-offset: 3px;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+
+    &--top {
+      object-position: center top;
+    }
+
+    &--bottom {
+      object-position: center bottom;
+    }
+  }
+
+  // Muted looping video over the photo (assets/js/components/background-video.js)
+  &__video {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    container-type: size;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s ease;
+
+    // Uploaded videos with no photo behind them show their first frame straight away
+    &.is-playing,
+    &--file {
+      opacity: 1;
+    }
+
+    // YouTube / Vimeo players are 16:9, so scale them up to cover the tile
+    iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: max(100cqw, 177.78cqh);
+      height: max(100cqh, 56.25cqw);
+      border: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  // ---- Wordmark, intro text and "scroll" over the main photo
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    height: calc(100vh - var(--hero-top));
+    height: calc(100svh - var(--hero-top));
+    min-height: 560px;
+    background-image: linear-gradient(to bottom, rgba(#000, 0), #000);
+    pointer-events: none;
+    container: home-hero-overlay / inline-size;
+  }
+
+  &__heading {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: calc(771.293 / 1440 * 100%);
+    margin: 0;
+    line-height: 0;
+  }
+
+  &__wordmark {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: none;
+  }
+
+  // Intro text and the "scroll" hint, 60px in and 100px up from the bottom right
+  &__footer {
+    position: absolute;
+    right: 60px;
+    bottom: 100px;
+    display: flex;
+    align-items: flex-end;
+    gap: 70px;
+  }
+
+  &__text {
+    width: 374px;
+    margin: 0;
+    color: color(white);
+    font-family: $display_font;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 300;
+  }
+
+  &__scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+    width: 31px;
+
+    img {
+      display: block;
+      width: 17.9972px;
+      height: 34.3769px;
+    }
+  }
+
+  &__scroll-label {
+    color: color(white);
+    font-family: $display_font;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: $font-400;
+    text-transform: lowercase;
+    white-space: nowrap;
+  }
+
+  // ---- Zooming out to the grid (set up by home-hero.js)
+
+  &.is-zooming &__stage {
+    position: sticky;
+    top: var(--hero-top);
+    height: max(calc(100vh - var(--hero-top)), calc(#{$hero-grid-height} * var(--u)));
+    min-height: 0;
+  }
+
+  &.is-zooming &__mosaic {
+    transform-origin: 50% calc(#{$hero-centre-y} * var(--u));
+  }
+
+  &.is-zooming &__tile {
+    display: block;
+    top: calc(var(--y) * var(--u));
+    left: calc(50% + (var(--x) - #{$hero-centre-x}) * var(--u));
+    width: calc(#{$hero-tile-width} * var(--u));
+    height: calc(#{$hero-tile-height} * var(--u));
+  }
+
+  // Once zoomed out the tiles open in the pop-up (or follow their link)
+  &.is-zoomed-out &__tile:is(a, [data-lightbox]) {
+    cursor: pointer;
+  }
+
+  &.has-cursor.is-zoomed-out &__tile:is(a, [data-lightbox]) {
+    cursor: none;
+  }
+
+  // ---- Pop-up with a tile's video (with sound) or full-size photo
+
+  &__modal {
+    width: min(1100px, 90vw);
+    max-width: none;
+    max-height: none;
+    // Centre on screen (the theme's reset removes the browser's default margin: auto)
+    margin: auto;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    background: transparent;
+
+    &::backdrop {
+      background-color: rgba(#000, .85);
+    }
+  }
+
+  &__player {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background-color: #000;
+
+    iframe,
+    video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    // Photos keep their own shape, as large as fits
+    &--image {
+      display: flex;
+      justify-content: center;
+      aspect-ratio: auto;
+      background-color: transparent;
+
+      img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: calc(100svh - 160px);
+      }
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: -56px;
+    right: 0;
+    width: 41px;
+    height: 41px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+
+    img {
+      display: block;
+      width: 41px;
+      height: 41px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid color(yellow);
+      outline-offset: 3px;
+    }
+  }
+
+  // ---- Tablets and phones: bigger tiles (the grid is cropped at the sides)
+
+  @container home-hero (max-width: 1023px) {
+    &__stage {
+      --u: max(calc(100cqw / 1100), calc((100vh - var(--hero-top)) / #{$hero-grid-height}));
+    }
+  }
+
+  @container home-hero (max-width: 767px) {
+    &__stage {
+      --u: max(calc(100cqw / 760), calc((100vh - var(--hero-top)) / #{$hero-grid-height}));
+    }
+  }
+
+  @container home-hero-overlay (max-width: 1180px) {
+    &__footer {
+      right: 40px;
+      gap: 40px;
+    }
+
+    &__text {
+      width: 300px;
+      font-size: 18px;
+      line-height: 25px;
+    }
+  }
+
+  // Not enough room beside the wordmark: the text sits above it
+  @container home-hero-overlay (max-width: 900px) {
+    &__heading {
+      width: calc(100% - 25px);
+    }
+
+    &__footer {
+      left: 25px;
+      right: 25px;
+      bottom: calc((100cqw - 25px) * 288 / 771.293 + 35px);
+      justify-content: space-between;
+    }
+
+    &__text {
+      width: auto;
+      max-width: 374px;
+    }
+  }
+
+  @container home-hero-overlay (max-width: 560px) {
+    &__text {
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    &__scroll {
+      display: none;
+    }
+  }
+}
+
+// The big wordmark stands in for the header logo until the page zooms out
+body:has(.b-home-hero) .site-header__logo {
+  transition: opacity .3s ease, visibility .3s ease;
+}
+
+body:has(.b-home-hero:not(.is-zoomed-out)) .site-header__logo {
+  opacity: 0;
+  visibility: hidden;
+}

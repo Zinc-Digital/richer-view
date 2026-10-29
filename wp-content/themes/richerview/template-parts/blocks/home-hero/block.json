@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "acf/home-hero",
+	"title": "Home Hero",
+	"description": "Full-screen photo or video with the big \"richer view.\" wordmark, which zooms out as the page is scrolled to show a grid of more photos and videos.",
+	"category": "media",
+	"icon": "format-gallery",
+	"keywords": ["home", "hero", "banner", "header", "video", "mosaic", "grid", "zoom"],
+	"textdomain": "zinc",
+	"style": "file:../../../assets/css/blocks/home-hero.css",
+	"viewScript": "file:../../../assets/js/blocks/home-hero.js",
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "home-hero.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": false,
+		"html": false,
+		"mode": true,
+		"jsx": false,
+		"multiple": false
+	}
+}

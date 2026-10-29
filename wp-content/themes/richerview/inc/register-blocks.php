@@ -43,6 +43,7 @@ function register_theme_blocks() {
 		'vacancy-list',
 		'social-feed',
 		'page-content',
+		'home-hero',
 	);
 
 	foreach ($blocks as $block) {
