@@ -9,6 +9,13 @@ add_action('after_setup_theme', 'zinc_theme_support');
 // Adobe Fonts kit (New Hero) – used on the front end and in the block editor
 define('ZINC_FONTS_URL', 'https://use.typekit.net/oce0aca.css');
 
+// Version for the theme's own CSS and JS: the file's last change, so visitors
+// (and any page cache or CDN) get the new file as soon as it's updated
+function zinc_asset_version($path) {
+	$file = get_template_directory() . $path;
+	return file_exists($file) ? (string) filemtime($file) : wp_get_theme()->get('Version');
+}
+
 //Register stylesheets
 function zinc_register_styles() {
 	$theme_version = wp_get_theme()->get('Version');
@@ -16,8 +23,8 @@ function zinc_register_styles() {
 	wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), $theme_version, false);
 	wp_enqueue_style( 'slick-theme-css', get_template_directory_uri() . '/assets/css/slick-theme.css', array(), $theme_version );
 	wp_enqueue_style('slick-css', get_template_directory_uri() . '/assets/css/slick.css', array(), $theme_version, false);
-	wp_enqueue_style('main-css', get_template_directory_uri() . '/assets/css/main.css', array(), $theme_version);
-	wp_enqueue_style('style-css', get_template_directory_uri() . '/assets/css/style.css', array(), $theme_version, false);
+	wp_enqueue_style('main-css', get_template_directory_uri() . '/assets/css/main.css', array(), zinc_asset_version('/assets/css/main.css'));
+	wp_enqueue_style('style-css', get_template_directory_uri() . '/assets/css/style.css', array(), zinc_asset_version('/assets/css/style.css'), false);
 }
 add_action('wp_enqueue_scripts', 'zinc_register_styles');
 
@@ -51,7 +58,7 @@ add_filter('wp_resource_hints', 'zinc_font_preconnect', 10, 2);
 function zinc_register_scripts() {
 	$theme_version = wp_get_theme()->get('Version');
 	wp_enqueue_script( 'boot', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'), $theme_version, false);
-	wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), $theme_version, false);
+	wp_enqueue_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), zinc_asset_version('/assets/js/main.js'), false);
 	wp_enqueue_script('slick-js', get_template_directory_uri() . '/assets/js/slick.min.js', array('jquery'), $theme_version, false);
 	wp_enqueue_script( 'slick-slider', get_template_directory_uri() . '/assets/js/slick.js');
 

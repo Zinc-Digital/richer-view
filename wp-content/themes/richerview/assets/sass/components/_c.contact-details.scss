@@ -30,8 +30,13 @@
     gap: 5px;
     color: color(white);
 
-    &:hover {
-      color: color(white);
+    span {
+      transition: color .2s ease;
+    }
+
+    &:hover,
+    &:hover span {
+      color: color(yellow);
     }
 
     &--email span {

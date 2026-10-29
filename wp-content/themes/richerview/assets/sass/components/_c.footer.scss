@@ -5,8 +5,12 @@
   color: color(white);
   font-family: $display_font;
 
+  a {
+    transition: color .2s ease;
+  }
+
   a:hover {
-    color: inherit;
+    color: color(yellow);
   }
 
   li {
