@@ -32,9 +32,10 @@ $figma = get_template_directory_uri() . '/assets/images/figma';
 /**
  * Photo and/or muted looping video for the main tile or a grid tile. A video
  * fades in over the photo once it's playing (assets/js/components/background-video.js);
- * an upload with no photo shows its first frame straight away.
+ * an upload with no photo shows its first frame straight away. With $on_scroll
+ * the video only starts once the page is scrolled (home-hero.js).
  */
-$render_media = function ($media, $sizes, $loading) {
+$render_media = function ($media, $sizes, $loading, $on_scroll = false) {
 	$video_embed = '';
 	$video_file  = '';
 	if (($media['media_type'] ?? 'image') === 'video') {
@@ -59,11 +60,12 @@ $render_media = function ($media, $sizes, $loading) {
 			'alt'		=> '',
 		));
 	}
+	$playback = $on_scroll ? ' data-video-playback="scroll"' : '';
 	if ($video_embed) {
-		$html .= '<div class="b-home-hero__video" data-video-embed="' . esc_url($video_embed) . '"></div>';
+		$html .= '<div class="b-home-hero__video" data-video-embed="' . esc_url($video_embed) . '"' . $playback . '></div>';
 	} elseif ($video_file) {
-		$html .= '<div class="b-home-hero__video' . ($image ? '' : ' b-home-hero__video--file') . '">'
-			. '<video src="' . esc_url($video_file) . '" muted loop playsinline preload="' . ($loading === 'eager' ? 'auto' : 'metadata') . '" tabindex="-1"></video>'
+		$html .= '<div class="b-home-hero__video' . ($image ? '' : ' b-home-hero__video--file') . '"' . $playback . '>'
+			. '<video src="' . esc_url($video_file) . '" muted loop playsinline preload="' . ($loading === 'eager' && !$on_scroll ? 'auto' : 'metadata') . '" tabindex="-1"></video>'
 			. '</div>';
 	}
 	return $html;
@@ -115,8 +117,10 @@ $main = array(
 	'video_file'		=> get_field('main_video_file'),
 	'video_link'		=> get_field('main_video_link'),
 );
-// A main video plays straight away, so it doesn't need its photo
-$main_html = $render_media($main, '100vw', 'eager');
+// A main video plays straight away (over its photo, if it has one until it starts),
+// or shows the photo first and starts once the page is scrolled
+$main_on_scroll = $main['media_type'] === 'video' && !empty($main['image']) && get_field('field_6b8c1d2e3f018') === 'scroll';
+$main_html      = $render_media($main, '100vw', 'eager', $main_on_scroll);
 if (!$main_html && !$is_preview) {
 	$main_html = '<img class="b-home-hero__image" src="' . esc_url(get_template_directory_uri() . '/assets/images/services/not-found.jpg') . '" width="1500" height="844" alt="" />';
 }

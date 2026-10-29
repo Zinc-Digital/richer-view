@@ -114,7 +114,7 @@
             "return_format": "value",
             "allow_null": 0,
             "layout": "horizontal",
-            "instructions": "A video plays straight away, so it doesn't need a photo.",
+            "instructions": "A video can start straight away, or show the photo first and start once the page is scrolled.",
             "conditional_logic": 0,
             "choices": {
                 "image": "Photo",
@@ -144,13 +144,20 @@
             "max_size": "",
             "mime_types": "",
             "preview_size": "medium",
-            "instructions": "Landscape, at least 2400px wide – it fills the screen. The same photo becomes the centre tile of the grid.",
+            "instructions": "Landscape, at least 2400px wide – it fills the screen, and becomes the centre tile of the grid. With a video, it shows until the video starts.",
             "conditional_logic": [
                 [
                     {
                         "field": "field_6b8c1d2e3f011",
                         "operator": "==",
                         "value": "image"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6b8c1d2e3f011",
+                        "operator": "==",
+                        "value": "video"
                     }
                 ]
             ]
@@ -178,6 +185,13 @@
                         "field": "field_6b8c1d2e3f011",
                         "operator": "==",
                         "value": "image"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_6b8c1d2e3f011",
+                        "operator": "==",
+                        "value": "video"
                     }
                 ]
             ],
@@ -329,6 +343,38 @@
                 ]
             ],
             "default_value": ""
+        },
+        {
+            "aria-label": "",
+            "required": 0,
+            "allow_in_bindings": 0,
+            "key": "field_6b8c1d2e3f018",
+            "label": "Play the video",
+            "name": "main_video_playback",
+            "type": "button_group",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal",
+            "instructions": "“Once the page is scrolled” shows the photo first; the video fades in over it as soon as the visitor scrolls.",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6b8c1d2e3f011",
+                        "operator": "==",
+                        "value": "video"
+                    }
+                ]
+            ],
+            "choices": {
+                "autoplay": "Straight away",
+                "scroll": "Once the page is scrolled"
+            },
+            "default_value": "autoplay"
         },
         {
             "key": "field_6b8c1d2e3f030",

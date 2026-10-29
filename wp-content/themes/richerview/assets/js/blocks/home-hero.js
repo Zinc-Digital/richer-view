@@ -168,12 +168,32 @@
 	}
 
 	/**
-	 * Background videos – the main one, and the tiles' (loaded as they come near the screen)
+	 * Background videos – the main one, and the tiles' (loaded as they come near
+	 * the screen). A main video set to start "once the page is scrolled" shows its
+	 * photo at the top of the page: it loads and fades in when the visitor scrolls,
+	 * and fades back to the photo (paused, to carry on later) if they scroll back up.
 	 */
 	function init_videos(section) {
 		if (!window.zincBackgroundVideo) return;
 		section.querySelectorAll('.b-home-hero__video').forEach(function (wrapper) {
-			window.zincBackgroundVideo(wrapper, { observe: wrapper.closest('.b-home-hero__tile') });
+			const options = { observe: wrapper.closest('.b-home-hero__tile') };
+			if (wrapper.dataset.videoPlayback !== 'scroll') {
+				window.zincBackgroundVideo(wrapper, options);
+				return;
+			}
+
+			const scrolled = function () {
+				return window.scrollY > 0;
+			};
+			options.is_active = scrolled;
+			const video = window.zincBackgroundVideo(wrapper, options);
+
+			let was_scrolled = scrolled();
+			window.addEventListener('scroll', function () {
+				if (scrolled() === was_scrolled) return;
+				was_scrolled = !was_scrolled;
+				video.refresh();
+			}, { passive: true });
 		});
 	}
 
